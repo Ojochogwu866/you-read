@@ -6,15 +6,19 @@
         Cover more Books<br />
         Easily
       </div>
-      <div class="flex gap-6 py-2 mt-6">
-        <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
-          Set reading plan
-        </div>
-        <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
-          Join/Create a team
-        </div>
-        <div class="cursor-pointer bg-boxbg hover:shadow-typeBox p-2 text-sm">
-          Set Book Goals
+      <div class="flex items-center py-2 mt-6">
+        <div class="border-b-4 w-100 absolute border-boxColor"></div>
+        <div class="border-r-8 border-parentText"></div>
+        <div class="z-50 gap-6 flex justify-center items-center">
+          <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
+            Set reading plan
+          </div>
+          <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
+            Join/Create a team
+          </div>
+          <div class="cursor-pointer bg-boxbg hover:shadow-typeBox p-2 text-sm">
+            Set Book Goals
+          </div>
         </div>
       </div>
     </div>
