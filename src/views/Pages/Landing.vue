@@ -6,10 +6,16 @@
         Cover more Books<br />
         Easily
       </div>
-      <div class="flex gap-6 py-2 shadow-typeBox">
-        <div class="">Set reading plan</div>
-        <div class="">Join/Create a team</div>
-        <div class="">Set Book Goals</div>
+      <div class="flex gap-6 py-2 mt-6">
+        <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
+          Set reading plan
+        </div>
+        <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
+          Join/Create a team
+        </div>
+        <div class="cursor-pointer bg-boxbg hover:shadow-typeBox p-2 text-sm">
+          Set Book Goals
+        </div>
       </div>
     </div>
     <div class="w-1/2">

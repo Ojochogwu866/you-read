@@ -26,12 +26,14 @@ module.exports = {
 
     extend: {
       boxShadow: {
-        typeBox: "box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px",
+        typeBox:
+          "rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;",
       },
       colors: {
         home: "#EFFAFD",
         parentText: "#060640",
         boxColor: "#A0006D",
+        boxbg: "#E5E5E5",
       },
       spacing: {
         7: "1.6rem",
