@@ -1,12 +1,12 @@
 <template>
   <main>
-    <div class="inset-0 w-full bg-black bg-opacity-50 overflow-y-auto">
+    <div class="inset-0 w-full bg-black bg-opacity-50 overflow-y-hidden">
       <div
         v-if="center"
         :class="css"
-        class="w-full mx-auto max-w-lg bg-white rounded shadow-xs"
+        class="w-full mx-auto flex justify-center items-center rounded shadow-xs"
       >
-        <div class="w-full flex justify-between items-center">
+        <div class="w-full flex justify-center items-center">
           <slot name="header" />
           <div>
             <svg
@@ -25,7 +25,7 @@
             </svg>
           </div>
         </div>
-        <main class="">
+        <main class="w-full flex justify-center items-center m-auto">
           <slot />
         </main>
       </div>
