@@ -25,7 +25,7 @@
             </svg>
           </div>
         </div>
-        <main>
+        <main class="">
           <slot />
         </main>
       </div>
