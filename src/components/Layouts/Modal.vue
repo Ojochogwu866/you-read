@@ -3,8 +3,7 @@
     <div class="inset-0 w-full bg-black bg-opacity-50 overflow-y-hidden">
       <div
         v-if="center"
-        :class="css"
-        class="w-full mx-auto flex justify-center items-center rounded shadow-xs"
+        class="absolute h-screen bg-white overflow-y-hidden inset-0 flex justify-center items-center z-50 w-full mx-auto rounded shadow-xs"
       >
         <div class="w-full flex justify-center items-center">
           <slot name="header" />
