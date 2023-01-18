@@ -1,19 +1,23 @@
 <template>
   <div class="flex justify-between items-center border-b-2 border-white pr-20">
+    <div></div>
     <div class="flex justify-center gap-8 items-center m-6">
       <div
-        @click="login"
+        @click="modal"
         class="rounded-md border border-parentText px-7 py-2 hover:bg-gray-50"
       >
         Login
       </div>
-      <div
+      <Modal
+        css="h-screen overflow-y-hidden inset-0 flex justify-center items-center z-50 "
         v-if="toggleModal"
         @close="toggleModal = false"
-        class="absolute h-screen overflow-y-hidden inset-0 flex justify-center items-center z-50"
       >
+        <template v-slot:header>
+          <div></div>
+        </template>
         <div
-          class="bg-white h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full mx-auto"
+          class="bg-white absolute h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full mx-auto"
         >
           <form class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
             <div class="mt-8">LOGO</div>
@@ -33,7 +37,9 @@
             </button>
           </form>
         </div>
-      </div>
+        <!-- </div>
+        </div> -->
+      </Modal>
       <div
         class="rounded-md border border-parentText px-7 py-2 hover:bg-gray-50"
       >
@@ -43,17 +49,28 @@
   </div>
 </template>
 <script>
+import Modal from "./Modal.vue";
+import ClickOutside from "vue-click-outside";
 export default {
+  component: {
+    Modal,
+  },
   setup() {},
   data() {
     return {
-      toggleModal: true,
+      toggleModal: false,
     };
   },
+  directives: {
+    ClickOutside,
+  },
   methods: {
-    login() {
+    modal() {
       this.toggleModal = true;
     },
+    // login() {
+    //   this.$auth.loginWithRedirect({ screen_hint: "signup" });
+    // },
   },
 };
 </script>
