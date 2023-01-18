@@ -1,156 +1,64 @@
 <template>
-  <div class="w-full flex justify-center items-center flex-col">
-    <Nav />
-    <div class=" ">
-      <h1 class="text-2xl text-cliniDarkBlue font-medium md:mt-32">Sign Up</h1>
-      <p class="font-thin text-xs mt-16 sx:mt-2 md:mt-1">
-        Create an account as a Patient
-      </p>
-      <p class="font-thin text-xs">Get health services at a finger Snap!</p>
-      <form @submit.prevent="signUp" class="w-full sx:w-11/12 sx:m-auto">
-        <div class="w-full mt-5" ii>
-          <div class="flex flex-row sx:flex-col">
-            <div class="w-96 sx:w-full">
-              <p class="text-sm font-normal text-cliniDarkBlue text-left">
-                First Name
-              </p>
-              <input
-                type="text"
-                required
-                class="border sx:py-2 py-3 pl-2 text-sm leading-6 mt-1 rounded border-gray-900 w-full"
-                v-model="args.patient_user_id.first_name"
-              />
-            </div>
-            <div class="w-96 sx:w-full ml-4 sx:ml-0 sx:mt-2">
-              <p class="text-sm font-normal text-cliniDarkBlue text-left">
-                Last Name
-              </p>
-              <input
-                type="text"
-                required
-                class="border sx:py-2 py-3 pl-2 text-sm leading-6 mt-1 rounded border-gray-900 w-full"
-                v-model="args.patient_user_id.last_name"
-              />
-            </div>
-          </div>
-          <div class="flex flex-row sx:flex-col">
-            <div class="w-96 sx:w-full mt-6 sx:mt-2">
-              <p class="text-sm font-normal text-cliniDarkBlue text-left">
-                Email Address
-              </p>
-              <input
-                type="email"
-                required
-                class="border sx:py-2 py-3 pl-2 text-sm leading-6 mt-1 rounded border-gray-900 w-full"
-                v-model="args.email"
-              />
-            </div>
-            <div class="w-96 sx:w-full mt-6 sx:mt-2 ml-4 sx:ml-0">
-              <p class="text-sm font-normal text-cliniDarkBlue text-left">
-                Password
-              </p>
-              <input
-                type="password"
-                required
-                class="border sx:py-2 py-3 pl-2 text-sm leading-6 mt-1 rounded border-gray-900 w-full"
-                v-model="args.password"
-              />
-            </div>
-          </div>
-          <div class="w-96 sx:w-full mt-6 sx:mt-2 ml sx:ml-0">
-            <p class="text-sm font-normal text-cliniDarkBlue text-left">
-              Phone Number
-            </p>
-            <vue-tel-input
-              v-bind="bindProps"
-              id="phone"
-              required
-              type="string"
-              class="border sx:py-2 py-3 pl-2 text-sm leading-6 mt-1 rounded border-gray-900 w-full"
-              v-model="args.patient_user_id.phone_number"
-            />
-          </div>
-        </div>
-        <div class="w-full">
-          <div class="flex items-center">
-            <input
-              required
-              type="checkbox"
-              class="my-5 w-5 h-5 bg-gray-500"
-              name
-              id
-            />
-            <p class="font-medium text-xs ml-3 sx:text-left">
-              I agree and accept the
-              <router-link class="text-blue-500 pr-1" to="/terms"
-                >Terms and Conditions</router-link
-              >and
-              <router-link class="text-blue-500 pl-1" to="/privacy"
-                >privacy policy</router-link
-              >
-            </p>
-          </div>
-          <button class="mt-3 py-3 text-white bg-cliniDarkBlue w-full rounded">
-            Sign Up
-          </button>
-        </div>
-      </form>
-      <div class="w-full mt-5 border-t">
-        <div class="mt-6 flex w-full justify-center items-center text-center">
-          <p class="text-xs text-gray-500 font-normal">
-            Already have an account ?
-          </p>
-          <router-link to="/userlogin">
-            <p class="text-xs font-normal text-blue-500 pl-1">Login</p>
-          </router-link>
-        </div>
-      </div>
+  <div>
+    <div
+      @click="modal"
+      class="rounded-md border border-parentText px-7 py-2 hover:bg-gray-50"
+    >
+      Sign Up
     </div>
+    <Modal v-if="toggleModal" @close="toggleModal = false">
+      <template v-slot:header>
+        <div></div>
+      </template>
+      <div
+        class="h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full"
+      >
+        <form class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
+          <div class="mt-8">LOGO</div>
+          <div class="text-sm font-medium mt-8">
+            Hello, Welcome to You-Read.
+          </div>
+          <div class="text-sm font-semibold">Sign Up to Continue</div>
+          <input
+            placeholder="Email address"
+            type="email"
+            class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-3 w-full"
+          />
+          <span class="text-xs"
+            ><input type="checkbox" />Agree with our privacy policy to
+            continue</span
+          >
+          <button
+            @click="signup"
+            class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
+          >
+            Continue
+          </button>
+        </form>
+      </div>
+    </Modal>
   </div>
 </template>
 <script>
-import Nav from "./Nav.vue";
-import { VueTelInput } from "vue-tel-input";
-import "vue-tel-input/dist/vue-tel-input.css";
+import Modal from "../Layouts/Modal.vue";
 export default {
   components: {
-    Nav,
-    VueTelInput,
+    Modal,
   },
+  setup() {},
   data() {
     return {
-      bindProps: {
-        inputOptions: {
-          showDialCode: true,
-        },
-      },
-      args: {
-        email: "",
-        password: "",
-        patient_user_id: {
-          first_name: "",
-          last_name: "",
-          phone_number: "",
-        },
-        account_type: "patient user",
-      },
+      toggleModal: false,
     };
   },
   methods: {
-    reset() {
-      Object.assign(this.$data, this.$options.data.apply(this));
+    modal() {
+      this.toggleModal = true;
     },
-    async signUp() {
-      let res = await this.$store.dispatch("post", {
-        endpoint: "/account/patient-user-signup/",
-        auth: false,
-        payload: this.args,
+    signup() {
+      this.$auth.loginWithRedirect({
+        screen_hint: "signup",
       });
-      if (res.status == 201) {
-        this.$toast.success("Please Login to continue");
-        this.$router.push("/userlogin");
-        this.reset();
-      }
     },
   },
 };
