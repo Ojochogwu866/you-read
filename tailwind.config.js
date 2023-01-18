@@ -29,12 +29,13 @@ module.exports = {
         typeBox:
           "rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;",
         form: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+        reader:
+          "rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;",
       },
       colors: {
         home: "#EFFAFD",
         parentText: "#060640",
         boxColor: "#A0006D",
-        boxbg: "#E5E5E5",
       },
       spacing: {
         7: "1.6rem",
