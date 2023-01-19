@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col justify-start p-8 items-start">
+  <div class="w-full flex flex-col justify-start items-start">
     <div></div>
     <div class="text-sm font-semibold">Hi, Olajide, Welcome Back</div>
     <div class="flex flex-col justify-center w-full items-center">
@@ -13,13 +13,8 @@
             class="w-4/5 m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
             placeholder="e.g: Honey & Spice, Bolu Babalola"
           />
-          <button type="submit">SUBMIT</button>
+          <button type="submit">Submit</button>
         </form>
-        <ul>
-          <li v-for="result in searchBookResults" :key="result.id">
-            {{ result.volumeInfo.title }}
-          </li>
-        </ul>
       </div>
       <div class="flex gap-6 justify-center w-full">
         <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
@@ -51,6 +46,19 @@
       </div>
     </div>
     <History />
+    <div
+      class="absolute bg-black opacity-70 w-full h-full flex justify-center items-center"
+    >
+      <ul class="list-none bg-white bg-opacity-100 text-left">
+        <li
+          class="bg-black"
+          v-for="result in searchBookResults"
+          :key="result.id"
+        >
+          {{ result.volumeInfo.title }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
