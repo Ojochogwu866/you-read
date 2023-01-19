@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = "AIzaSyBBtlk3HTiEonvyqvU5pFa27sv6dwxuUfA";
+const apiKey = "";
 export default {
   state: {
     modalState: false,
