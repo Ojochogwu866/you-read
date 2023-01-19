@@ -7,10 +7,19 @@
         <div class="text-sm font-medium">
           Search Book by title, author and other keywords
         </div>
-        <input
-          class="w-4/5 m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
-          placeholder="e.g: Honey & Spice, Bolu Babalola"
-        />
+        <form @submit.prevent="search">
+          <input
+            v-model="query"
+            @keyup.enter="makeSearch"
+            class="w-4/5 m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
+            placeholder="e.g: Honey & Spice, Bolu Babalola"
+          />
+        </form>
+        <ul>
+          <li v-for="result in searchBookResults" :key="result.id">
+            {{ result.volumeInfo.title }}
+          </li>
+        </ul>
       </div>
       <div class="flex gap-6 justify-center w-full">
         <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
@@ -45,11 +54,25 @@
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
 import History from "./History.vue";
 export default {
   components: {
     History,
   },
-  setup() {},
+  data() {
+    return {
+      query: "",
+    };
+  },
+  methods: {
+    ...mapActions(["searchBooks"]),
+    search() {
+      this.searchBooks(this.query);
+    },
+  },
+  computed: {
+    ...mapGetters(["searchBookResults"]),
+  },
 };
 </script>

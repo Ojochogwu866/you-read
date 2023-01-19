@@ -36,6 +36,7 @@ module.exports = {
         home: "#EFFAFD",
         parentText: "#060640",
         boxColor: "#A0006D",
+        boxbg: "#E5E5E5",
       },
       spacing: {
         7: "1.6rem",

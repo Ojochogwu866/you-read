@@ -6,7 +6,7 @@
         Cover more Books<br />
         Easily
       </div>
-      <div class="flex items-center py-2 mt-6">
+      <div class="flex items-center py-2 mt-6 z-20">
         <div class="border-b-4 w-100 absolute border-boxColor"></div>
         <div class="border-r-8 border-parentText"></div>
         <div class="z-20 gap-6 flex justify-center items-center">
