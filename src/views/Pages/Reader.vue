@@ -47,11 +47,11 @@
     </div>
     <History />
     <div
-      class="absolute bg-black opacity-70 w-full h-full flex justify-center items-center"
+      class="w-full absolute h-full bg-black bg-opacity-75 overflow-y-scroll"
     >
-      <ul class="list-none bg-white bg-opacity-100 text-left">
+      <ul class="list-none w-1/2 m-auto bg-opacity-100 text-left">
         <li
-          class="bg-black"
+          class="bg-black bg-opacity-90 text-white text-sm font-normal border-b px-2 py-2"
           v-for="result in searchBookResults"
           :key="result.id"
         >
