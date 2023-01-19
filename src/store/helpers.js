@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const apiKey = "AIzaSyBBtlk3HTiEonvyqvU5pFa27sv6dwxuUfA";
 export default {
   state: {
     modalState: false,
@@ -17,29 +18,15 @@ export default {
   },
 
   actions: {
-    async searchBooks({ commit }) {
+    async searchBooks({ commit }, query) {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=${this.query}`
+          `https://www.googleapis.com/books/v1/volumes?q=${query}:keyes&key=${apiKey}`
         );
         commit("setSearchBookResults", response.data.items);
       } catch (error) {
         console.log(error);
       }
-    },
-    async makeSearch({ commit }) {
-      if (this.query === "") {
-        return;
-      }
-      this.commit("set", {
-        type: "searchedUrl",
-        data: this.query,
-      });
-      try {
-        const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=${this.query}`
-        );
-      } catch {}
     },
   },
 };

@@ -10,10 +10,10 @@
         <form @submit.prevent="search">
           <input
             v-model="query"
-            @keyup.enter="makeSearch"
             class="w-4/5 m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
             placeholder="e.g: Honey & Spice, Bolu Babalola"
           />
+          <button type="submit">SUBMIT</button>
         </form>
         <ul>
           <li v-for="result in searchBookResults" :key="result.id">
