@@ -5,6 +5,7 @@ export default {
   state: {
     modalState: false,
     searchBookResults: [],
+    query: "",
   },
 
   getters: {

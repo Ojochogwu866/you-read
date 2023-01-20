@@ -44,18 +44,61 @@
           >
             Set Reading Plan
             <div
+              @click="displayModal = !displayModal"
               class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
             >
               Book Details
             </div>
+            <div
+              v-if="displayModal"
+              class="bg-black absolute flex justify-center bottom-0 left-0 items-center bg-opacity-10 w-full h-full"
+            >
+              <form
+                class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
+              >
+                <div class="">
+                  Enter Book Details Below to keep track of your Adventure
+                </div>
+                <input
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                  type="text"
+                  placeholder="Book title e.g purple hibiscus"
+                />
+                <input
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                  type="text"
+                  placeholder="Author e.g chimamanda adichie"
+                />
+                <input
+                  type="text"
+                  placeholder="total pages"
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                />
+                <input
+                  type=""
+                  placeholder="pages per day"
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                />
+                <button
+                  class="rounded-sm px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
+                  type="submit"
+                >
+                  Add Book
+                </button>
+              </form>
+            </div>
           </div>
-          <div class="text-sm mt-2">Book Title:</div>
-          <div class="text-sm">Total Pages:</div>
-          <div class="mt-2">
-            <div class="font-semibold leading-5 text-sm">SCHEDULE</div>
-            <div class="text-sm leading-6">Total time daily:</div>
-            <div class="text-sm leading-6">Pages to Cover:</div>
-            <div class="text-sm leading-6">24 Days To Cover</div>
+          <div class="gap-y-3">
+            <div class="text-sm font-bold">Current Read</div>
+            <div class="text-sm">Book Title:</div>
+            <div class="text-sm">Total Pages:</div>
+            <div class="mt-1 gap-y-3">
+              <div class="font-semibold text-sm">SCHEDULE</div>
+              <div class="text-sm">Total time daily:</div>
+              <div class="text-sm">Pages to Cover:</div>
+              <div class="text-sm">Days Left:</div>
+              <div class="text-sm">24 Days To Cover</div>
+            </div>
           </div>
           <div></div>
         </div>
@@ -69,30 +112,17 @@
           <div class="border-b-2 pb-1 border-boxColor text-sm">
             Set Book Goals
           </div>
-          <div></div>
+          <div>
+            <div class=""></div>
+          </div>
         </div>
       </div>
     </div>
     <History />
-    <!-- <div
-      class="w-full absolute h-full bg-black bg-opacity-75 overflow-y-scroll"
-    >
-      <ul
-        v-for="result in searchBookResults"
-        :key="result.id"
-        class="list-none w-1/2 m-auto bg-opacity-100 text-left"
-      >
-        <li
-          class="bg-black bg-opacity-90 text-white text-sm font-normal border-b px-2 py-2"
-        >
-          {{ result.volumeInfo.title }}
-        </li>
-      </ul>
-    </div> -->
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import History from "./History.vue";
 export default {
   components: {
@@ -101,8 +131,11 @@ export default {
   data() {
     return {
       query: "",
-      searchBookResults: [],
+      displayModal: false,
     };
+  },
+  computed: {
+    ...mapGetters(["searchBookResults", "query"]),
   },
   methods: {
     ...mapActions([
@@ -130,9 +163,6 @@ export default {
         console.error(error);
       }
     },
-  },
-  computed: {
-    ...mapGetters(["searchBookResults", "query"]),
   },
 };
 </script>
