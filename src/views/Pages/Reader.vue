@@ -130,7 +130,39 @@
               v-bind:display-modal="displayModal"
               @update:display-modal="displayModal = $event"
             >
-              Hellon jkn knmlkm kj,mljnkj
+              <form
+                class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
+              >
+                <div class="">
+                  Enter Book Details Below to keep track of your Adventure
+                </div>
+                <input
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                  type="text"
+                  placeholder="Total Books for the year"
+                />
+                <input
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                  type="text"
+                  placeholder="Completed"
+                />
+                <input
+                  type="text"
+                  placeholder="Pages per week"
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                />
+                <input
+                  type=""
+                  placeholder="Chapters per month"
+                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                />
+                <button
+                  class="rounded-sm px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
+                  type="submit"
+                >
+                  Add Book
+                </button>
+              </form>
             </Card>
           </div>
           <div class="gap-y-3">
@@ -139,7 +171,7 @@
               Completed
               <div>
                 <div class="font-semibold text-sm">Pages per Week</div>
-                <div class="text-sm">Chapters Per Month</div>
+                <div class="text-sm">Set Goal</div>
               </div>
             </div>
             <div></div>
