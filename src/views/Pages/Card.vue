@@ -31,7 +31,11 @@ export default {
   },
   methods: {
     closeModal() {
-      this.$emit("update:displayModal", false);
+      if (this.displayModal) {
+        this.$emit("update:displayModal", false);
+      } else {
+        this.$emit("update:modal1", false);
+      }
     },
   },
 };
