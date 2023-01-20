@@ -10,13 +10,22 @@
         <div class="border-b-4 w-100 absolute border-boxColor"></div>
         <div class="border-r-8 border-parentText"></div>
         <div class="z-20 gap-6 flex justify-center items-center">
-          <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
+          <div
+            class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm"
+            @click="setReader()"
+          >
             Set reading plan
           </div>
-          <div class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm">
+          <div
+            class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm"
+            @click="setReader()"
+          >
             Join/Create a team
           </div>
-          <div class="cursor-pointer bg-boxbg hover:shadow-typeBox p-2 text-sm">
+          <div
+            class="cursor-pointer bg-boxbg hover:shadow-typeBox p-2 text-sm"
+            @click="setReader()"
+          >
             Set Book Goals
           </div>
         </div>
@@ -230,3 +239,19 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    setReader(x) {
+      this.$store.commit("set", {
+        type: "profiles",
+        data: x,
+      });
+      this.$router.push({ name: "reader-profile" });
+    },
+  },
+};
+</script>

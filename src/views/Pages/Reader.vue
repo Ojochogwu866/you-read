@@ -106,11 +106,40 @@
           <div class="border-b-2 pb-1 border-boxColor text-sm">
             Join/Create Club
           </div>
-          <div></div>
+          <div class="gap-y-3">
+            <div class="text-sm">Year total read</div>
+            <div class="text-sm">
+              Completed
+              <div>
+                <div class="font-semibold text-sm">Pages per Week</div>
+                <div class="text-sm">Chapters Per Month</div>
+              </div>
+            </div>
+            <div></div>
+          </div>
         </div>
         <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
-          <div class="border-b-2 pb-1 border-boxColor text-sm">
+          <div
+            class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
+          >
             Set Book Goals
+            <div
+              @click="displayModal = !displayModal"
+              class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
+            >
+              Set Goals
+            </div>
+          </div>
+          <div class="gap-y-3">
+            <div class="text-sm">Year total read</div>
+            <div class="text-sm">
+              Completed
+              <div>
+                <div class="font-semibold text-sm">Pages per Week</div>
+                <div class="text-sm">Chapters Per Month</div>
+              </div>
+            </div>
+            <div></div>
           </div>
           <div>
             <div class=""></div>
