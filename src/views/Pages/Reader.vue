@@ -44,15 +44,12 @@
           >
             Set Reading Plan
             <div
-              @click="displayModal = !displayModal"
+              @click="modal1 = true"
               class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
             >
               Book Details
             </div>
-            <div
-              v-if="displayModal"
-              class="bg-black absolute flex justify-center bottom-0 left-0 items-center bg-opacity-10 w-full h-full"
-            >
+            <Card v-bind:modal-1="modal1" @update:modal-1="modal1 = $event">
               <form
                 class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
               >
@@ -86,7 +83,7 @@
                   Add Book
                 </button>
               </form>
-            </div>
+            </Card>
           </div>
           <div class="gap-y-3">
             <div class="text-sm font-bold">Current Read</div>
@@ -124,11 +121,17 @@
           >
             Set Book Goals
             <div
-              @click="displayModal = !displayModal"
+              @click="displayModal = true"
               class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
             >
               Set Goals
             </div>
+            <Card
+              v-bind:display-modal="displayModal"
+              @update:display-modal="displayModal = $event"
+            >
+              Hellon jkn knmlkm kj,mljnkj
+            </Card>
           </div>
           <div class="gap-y-3">
             <div class="text-sm">Year total read</div>
@@ -151,16 +154,19 @@
   </div>
 </template>
 <script>
+import Card from "./Card.vue";
 import { mapActions, mapGetters, mapState } from "vuex";
 import History from "./History.vue";
 export default {
   components: {
     History,
+    Card,
   },
   data() {
     return {
       query: "",
       displayModal: false,
+      modal1: false,
     };
   },
   computed: {
