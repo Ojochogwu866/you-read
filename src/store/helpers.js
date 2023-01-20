@@ -15,6 +15,12 @@ export default {
     setSearchBookResults(state, results) {
       state.searchBookResults = results;
     },
+    clearSearchOutput(state) {
+      state.searchBookResults = "";
+    },
+    setSearchSuggestions(state, searchBookResults) {
+      state.searchBookResults = searchBookResults;
+    },
   },
 
   actions: {
@@ -26,6 +32,19 @@ export default {
         commit("setSearchBookResults", response.data.items);
       } catch (error) {
         console.log(error);
+      }
+    },
+    clearSearchOutput({ commit }) {
+      commit("clearSearchOutput");
+    },
+    async fetchSearchSuggestions({ commit }, query) {
+      try {
+        const searchBookResults = await fetch(
+          `https://www.googleapis.com/books/v1/volumes?q=${query}:keyes&key=${apiKey}`
+        );
+        commit("setSearchSuggestions", searchBookResults);
+      } catch (error) {
+        console.error(error);
       }
     },
   },

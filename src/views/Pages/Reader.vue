@@ -11,6 +11,8 @@
         <form @submit.prevent="search">
           <input
             v-model="query"
+            @input="clearOutput"
+            @keyup="getSuggestions"
             class="w-4/5 m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
             placeholder="e.g: Honey & Spice, Bolu Babalola"
           />
@@ -37,8 +39,15 @@
       </div>
       <div class="flex gap-6 mt-5 justify-center w-full">
         <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
-          <div class="border-b-2 pb-1 border-boxColor text-sm">
+          <div
+            class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
+          >
             Set Reading Plan
+            <div
+              class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
+            >
+              Book Details
+            </div>
           </div>
           <div class="text-sm mt-2">Book Title:</div>
           <div class="text-sm">Total Pages:</div>
@@ -92,16 +101,38 @@ export default {
   data() {
     return {
       query: "",
+      searchBookResults: [],
     };
   },
   methods: {
-    ...mapActions(["searchBooks"]),
+    ...mapActions([
+      "searchBooks",
+      "clearSearchOutput",
+      "fetchSearchSuggestions",
+    ]),
     search() {
       this.searchBooks(this.query);
     },
+    clearOutput() {
+      if (!this.query) {
+        this.clearSearchOutput();
+      }
+    },
+    async getSuggestions() {
+      if (!this.query) {
+        this.fetchSearchSuggestions([]);
+        return;
+      }
+      try {
+        const searchBookResults = await this.fetchSearchSuggestions(this.query);
+        this.fetchSearchSuggestions(this.searchBookResults);
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
   computed: {
-    ...mapGetters(["searchBookResults"]),
+    ...mapGetters(["searchBookResults", "query"]),
   },
 };
 </script>
