@@ -3,16 +3,19 @@
     <div
       class="mt-6 w-1/2 flex flex-col justify-center items-center m-auto pb-5"
     >
-      <div class="flex flex-col">
+      <div class="flex flex-col w-11/12">
         <div class="text-sm font-medium">
           Search Book by title, author and other keywords
         </div>
-        <form @submit.prevent="search" class="flex w-full">
+        <form
+          @submit.prevent="search"
+          class="flex justify-center items-center mt-4"
+        >
           <input
             v-model="query"
             @input="clearOutput"
             @keyup="getSuggestions"
-            class="w-full m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
+            class="w-full outline-none text-sm bg-white rounded-md border border-gray-400 p-2"
             placeholder="e.g: Honey & Spice, Bolu Babalola"
           />
           <button
