@@ -1,19 +1,18 @@
 <template>
-  <div class="w-full flex flex-col justify-start items-start">
-    <div class="p-5">
-      <div class="text-sm font-semibold">Hi, Olajide, Welcome Back</div>
-    </div>
-    <div class="flex flex-col justify-center w-full items-center">
-      <div class="mt-6 w-3/5 m-auto pb-5">
+  <div class="w-full flex flex-row bg-profile justify-start items-start">
+    <div
+      class="mt-6 w-1/2 flex flex-col justify-center items-center m-auto pb-5"
+    >
+      <div class="flex flex-col">
         <div class="text-sm font-medium">
           Search Book by title, author and other keywords
         </div>
-        <form @submit.prevent="search">
+        <form @submit.prevent="search" class="flex w-full">
           <input
             v-model="query"
             @input="clearOutput"
             @keyup="getSuggestions"
-            class="w-4/5 m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
+            class="w-full m-auto outline-none text-sm bg-white rounded-md border border-gray-400 p-2 mt-2"
             placeholder="e.g: Honey & Spice, Bolu Babalola"
           />
           <button
@@ -23,166 +22,166 @@
             Submit
           </button>
         </form>
-        <div class="">
-          <ul
-            v-for="result in searchBookResults"
-            :key="result.id"
-            class="list-none shadow-reader w-full m-auto text-left z-50"
-          >
-            <li
-              class="bg-white cursor-pointer text-black text-sm font-normal border-b px-2 py-2"
-            >
-              {{ result.volumeInfo.title }}
-            </li>
-          </ul>
-        </div>
       </div>
-      <div class="flex gap-6 mt-5 justify-center w-full">
-        <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
-          <div
-            class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
+      <div class="">
+        <ul
+          v-for="result in searchBookResults"
+          :key="result.id"
+          class="list-none shadow-reader w-full m-auto text-left z-50"
+        >
+          <li
+            class="bg-white cursor-pointer text-black text-sm font-normal border-b px-2 py-2"
           >
-            Set Reading Plan
-            <div
-              @click="modal1 = true"
-              class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
-            >
-              Book Details
-            </div>
-            <Card v-bind:modal-1="modal1" @update:modal-1="modal1 = $event">
-              <form
-                class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
-              >
-                <div class="">
-                  Enter Book Details Below to keep track of your Adventure
-                </div>
-                <input
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  type="text"
-                  placeholder="Book title e.g purple hibiscus"
-                />
-                <input
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  type="text"
-                  placeholder="Author e.g chimamanda adichie"
-                />
-                <input
-                  type="text"
-                  placeholder="total pages"
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                />
-                <input
-                  type=""
-                  placeholder="pages per day"
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                />
-                <button
-                  class="rounded-sm px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
-                  type="submit"
-                >
-                  Add Book
-                </button>
-              </form>
-            </Card>
+            {{ result.volumeInfo.title }}
+          </li>
+        </ul>
+      </div>
+      <History />
+    </div>
+    <div class="flex flex-col gap-6 mt-5 justify-center items-center w-1/2">
+      <div class="p-3 rounded-md gap-3 text-left bg-white w-4/6 shadow-bx">
+        <div
+          class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
+        >
+          Set Reading Plan
+          <div
+            @click="modal1 = true"
+            class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
+          >
+            Book Details
           </div>
-          <div class="gap-y-3">
-            <div class="text-sm font-bold">Current Read</div>
-            <div class="text-sm">Book Title:</div>
-            <div class="text-sm">Total Pages:</div>
-            <div class="mt-1 gap-y-3">
-              <div class="font-semibold text-sm">SCHEDULE</div>
-              <div class="text-sm">Total time daily:</div>
-              <div class="text-sm">Pages to Cover:</div>
-              <div class="text-sm">Days Left:</div>
-              <div class="text-sm">24 Days To Cover</div>
+          <Card v-bind:modal-1="modal1" @update:modal-1="modal1 = $event">
+            <form
+              class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
+            >
+              <div class="">
+                Enter Book Details Below to keep track of your Adventure
+              </div>
+              <input
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                type="text"
+                placeholder="Book title e.g purple hibiscus"
+              />
+              <input
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                type="text"
+                placeholder="Author e.g chimamanda adichie"
+              />
+              <input
+                type="text"
+                placeholder="total pages"
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+              />
+              <input
+                type=""
+                placeholder="pages per day"
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+              />
+              <button
+                class="rounded-sm px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
+                type="submit"
+              >
+                Add Book
+              </button>
+            </form>
+          </Card>
+        </div>
+        <div class="gap-y-3">
+          <div class="text-sm font-bold">Current Read</div>
+          <div class="text-sm">Book Title:</div>
+          <div class="text-sm">Total Pages:</div>
+          <div class="mt-1 gap-y-3">
+            <div class="font-semibold text-sm">SCHEDULE</div>
+            <div class="text-sm">Total time daily:</div>
+            <div class="text-sm">Pages to Cover:</div>
+            <div class="text-sm">Days Left:</div>
+            <div class="text-sm">24 Days To Cover</div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+      <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
+        <div class="border-b-2 pb-1 border-boxColor text-sm">
+          Join/Create Club
+        </div>
+        <div class="gap-y-3">
+          <div class="text-sm">Year total read</div>
+          <div class="text-sm">
+            Completed
+            <div>
+              <div class="font-semibold text-sm">Pages per Week</div>
+              <div class="text-sm">Chapters Per Month</div>
             </div>
           </div>
           <div></div>
         </div>
-        <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
-          <div class="border-b-2 pb-1 border-boxColor text-sm">
-            Join/Create Club
-          </div>
-          <div class="gap-y-3">
-            <div class="text-sm">Year total read</div>
-            <div class="text-sm">
-              Completed
-              <div>
-                <div class="font-semibold text-sm">Pages per Week</div>
-                <div class="text-sm">Chapters Per Month</div>
-              </div>
-            </div>
-            <div></div>
-          </div>
-        </div>
-        <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
+      </div>
+      <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
+        <div
+          class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
+        >
+          Set Book Goals
           <div
-            class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
+            @click="displayModal = true"
+            class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
           >
-            Set Book Goals
-            <div
-              @click="displayModal = true"
-              class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
-            >
-              Set Goals
-            </div>
-            <Card
-              v-bind:display-modal="displayModal"
-              @update:display-modal="displayModal = $event"
-            >
-              <form
-                class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
-              >
-                <div class="">
-                  Enter Book Details Below to keep track of your Adventure
-                </div>
-                <input
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  type="text"
-                  placeholder="Total Books for the year"
-                />
-                <input
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  type="text"
-                  placeholder="Completed"
-                />
-                <input
-                  type="text"
-                  placeholder="Pages per week"
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                />
-                <input
-                  type=""
-                  placeholder="Chapters per month"
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                />
-                <button
-                  class="rounded-sm px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
-                  type="submit"
-                >
-                  Add Book
-                </button>
-              </form>
-            </Card>
+            Set Goals
           </div>
-          <div class="gap-y-3">
-            <div class="text-sm">Year total read</div>
-            <div class="text-sm">
-              Completed
-              <div>
-                <div class="font-semibold text-sm">Pages per Week</div>
-                <div class="text-sm">Set Goal</div>
+          <Card
+            v-bind:display-modal="displayModal"
+            @update:display-modal="displayModal = $event"
+          >
+            <form
+              class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
+            >
+              <div class="">
+                Enter Book Details Below to keep track of your Adventure
               </div>
+              <input
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                type="text"
+                placeholder="Total Books for the year"
+              />
+              <input
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                type="text"
+                placeholder="Completed"
+              />
+              <input
+                type="text"
+                placeholder="Pages per week"
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+              />
+              <input
+                type=""
+                placeholder="Chapters per month"
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+              />
+              <button
+                class="rounded-sm px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
+                type="submit"
+              >
+                Add Book
+              </button>
+            </form>
+          </Card>
+        </div>
+        <div class="gap-y-3">
+          <div class="text-sm">Year total read</div>
+          <div class="text-sm">
+            Completed
+            <div>
+              <div class="font-semibold text-sm">Pages per Week</div>
+              <div class="text-sm">Set Goal</div>
             </div>
-            <div></div>
           </div>
-          <div>
-            <div class=""></div>
-          </div>
+          <div></div>
+        </div>
+        <div>
+          <div class=""></div>
         </div>
       </div>
     </div>
-    <History />
   </div>
 </template>
 <script>
