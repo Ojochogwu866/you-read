@@ -1,7 +1,7 @@
 <template>
   <div
     v-show="displayModal || modal1"
-    class="bg-black absolute flex justify-center bottom-0 left-0 items-center bg-opacity-10 w-full h-full"
+    class="bg-black fixed flex justify-center bottom-0 left-0 items-center bg-opacity-10 w-full h-full"
   >
     <div
       v-if="displayModal || modal1"

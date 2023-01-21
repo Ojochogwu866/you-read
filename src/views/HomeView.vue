@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-home text-parentText h-screen">
+  <div class="bg-profile text-parentText h-screen">
     <Nav />
     <div class="">
       <Landing />

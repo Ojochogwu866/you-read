@@ -8,7 +8,7 @@
       <div class="">Book Author</div>
       <div class="">Book Genre</div>
       <div class="">No of Pages</div>
-      <div class="">Completion Time</div>
+      <div class="">Status</div>
     </div>
   </div>
 </template>

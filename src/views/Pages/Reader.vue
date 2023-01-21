@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex flex-row bg-profile justify-start items-start">
     <div
-      class="mt-6 w-1/2 flex flex-col justify-center items-center m-auto pb-5"
+      class="mt-6 w-3/5 flex flex-col justify-center items-center m-auto pb-5"
     >
       <div class="flex flex-col w-11/12">
         <div class="text-sm font-medium">
@@ -41,17 +41,21 @@
       </div>
       <History />
     </div>
-    <div class="flex flex-col gap-6 mt-5 justify-center items-center w-1/2">
-      <div class="p-3 rounded-md gap-3 text-left bg-white w-4/6 shadow-bx">
+    <div
+      class="flex overflow-y-scroll flex-col gap-6 mt-5 justify-center items-center w-2/5"
+    >
+      <div
+        class="p-4 rounded-md gap-6 text-left bg-white w-5/6 min-h-card shadow-bx"
+      >
         <div
           class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
         >
-          Set Reading Plan
+          Current Reading
           <div
             @click="modal1 = true"
             class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
           >
-            Book Details
+            Set Plan
           </div>
           <Card v-bind:modal-1="modal1" @update:modal-1="modal1 = $event">
             <form
@@ -89,21 +93,32 @@
             </form>
           </Card>
         </div>
-        <div class="gap-y-3">
-          <div class="text-sm font-bold">Current Read</div>
-          <div class="text-sm">Book Title:</div>
+        <div class="flex flex-col gap-y-2 items-start justify-center">
+          <div class="text-sm mt-5">Book Title:</div>
           <div class="text-sm">Total Pages:</div>
-          <div class="mt-1 gap-y-3">
-            <div class="font-semibold text-sm">SCHEDULE</div>
-            <div class="text-sm">Total time daily:</div>
-            <div class="text-sm">Pages to Cover:</div>
-            <div class="text-sm">Days Left:</div>
-            <div class="text-sm">24 Days To Cover</div>
+
+          <div class="font-semibold text-sm">SCHEDULE</div>
+          <div class="text-sm">Total time daily:</div>
+          <div class="text-sm">Pages to Cover:</div>
+          <div class="text-sm">Days Left:</div>
+          <div class="text-sm">24 Days To Cover</div>
+
+          <div class="flex w-full gap-3 justify-center mt-3">
+            <button
+              class="rounded px-4 py-2 bg-boxColor text-sm font-bold text-white"
+            >
+              Completed
+            </button>
+            <button
+              class="rounded px-4 py-2 bg-boxColor text-sm font-bold text-white"
+            >
+              Get Playlist
+            </button>
           </div>
         </div>
         <div></div>
       </div>
-      <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
+      <div class="p-4 rounded-md gap-6 text-left bg-white w-5/6 shadow-bx">
         <div class="border-b-2 pb-1 border-boxColor text-sm">
           Join/Create Club
         </div>
@@ -119,7 +134,7 @@
           <div></div>
         </div>
       </div>
-      <div class="p-3 rounded-md gap-3 border text-left border-gray-400 w-90">
+      <div class="p-4 rounded-md text-left bg-white w-5/6 min-h-fit shadow-bx">
         <div
           class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
         >
@@ -169,16 +184,11 @@
             </form>
           </Card>
         </div>
-        <div class="gap-y-3">
-          <div class="text-sm">Year total read</div>
-          <div class="text-sm">
-            Completed
-            <div>
-              <div class="font-semibold text-sm">Pages per Week</div>
-              <div class="text-sm">Set Goal</div>
-            </div>
-          </div>
-          <div></div>
+        <div class="flex flex-col gap-y-2 items-start justify-center">
+          <div class="text-sm mt-5">Year total read</div>
+          <div class="text-sm">Completed</div>
+          <div class="text-sm">Pages per Week</div>
+          <div class="text-sm">Set Goal</div>
         </div>
         <div>
           <div class=""></div>

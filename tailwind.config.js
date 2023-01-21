@@ -13,6 +13,9 @@ module.exports = {
     divideColor: ["responsive", "hover", "focus"],
   },
   theme: {
+    minHeight: {
+      card: "350px",
+    },
     screens: {
       sm: "640px",
       md: "768px",
