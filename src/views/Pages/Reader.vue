@@ -118,21 +118,15 @@
         </div>
         <div></div>
       </div>
-      <div class="p-4 rounded-md gap-6 text-left bg-white w-5/6 shadow-bx">
-        <div class="border-b-2 pb-1 border-boxColor text-sm">
+      <div
+        class="p-4 rounded-md gap-6 text-left bg-white w-5/6 min-h-fit shadow-bx"
+      >
+        <div
+          class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
+        >
           Join/Create Club
         </div>
-        <div class="gap-y-3">
-          <div class="text-sm">Year total read</div>
-          <div class="text-sm">
-            Completed
-            <div>
-              <div class="font-semibold text-sm">Pages per Week</div>
-              <div class="text-sm">Chapters Per Month</div>
-            </div>
-          </div>
-          <div></div>
-        </div>
+        <div class="gap-y-3"></div>
       </div>
       <div class="p-4 rounded-md text-left bg-white w-5/6 min-h-fit shadow-bx">
         <div

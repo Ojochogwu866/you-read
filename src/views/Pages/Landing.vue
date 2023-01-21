@@ -166,35 +166,35 @@
             cx="601.58674"
             cy="148.46737"
             r="31.2479"
-            fill="#f1f1f1"
+            fill="#A0006D"
             style="isolation: isolate"
           />
           <circle
             cx="543.75482"
             cy="163.39174"
             r="21.92017"
-            fill="#f1f1f1"
+            fill="#A0006D"
             style="isolation: isolate"
           />
           <circle
             cx="142.21332"
             cy="153.43677"
             r="17.57602"
-            fill="#f1f1f1"
+            fill="#A0006D"
             style="isolation: isolate"
           />
           <circle
             cx="171.15045"
             cy="170.50225"
             r="12.32945"
-            fill="#f1f1f1"
+            fill="#A0006D"
             style="isolation: isolate"
           />
           <circle
             cx="341.65358"
             cy="13.43526"
             r="13.43527"
-            fill="#f1f1f1"
+            fill="#A0006D"
             style="isolation: isolate"
           />
           <path
