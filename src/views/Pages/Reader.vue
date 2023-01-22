@@ -75,6 +75,11 @@
                 placeholder="Author e.g chimamanda adichie"
               />
               <input
+                class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                type="text"
+                placeholder="Book Genre"
+              />
+              <input
                 type="text"
                 placeholder="total pages"
                 class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"

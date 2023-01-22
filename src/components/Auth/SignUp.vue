@@ -24,6 +24,11 @@
             type="email"
             class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-3 w-full"
           />
+          <input
+            placeholder="password"
+            type="email"
+            class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-3 w-full"
+          />
           <span class="text-xs"
             ><input
               type="checkbox"
