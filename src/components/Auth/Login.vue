@@ -58,8 +58,7 @@
 import Modal from "../Layouts/Modal.vue";
 import { useStore } from "vuex";
 import axios from "axios";
-import { useAuth0 } from "@/auth/auth0-plugin";
-
+import { useAuth0 } from "@auth0/auth0-vue";
 export default {
   components: {
     Modal,
@@ -87,7 +86,6 @@ export default {
         console.error(error);
       }
     }
-
     async function loginWithGoogle() {
       try {
         await loginWithPopup({
@@ -97,7 +95,6 @@ export default {
         console.error(error);
       }
     }
-
     async function loginWithFacebook() {
       try {
         await loginWithPopup({
@@ -107,7 +104,6 @@ export default {
         console.error(error);
       }
     }
-
     return {
       email,
       password,
@@ -116,13 +112,9 @@ export default {
       loginWithFacebook,
     };
   },
-
   methods: {
     modal() {
       this.toggleModal = true;
-    },
-    login() {
-      this.$auth.loginWithRedirect({ screen_hint: "signup" });
     },
   },
 };

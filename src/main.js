@@ -3,6 +3,6 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "@/assets/tailwind.css";
-import "./auth/auth0-plugin";
+import { createAuth0 } from "@auth0/auth0-vue";
 
-createApp(App).use(store).use(router).mount("#app");
+createApp(App).use(store).use(createAuth0).use(router).mount("#app");
