@@ -72,11 +72,13 @@ export default {
   },
   setup() {
     const store = useStore();
+    /* eslint-disable-next-line no-undef */
     const { loginWithPopup } = useAuth0();
+
     async function loginWithEmail() {
       try {
         // Send the login request with email and password to the Node.js server
-        const response = await axios.post("/login", { email, password });
+        const response = await axios.post("/login", {});
         // Set the authenticated state and user data
         store.commit("auth/setAuthenticated", true);
         store.commit("auth/setUser", response.data.user);
@@ -105,8 +107,7 @@ export default {
       }
     }
     return {
-      email,
-      password,
+      useAuth0,
       loginWithEmail,
       loginWithGoogle,
       loginWithFacebook,
