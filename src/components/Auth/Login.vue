@@ -14,7 +14,7 @@
         class="h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full"
       >
         <div class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
-          <form @submit.prevent="loginWithEmail">
+          <form @submit.prevent="loginWithEmailAndPassword">
             <div class="mt-8">LOGO</div>
             <div class="text-sm font-medium mt-8">
               Hello, Welcome to You-Read.
@@ -41,11 +41,12 @@
               Continue
             </button>
           </form>
-          <div class="">
-            <button @click="loginWithGoogle">
-              <img src="@/assets/Images/facebook.png" alt="" />
-            </button>
+          <div class="">or</div>
+          <div class="w-full mt-6 gap-4 flex justify-center items-center">
             <button @click="loginWithFacebook">
+              <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
+            </button>
+            <button class="w-8" @click="loginWithGoogle">
               <img src="@/assets/Images/google.png" alt="" />
             </button>
           </div>
@@ -56,7 +57,7 @@
 </template>
 <script>
 import Modal from "../Layouts/Modal.vue";
-import { useStore } from "vuex";
+import { mapActions } from "vuex";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-vue";
 export default {
@@ -70,50 +71,12 @@ export default {
       password: "",
     };
   },
-  setup() {
-    const store = useStore();
-    /* eslint-disable-next-line no-undef */
-    const { loginWithPopup } = useAuth0();
-
-    async function loginWithEmail() {
-      try {
-        // Send the login request with email and password to the Node.js server
-        const response = await axios.post("/login", {});
-        // Set the authenticated state and user data
-        store.commit("auth/setAuthenticated", true);
-        store.commit("auth/setUser", response.data.user);
-        // Save the token to the local storage
-        localStorage.setItem("token", response.data.token);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    async function loginWithGoogle() {
-      try {
-        await loginWithPopup({
-          connection: "google-oauth2",
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    async function loginWithFacebook() {
-      try {
-        await loginWithPopup({
-          connection: "facebook",
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    return {
-      useAuth0,
-      loginWithEmail,
-      loginWithGoogle,
-      loginWithFacebook,
-    };
-  },
   methods: {
+    ...mapActions([
+      "loginWithEmailAndPassword",
+      "loginWithGoogle",
+      "loginWithFacebook",
+    ]),
     modal() {
       this.toggleModal = true;
     },

@@ -13,41 +13,57 @@
       <div
         class="h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full"
       >
-        <form class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
-          <div class="mt-8">LOGO</div>
-          <div class="text-sm font-medium mt-8">
-            Hello, Welcome to You-Read.
+        <div class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
+          <form>
+            <div class="mt-8">LOGO</div>
+            <div class="text-sm font-medium mt-8">
+              Hello, Welcome to You-Read.
+            </div>
+            <div class="text-sm font-semibold">Login to Continue</div>
+            <input
+              placeholder="Email address"
+              type="email"
+              v-model="email"
+              required
+              class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full"
+            />
+            <input
+              placeholder="password"
+              type="password"
+              v-model="password"
+              required
+              class="rounded-md border bg-transparent border-gray-400 mt-2 text-sm text-gray-500 p-2 w-full"
+            />
+            <button
+              @click.prevent="signupWithEmail"
+              type="button"
+              class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
+            >
+              Continue
+            </button>
+          </form>
+          <div class="">or</div>
+          <div class="w-full mt-6 gap-4 flex justify-center items-center">
+            <button @click="signupWithFacebook" type="button">
+              <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
+            </button>
+            <button class="w-8" @click="signupWithGoogle" type="button">
+              <img src="@/assets/Images/google.png" alt="" />
+            </button>
           </div>
-          <div class="text-sm font-semibold">Sign Up to Continue</div>
-          <input
-            placeholder="Email address"
-            type="email"
-            class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-3 w-full"
-          />
-          <input
-            placeholder="password"
-            type="email"
-            class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-3 w-full"
-          />
-          <span class="text-xs"
-            ><input
-              type="checkbox"
-              class="mr-3 rounded border-2 border-black"
-            />Agree with our privacy policy to continue</span
-          >
-          <button
-            @click="signup"
-            class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
-          >
-            Continue
-          </button>
-        </form>
+        </div>
       </div>
     </Modal>
   </div>
 </template>
 <script>
 import Modal from "../Layouts/Modal.vue";
+import { mapActions } from "vuex";
+import {
+  loginWithEmailandPassword,
+  loginWithFacebook,
+  loginWithGoogle,
+} from "@/auth/auth";
 export default {
   components: {
     Modal,
@@ -56,16 +72,48 @@ export default {
   data() {
     return {
       toggleModal: false,
+      email: "",
+      password: "",
     };
+  },
+  async mounted() {
+    await initAuth0();
   },
   methods: {
     modal() {
       this.toggleModal = true;
     },
-    signup() {
-      this.$auth.loginWithRedirect({
-        screen_hint: "signup",
-      });
+    ...mapActions([
+      "signupWithEmail",
+      "signupWithFacebook",
+      "signupWithGoogle",
+    ]),
+    async signupWithEmail() {
+      try {
+        await this.$store.dispatch("signupWithEmail", {
+          email: this.email,
+          password: this.password,
+        });
+        this.$router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async signupWithFacebook() {
+      try {
+        await this.$store.dispatch("loginWithFacebook");
+        this.$router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async signupWithGoogle() {
+      try {
+        await this.$store.dispatch("loginWithGoogle");
+        this.$router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
