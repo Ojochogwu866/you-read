@@ -20,16 +20,11 @@ export const isAuthenticated = async () => {
   return await auth0Client.isAuthenticated();
 };
 export const loginWithEmailAndPassword = async (email, password) => {
-  const auth0Client = await createAuth0Client({
-    domain: "dev-chaxqseb4mvt5h01.uk.auth0.com",
-    client_id: "kHpTMUQEtHdnVuljRqpMjHjrNZprnsWy",
-    redirect_uri: `${window.location.origin}/callback`,
-    audience: "YOUR_AUTH0_AUDIENCE",
-  });
-  return auth0Client.createuser({
-    connection: "email",
+  if (!auth0Client) await initAuth0();
+  return auth0Client.signup({
     email,
     password,
+    connection: "email",
   });
 };
 export const signupWithFacebook = async () => {
