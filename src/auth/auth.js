@@ -6,7 +6,6 @@ export const initAuth0 = async () => {
     domain: "dev-chaxqseb4mvt5h01.uk.auth0.com",
     client_id: "kHpTMUQEtHdnVuljRqpMjHjrNZprnsWy",
     redirect_uri: `${window.location.origin}/callback`,
-    responseType: "token id_token",
     audience: "YOUR_AUTH0_AUDIENCE",
   });
   return auth0Client;
