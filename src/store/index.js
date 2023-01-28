@@ -18,12 +18,13 @@ export default createStore({
     },
   },
   actions: {
-    async signupWithEmail() {
+    async signupWithEmail({ commit }, { email, password }) {
+      await initAuth0();
       try {
-        await loginWithEmailAndPassword(this.email, this.password);
+        await loginWithEmailAndPassword(email, password);
         commit("setUser", email);
       } catch (error) {
-        console.error(error);
+        throw error;
       }
     },
     async signupWithFacebook({ commit }) {

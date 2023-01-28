@@ -36,7 +36,6 @@
             />
             <button
               @click.prevent="signupWithEmail"
-              type="button"
               class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
             >
               Continue
