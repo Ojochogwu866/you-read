@@ -1,15 +1,12 @@
-import { createAuth0Client } from "@auth0/auth0-spa-js";
+import { createAuth0 } from "@auth0/auth0-vue";
 
-let auth0Client;
-export const initAuth0 = async () => {
-  auth0Client = await createAuth0Client({
-    domain: "dev-chaxqseb4mvt5h01.uk.auth0.com",
-    client_id: "kHpTMUQEtHdnVuljRqpMjHjrNZprnsWy",
-    redirect_uri: `${window.location.origin}/`,
-    audience: "YOUR_AUTH0_AUDIENCE",
-  });
-  return auth0Client;
-};
+const auth0Client = createAuth0({
+  domain: "dev-chaxqseb4mvt5h01.uk.auth0.com",
+  client_id: "kHpTMUQEtHdnVuljRqpMjHjrNZprnsWy",
+  redirect_uri: `${window.location.origin}/`,
+  audience: "https://<your-domain>.auth0.com/api/v2/",
+});
+export const initAuth0 = () => auth0.init();
 export const handleAuthentication = async () => {
   const authResult = await auth0Client.handleRedirectCallback();
   return authResult.appState || {};
