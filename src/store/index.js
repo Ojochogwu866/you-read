@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import helper from "./helpers";
 import {
   initAuth0,
-  loginWithEmailAndPassword,
+  signupWithEmail,
   loginWithFacebook,
   loginWithGoogle,
 } from "@/auth/auth";
@@ -20,7 +20,7 @@ export default createStore({
   actions: {
     async signupWithEmail({ commit }, { email, password }) {
       try {
-        await loginWithEmailAndPassword(email, password);
+        await signupWithEmail(email, password);
         commit("setUser", email);
       } catch (e) {
         console.log(e);
