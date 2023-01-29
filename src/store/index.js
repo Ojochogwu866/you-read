@@ -2,10 +2,11 @@ import { createStore } from "vuex";
 import helper from "./helpers";
 import {
   initAuth0,
-  signupWithEmail,
+  loginWithEmailAndPassword,
   loginWithFacebook,
   loginWithGoogle,
 } from "@/auth/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default createStore({
   state: {
@@ -18,6 +19,15 @@ export default createStore({
     },
   },
   actions: {
+    async login({ commit }, { email, password }) {
+      try {
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, password);
+        commit("setUser", userCredentials.user);
+      } catch (error) {
+        throw error;
+      }
+    },
     async signupWithEmail({ commit }, { email, password }) {
       try {
         await signupWithEmail(email, password);
@@ -59,7 +69,7 @@ export default createStore({
     async loginWithFacebook({ commit }) {
       try {
         const auth0 = await initAuth0();
-        await auth0.loginWithPopup({
+        await auth0.loginWithRedirect({
           connection: "facebook",
         });
         const user = await auth0.getUser();

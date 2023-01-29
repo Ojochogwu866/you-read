@@ -14,7 +14,7 @@
         class="h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full"
       >
         <div class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
-          <form>
+          <form @submit.prevent="submit">
             <div class="mt-8">LOGO</div>
             <div class="text-sm font-medium mt-8">
               Hello, Welcome to You-Read.
@@ -35,7 +35,7 @@
               class="rounded-md border bg-transparent border-gray-400 mt-2 text-sm text-gray-500 p-2 w-full"
             />
             <button
-              @click.prevent="signupWithEmail"
+              type="submit"
               class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
             >
               Continue
@@ -79,10 +79,15 @@ export default {
     await initAuth0();
   },
   methods: {
+    async handleSignup() {
+      await this.signup({ email: this.email, password: this.password });
+    },
     modal() {
       this.toggleModal = true;
     },
     ...mapActions([
+      "signup",
+      "login",
       "signupWithEmail",
       "signupWithFacebook",
       "signupWithGoogle",
@@ -112,6 +117,14 @@ export default {
         this.$router.push("/");
       } catch (error) {
         console.log(error);
+      }
+    },
+    async submit() {
+      try {
+        await this.login({ email: this.email, password: this.password });
+        this.$router.push("/");
+      } catch (error) {
+        console.error(error);
       }
     },
   },
