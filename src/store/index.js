@@ -1,12 +1,12 @@
 import { createStore } from "vuex";
 import helper from "./helpers";
 import {
-  initAuth0,
-  loginWithEmailAndPassword,
-  loginWithFacebook,
-  loginWithGoogle,
-} from "@/auth/auth";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export default createStore({
   state: {
@@ -19,7 +19,7 @@ export default createStore({
     },
   },
   actions: {
-    async login({ commit }, { email, password }) {
+    async signup({ commit }, { email, password }) {
       try {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password);
@@ -28,77 +28,48 @@ export default createStore({
         throw error;
       }
     },
-    async signupWithEmail({ commit }, { email, password }) {
+    async login({ commit }, { email, password }) {
       try {
-        await signupWithEmail(email, password);
-        commit("setUser", email);
-      } catch (e) {
-        console.log(e);
-      }
-    },
-    async signupWithFacebook({ commit }) {
-      try {
-        const user = await loginWithFacebook();
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password);
         commit("setUser", user);
       } catch (error) {
-        console.error(error);
+        throw error;
       }
-    },
-    async signupWithGoogle({ commit }) {
-      try {
-        const user = await loginWithGoogle();
-        commit("setUser", user);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async loginWithEmailAndPassword({ commit }, { email, password }) {
-      try {
-        const auth0 = await initAuth0();
-        await auth0.loginWithRedirect({
-          connection: "Username-Password-Authentication",
-          email,
-          password,
-        });
-        const user = await auth0.getUser();
-        commit("setUser", user);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async loginWithFacebook({ commit }) {
-      try {
-        const auth0 = await initAuth0();
-        await auth0.loginWithRedirect({
-          connection: "facebook",
-        });
-        const user = await auth0.getUser();
-        commit("setUser", user);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    // ....
-    async loginWithGoogle({ commit }) {
-      try {
-        const auth0 = await initAuth0();
-        await auth0.loginWithPopup({
-          connection: "google-oauth2",
-        });
-        const user = await auth0.getUser();
-        commit("setUser", user);
-      } catch (error) {
-        console.log(error);
-      }
-      // ....
     },
     async logout({ commit }) {
       try {
-        const auth0 = getAuth0Client();
-        await auth0.logout();
+        await firebase.auth().signOut();
         commit("setUser", null);
       } catch (error) {
-        console.log(error);
+        throw error;
+      }
+    },
+    async handleSocialLogin({ commit }, provider) {
+      try {
+        let providerObject;
+        if (provider === "google") {
+          const auth = getAuth();
+          signInWithPopup(auth, provider)
+            .then((result) => {
+              const credential =
+                GoogleAuthProvider.credentialFromResult(result);
+              const token = credential.accessToken;
+              const user = result.user;
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              const email = error.customData.email;
+              const credential = GoogleAuthProvider.credentialFromError(error);
+            });
+        } else if (provider === "facebook") {
+          provider = new firebase.auth.FacebookAuthProvider();
+        }
+        const { user } = await firebase.auth().signInWithPopup(providerObject);
+        commit("setUser", user);
+      } catch (error) {
+        throw error;
       }
     },
   },
