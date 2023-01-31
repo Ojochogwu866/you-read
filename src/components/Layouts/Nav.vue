@@ -1,5 +1,7 @@
 <template>
-  <div class="flex justify-between items-center border-b-2 border-white pr-20">
+  <div
+    class="flex justify-between items-center border-b-2 border-white bg-white pr-20"
+  >
     <div></div>
     <div class="flex justify-center gap-8 items-center m-6">
       <Login />

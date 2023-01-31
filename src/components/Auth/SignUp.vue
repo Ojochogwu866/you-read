@@ -15,11 +15,10 @@
       >
         <div class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
           <form @submit.prevent="submit">
-            <div class="mt-8">LOGO</div>
-            <div class="text-sm font-medium mt-8">
+            <div class="text-sm font-normal mt-8">
               Hello, Welcome to You-Read.
             </div>
-            <div class="text-sm font-semibold">Login to Continue</div>
+            <div class="text-sm font-normal">Login to Continue</div>
             <input
               placeholder="Email address"
               type="email"
@@ -41,8 +40,10 @@
               Continue
             </button>
           </form>
-          <div class="">or</div>
-          <div class="w-full mt-6 gap-4 flex justify-center items-center">
+          <div class="mt-3 text-sm font-normal">
+            Login with Facebook and Google
+          </div>
+          <div class="w-full mt-3 gap-4 flex justify-center items-center">
             <button @click="signupWithFacebook" type="button">
               <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
             </button>
@@ -71,23 +72,14 @@ export default {
     };
   },
   methods: {
-    async handleSignup() {
-      await this.signup({ email: this.email, password: this.password });
-    },
     modal() {
       this.toggleModal = true;
     },
-    ...mapActions([
-      "signup",
-      "login",
-      "signupWithEmail",
-      "signupWithFacebook",
-      "signupWithGoogle",
-    ]),
+    ...mapActions(["signup"]),
     async submit() {
       try {
-        await this.login({ email: this.email, password: this.password });
-        this.$router.push("/");
+        await this.signup({ email: this.email, password: this.password });
+        this.$router.push("/reader/profile");
       } catch (error) {
         console.error(error);
       }
