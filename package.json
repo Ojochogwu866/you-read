@@ -8,12 +8,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^2.0.2",
-    "@auth0/auth0-vue": "^2.0.0",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.20.2",
     "@tailwindcss/postcss7-compat": "^2.2.17",
-    "auth0-js": "^9.20.1",
     "autoprefixer": "^9.8.8",
     "axios": "^1.2.3",
     "dotenv": "^16.0.3",

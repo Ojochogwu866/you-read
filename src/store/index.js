@@ -3,7 +3,9 @@ import helper from "./helpers";
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
   onAuthStateChanged,
+  signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
 } from "firebase/auth";
@@ -47,11 +49,14 @@ export default createStore({
     },
     async handleSocialLogin({ commit }, provider) {
       try {
-        let providerObject;
         if (provider === "google") {
           const auth = getAuth();
+          const provider = new GoogleAuthProvider();
           signInWithPopup(auth, provider)
             .then((result) => {
+              if (result.status == 200) {
+                this.$router.push("/reader/profile");
+              }
               const credential =
                 GoogleAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;
@@ -64,10 +69,23 @@ export default createStore({
               const credential = GoogleAuthProvider.credentialFromError(error);
             });
         } else if (provider === "facebook") {
-          provider = new firebase.auth.FacebookAuthProvider();
+          const auth = getAuth();
+          const provider = new FacebookAuthProvider();
+          signInWithPopup(auth, provider)
+            .then((result) => {
+              this.$router.push("/reader/profile");
+              const credential =
+                FacebookAuthProvider.credentialFromResult(result);
+              const token = credential.accessToken;
+              const user = result.user;
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              const email = error.customData.email;
+              const credential = GoogleAuthProvider.credentialFromError(error);
+            });
         }
-        const { user } = await firebase.auth().signInWithPopup(providerObject);
-        commit("setUser", user);
       } catch (error) {
         throw error;
       }

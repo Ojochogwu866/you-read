@@ -58,11 +58,6 @@
 <script>
 import Modal from "../Layouts/Modal.vue";
 import { mapActions } from "vuex";
-import {
-  loginWithEmailandPassword,
-  loginWithFacebook,
-  loginWithGoogle,
-} from "@/auth/auth";
 export default {
   components: {
     Modal,
@@ -74,9 +69,6 @@ export default {
       email: "",
       password: "",
     };
-  },
-  async mounted() {
-    await initAuth0();
   },
   methods: {
     async handleSignup() {
@@ -92,33 +84,6 @@ export default {
       "signupWithFacebook",
       "signupWithGoogle",
     ]),
-    async signupWithEmail() {
-      try {
-        await this.$store.dispatch("signupWithEmail", {
-          email: this.email,
-          password: this.password,
-        });
-        this.$router.push("/");
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async signupWithFacebook() {
-      try {
-        await this.$store.dispatch("loginWithFacebook");
-        this.$router.push("/");
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async signupWithGoogle() {
-      try {
-        await this.$store.dispatch("loginWithGoogle");
-        this.$router.push("/");
-      } catch (error) {
-        console.log(error);
-      }
-    },
     async submit() {
       try {
         await this.login({ email: this.email, password: this.password });

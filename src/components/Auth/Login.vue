@@ -14,7 +14,7 @@
         class="h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full"
       >
         <div class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
-          <form @submit.prevent="loginWithEmailAndPassword">
+          <form @submit.prevent="submit">
             <div class="mt-8">LOGO</div>
             <div class="text-sm font-medium mt-8">
               Hello, Welcome to You-Read.
@@ -43,10 +43,10 @@
           </form>
           <div class="">or</div>
           <div class="w-full mt-6 gap-4 flex justify-center items-center">
-            <button @click="loginWithFacebook">
+            <button @click="handleSocialLogin('facebook')">
               <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
             </button>
-            <button class="w-8" @click="loginWithGoogle">
+            <button class="w-8" @click="handleSocialLogin('google')">
               <img src="@/assets/Images/google.png" alt="" />
             </button>
           </div>
@@ -58,8 +58,7 @@
 <script>
 import Modal from "../Layouts/Modal.vue";
 import { mapActions } from "vuex";
-import axios from "axios";
-import { useAuth0 } from "@auth0/auth0-vue";
+
 export default {
   components: {
     Modal,
@@ -72,13 +71,17 @@ export default {
     };
   },
   methods: {
-    ...mapActions([
-      "loginWithEmailAndPassword",
-      "loginWithGoogle",
-      "loginWithFacebook",
-    ]),
+    ...mapActions(["login", "handleSocialLogin"]),
     modal() {
       this.toggleModal = true;
+    },
+    async submit() {
+      try {
+        await this.login({ email: this.email, password: this.password });
+        this.$router.push("/reader/profile");
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };
