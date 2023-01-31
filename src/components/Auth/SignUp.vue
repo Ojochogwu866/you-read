@@ -2,7 +2,7 @@
   <div>
     <div
       @click="modal"
-      class="rounded-md border border-parentText px-7 py-2 hover:bg-gray-50"
+      class="rounded-md cursor-pointer border border-parentText px-7 py-2 hover:bg-gray-50"
     >
       Sign Up
     </div>
@@ -11,9 +11,11 @@
         <div></div>
       </template>
       <div
-        class="h-screen rounded shadow-2xl flex flex-col justify-center items-center w-full"
+        class="h-screen rounded shadow-2xl flex flex-col justify-center items-end w-full px-20"
       >
-        <div class="h-3/4 shadow-form w-96 bg-white px-8 py-4">
+        <div
+          class="h-3/4 shadow-form flex flex-col justify-center w-96 bg-white px-8 py-4"
+        >
           <form @submit.prevent="submit">
             <div class="text-sm font-normal mt-8">
               Hello, Welcome to You-Read.

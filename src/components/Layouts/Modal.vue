@@ -8,8 +8,8 @@
         <div class="w-full">
           <slot name="header" />
         </div>
-        <main class="w-full flex items-start justify-start">
-          <div class="mt-14 left-9">
+        <main class="flex items-start justify-start">
+          <div class="mt-14 absolute ml-20">
             <svg
               @click="close"
               class="w-3 h-3 cursor-pointer"
