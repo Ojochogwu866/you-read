@@ -1,13 +1,15 @@
 <template>
   <main>
-    <div class="inset-0 w-full bg-black bg-opacity-50 overflow-y-hidden">
+    <div class="">
       <div
         v-if="center"
-        class="absolute h-screen bg-white overflow-y-hidden inset-0 flex justify-center items-center z-50 w-full mx-auto rounded shadow-xs"
+        class="absolute h-screen bg-black bg-opacity-10 overflow-y-hidden inset-0 flex justify-end items-end z-50 w-full mx-auto rounded shadow-xs"
       >
-        <div class="w-full flex justify-center items-center">
+        <div class="w-full">
           <slot name="header" />
-          <div>
+        </div>
+        <main class="w-full flex items-start justify-start">
+          <div class="mt-14 left-9">
             <svg
               @click="close"
               class="w-3 h-3 cursor-pointer"
@@ -23,8 +25,6 @@
               />
             </svg>
           </div>
-        </div>
-        <main class="w-full flex justify-center items-center m-auto">
           <slot />
         </main>
       </div>
