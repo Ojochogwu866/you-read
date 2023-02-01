@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   FacebookAuthProvider,
   onAuthStateChanged,
+  signOut,
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
@@ -13,39 +14,56 @@ import {
 export default createStore({
   state: {
     user: null,
+    error: null,
+    status: null,
   },
   getters: { user: (state) => state.user },
   mutations: {
-    setUser(state, user) {
-      state.user = user;
+    setUser(state, payload) {
+      state.user = payload;
+    },
+    setStatus(state, payload) {
+      state.status = payload;
     },
   },
   actions: {
-    async signup({ commit }, { email, password }) {
+    async signup({ commit }, payload) {
       try {
         const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password);
-        commit("setUser", userCredentials.user);
+        createUserWithEmailAndPassword(
+          auth,
+          payload.email,
+          payload.password
+        ).then((response) => {
+          if (response.status == 200) {
+            commit("setUser", userCredentials.user.uid);
+            commit("setStatus", "Success");
+          }
+        });
       } catch (error) {
         throw error;
       }
     },
-    async login({ commit }, { email, password }) {
+    async login({ commit }, payload) {
       try {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password);
-        commit("setUser", user);
+        signInWithEmailAndPassword(auth, payload.email, payload.password).then(
+          (response) => {
+            if (response.status == 200) {
+              commit("setUser", userCredentials.user.uid);
+              commit("setStatus", "Success");
+            }
+          }
+        );
       } catch (error) {
         throw error;
       }
     },
     async logout({ commit }) {
       try {
-        await firebase.auth().signOut();
-        commit("setUser", null);
-      } catch (error) {
-        throw error;
-      }
+        const auth = getAuth();
+        signOut(auth).then(() => {});
+      } catch (error) {}
     },
     async handleSocialLogin({ commit }, provider) {
       try {
@@ -54,13 +72,11 @@ export default createStore({
           const provider = new GoogleAuthProvider();
           signInWithPopup(auth, provider)
             .then((result) => {
-              if (result.status == 200) {
-                this.$router.push("/reader/profile");
-              }
               const credential =
                 GoogleAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;
               const user = result.user;
+              this.$router.go({ name: "reader-profile" });
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -73,7 +89,6 @@ export default createStore({
           const provider = new FacebookAuthProvider();
           signInWithPopup(auth, provider)
             .then((result) => {
-              this.$router.push("/reader/profile");
               const credential =
                 FacebookAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;

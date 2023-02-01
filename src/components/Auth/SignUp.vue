@@ -20,7 +20,7 @@
             <div class="text-sm font-normal mt-8">
               Hello, Welcome to You-Read.
             </div>
-            <div class="text-sm font-normal">Login to Continue</div>
+            <div class="text-sm font-normal">Create Reader Account</div>
             <input
               placeholder="Email address"
               type="email"
@@ -43,7 +43,7 @@
             </button>
           </form>
           <div class="mt-3 text-sm font-normal">
-            Login with Facebook and Google
+            Sign-up with Facebook and Google
           </div>
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
             <button @click="signupWithFacebook" type="button">
