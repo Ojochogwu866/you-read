@@ -10,7 +10,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-
+import router from "../router/index";
 export default createStore({
   state: {
     user: null,
@@ -35,10 +35,9 @@ export default createStore({
           payload.email,
           payload.password
         ).then((response) => {
-          if (response.status == 200) {
-            commit("setUser", userCredentials.user.uid);
-            commit("setStatus", "Success");
-          }
+          router.replace("/reader/profile");
+          commit("setUser", userCredentials.user.uid);
+          commit("setStatus", "Success");
         });
       } catch (error) {
         throw error;
@@ -49,10 +48,9 @@ export default createStore({
         const auth = getAuth();
         signInWithEmailAndPassword(auth, payload.email, payload.password).then(
           (response) => {
-            if (response.status == 200) {
-              commit("setUser", userCredentials.user.uid);
-              commit("setStatus", "Success");
-            }
+            router.replace("/reader/profile");
+            commit("setUser", userCredentials.user.uid);
+            commit("setStatus", "Success");
           }
         );
       } catch (error) {
@@ -72,6 +70,7 @@ export default createStore({
           const provider = new GoogleAuthProvider();
           signInWithPopup(auth, provider)
             .then((result) => {
+              router.replace("/reader/profile");
               const credential =
                 GoogleAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;
@@ -89,6 +88,7 @@ export default createStore({
           const provider = new FacebookAuthProvider();
           signInWithPopup(auth, provider)
             .then((result) => {
+              router.replace("/reader/profile");
               const credential =
                 FacebookAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;

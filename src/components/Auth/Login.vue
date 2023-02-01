@@ -81,7 +81,6 @@ export default {
     async submit() {
       try {
         await this.login({ email: this.email, password: this.password });
-        this.$router.push("/reader/profile");
       } catch (error) {
         console.error(error);
       }
