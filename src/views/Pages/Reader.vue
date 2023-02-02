@@ -130,6 +130,11 @@
           class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
         >
           Join/Create Club
+          <div
+            class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
+          >
+            Create
+          </div>
         </div>
         <div class="gap-y-3"></div>
       </div>
