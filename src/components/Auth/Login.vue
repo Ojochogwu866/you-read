@@ -42,15 +42,17 @@
               Continue
             </button>
           </form>
-          <div class="mt-3 text-sm font-normal">
-            Login with Facebook and Google
-          </div>
+          <div class="mt-3 text-sm font-normal">or</div>
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
-            <button @click="handleSocialLogin('facebook')">
+            <!-- <button @click="handleSocialLogin('facebook')">
               <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
-            </button>
-            <button class="w-8" @click="handleSocialLogin('google')">
-              <img src="@/assets/Images/google.png" alt="" />
+            </button> -->
+            <button
+              class="w-full gap-4 flex border border-gray-400 py-3 rounded-md justify-center items-center"
+              @click="handleSocialLogin('google')"
+            >
+              <img class="w-5" src="@/assets/Images/google.png" alt="" /> Login
+              With Google
             </button>
           </div>
         </div>

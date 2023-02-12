@@ -39,18 +39,20 @@
               type="submit"
               class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
             >
-              Continue
+              Sign Up
             </button>
           </form>
-          <div class="mt-3 text-sm font-normal">
-            Sign-up with Facebook and Google
-          </div>
+          <div class="mt-3 text-sm font-normal">or</div>
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
-            <button @click="signupWithFacebook" type="button">
+            <!-- <button @click="handleSocialLogin('facebook')">
               <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
-            </button>
-            <button class="w-8" @click="signupWithGoogle" type="button">
-              <img src="@/assets/Images/google.png" alt="" />
+            </button> -->
+            <button
+              class="w-full gap-4 flex border border-gray-400 py-3 rounded-md justify-center items-center"
+              @click="handleSocialLogin('google')"
+            >
+              <img class="w-5" src="@/assets/Images/google.png" alt="" /> Signup
+              With Google
             </button>
           </div>
         </div>
