@@ -22,6 +22,13 @@
             </div>
             <div class="text-sm font-normal">Create Reader Account</div>
             <input
+              placeholder="Fullname"
+              type="text"
+              v-model="name"
+              required
+              class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full"
+            />
+            <input
               placeholder="Email address"
               type="email"
               v-model="email"
