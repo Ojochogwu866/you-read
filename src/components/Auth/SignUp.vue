@@ -16,7 +16,7 @@
         <div
           class="h-3/4 shadow-form flex flex-col justify-center w-96 bg-white px-8 py-4"
         >
-          <form @submit.prevent="submit">
+          <form @submit.prevent="signUp">
             <div class="text-sm font-normal mt-8">
               Hello, Welcome to You-Read.
             </div>
@@ -24,26 +24,26 @@
             <input
               placeholder="Fullname"
               type="text"
-              v-model="name"
+              v-model="args.name"
               required
               class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full"
             />
             <input
               placeholder="Email address"
               type="email"
-              v-model="email"
+              v-model="args.email"
               required
               class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full"
             />
             <input
               placeholder="password"
               type="password"
-              v-model="password"
+              v-model="args.password"
               required
               class="rounded-md border bg-transparent border-gray-400 mt-2 text-sm text-gray-500 p-2 w-full"
             />
             <button
-              @click.prevent="register"
+              type="submit"
               class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
             >
               Sign Up
@@ -51,9 +51,6 @@
           </form>
           <div class="mt-3 text-sm font-normal">or</div>
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
-            <!-- <button @click="handleSocialLogin('facebook')">
-              <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
-            </button> -->
             <button
               class="w-full gap-4 flex border border-gray-400 py-3 rounded-md justify-center items-center"
               @click="handleSocialLogin('google')"
@@ -69,7 +66,6 @@
 </template>
 <script>
 import Modal from "../Layouts/Modal.vue";
-import axios from "axios";
 export default {
   components: {
     Modal,
@@ -78,31 +74,30 @@ export default {
   data() {
     return {
       toggleModal: false,
-      email: "",
-      password: "",
-      name: "",
+      args: {
+        email: "",
+        password: "",
+        name: "",
+      },
     };
   },
   methods: {
     modal() {
       this.toggleModal = true;
     },
-    register() {
-      axios
-        .post("http://localhost:3000/api/v1/auth/register", {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-        })
-        .then((response) => {
-          this.$router.push("/reader/profile");
-          console.log(response.data);
-          // do something with the response, like storing the access token in local storage
-        })
-        .catch((error) => {
-          console.log(error);
-          // handle the error, like displaying an error message
-        });
+    reset() {
+      Object.assign(this.$data, this.$options.data.apply(this));
+    },
+    async signUp() {
+      let res = await this.$store.dispatch("post", {
+        endpoint: "/auth/register",
+        auth: false,
+        payload: this.args,
+      });
+      if (res.status == 201 || 200) {
+        this.$router.push("/reader/profile");
+        this.reset();
+      }
     },
   },
 };

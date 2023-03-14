@@ -1,21 +1,14 @@
-import Api from "@/services/api";
+import Api from "@/auth/api";
 import router from "../router";
 
 const getDefaultState = () => {
   return {
     isLoggedIn: false,
-    reader: {
-      email: "",
-      password: "",
-      name: "",
-    },
-    readerData: "",
-    profiles: "",
+    userProfile: "",
   };
 };
 
 const state = getDefaultState();
-
 const actions = {
   get: async ({ commit, dispatch }, { endpoint, auth }) => {
     if (auth) {
@@ -93,7 +86,6 @@ const actions = {
       return res;
     }
   },
-
   remove: async ({ commit, dispatch }, { endpoint }) => {
     commit("set", {
       type: "loading",
@@ -127,8 +119,7 @@ export default {
   state,
   getters: {
     authStatus: (state) => state.isLoggedIn,
-    getReaderData: (state) => state.readerData,
-    getReaderProfile: (state) => state.profile,
+    getUserProfile: (state) => state.userProfile,
   },
   actions,
   mutations,

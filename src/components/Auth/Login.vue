@@ -16,7 +16,7 @@
         <div
           class="h-3/4 shadow-form flex flex-col justify-center w-96 bg-white px-8 py-4"
         >
-          <form @submit.prevent="submit">
+          <form @submit.prevent="login">
             <div class="text-sm font-normal mt-8">
               Hello, Welcome to You-Read.
             </div>
@@ -24,20 +24,19 @@
             <input
               placeholder="Email address"
               type="email"
-              v-model="email"
+              v-model="args.email"
               required
               class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full"
             />
             <input
               placeholder="password"
               type="password"
-              v-model="password"
+              v-model="args.password"
               required
               class="rounded-md border bg-transparent border-gray-400 mt-2 text-sm text-gray-500 p-2 w-full"
             />
             <button
               type="submit"
-              @click.prevent="login"
               class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
             >
               Continue
@@ -45,9 +44,6 @@
           </form>
           <div class="mt-3 text-sm font-normal">or</div>
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
-            <!-- <button @click="handleSocialLogin('facebook')">
-              <img class="w-8" src="@/assets/Images/facebook.png" alt="" />
-            </button> -->
             <button
               class="w-full gap-4 flex border border-gray-400 py-3 rounded-md justify-center items-center"
               @click="handleSocialLogin('google')"
@@ -63,8 +59,6 @@
 </template>
 <script>
 import Modal from "../Layouts/Modal.vue";
-import { mapActions } from "vuex";
-import axios from "axios";
 export default {
   components: {
     Modal,
@@ -72,30 +66,33 @@ export default {
   data() {
     return {
       toggleModal: false,
-      email: "",
-      password: "",
+      args: { email: "", password: "" },
     };
   },
   methods: {
-    ...mapActions(["login", "handleSocialLogin"]),
     modal() {
       this.toggleModal = true;
     },
-    login() {
-      axios
-        .post("http://localhost:3000/api/user/login", {
-          email: this.email,
-          password: this.password,
-        })
-        .then((response) => {
-          this.$router.push("/reader/profile");
-          console.log(response.data);
-          // do something with the response, like storing the access token in local storage
-        })
-        .catch((error) => {
-          console.log(error);
-          // handle the error, like displaying an error message
+    async login() {
+      let res = await this.$store.dispatch("post", {
+        endpoint: "/auth/login/",
+        auth: false,
+        payload: this.args,
+      });
+      if (response == 200 || 201) {
+        localStorage.setItem("token", response.data.token);
+        console.log(response.data);
+        this.$store.commit("set", {
+          type: "userProfile",
+          data: userInfo,
         });
+        this.$store.commit("set", {
+          type: "isLoggedIn",
+          data: true,
+        });
+        this.$router.push("/reader/profile");
+        this.reset();
+      }
     },
   },
 };

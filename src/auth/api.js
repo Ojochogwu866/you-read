@@ -1,12 +1,12 @@
 import axios from "axios";
 
-let API_URL = "http://localhost:3000/api/v1/";
+let API_URL = "http://localhost:3000/api/v1";
 class Api {
   static async get(url, requireAuth = false) {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
       let response = requireAuth
@@ -15,8 +15,6 @@ class Api {
       return response.data;
     } catch (error) {
       let errorData = error.response.data;
-      let msg = messageFormater(errorData);
-      Vue.$toast.error(msg);
       return error.response;
     }
   }
@@ -37,9 +35,6 @@ class Api {
         store.commit("logOut");
       }
       let errorData = error.response.data;
-      let msg = messageFormater(errorData);
-
-      Vue.$toast.error(msg);
       return error.response;
     }
   }
