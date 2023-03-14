@@ -16,6 +16,7 @@
           >
             Set reading plan
           </div>
+
           <div
             class="bg-boxbg cursor-pointer hover:shadow-typeBox p-2 text-sm"
             @click="setReader()"

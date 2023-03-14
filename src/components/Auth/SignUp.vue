@@ -43,7 +43,7 @@
               class="rounded-md border bg-transparent border-gray-400 mt-2 text-sm text-gray-500 p-2 w-full"
             />
             <button
-              type="submit"
+              @click.prevent="register"
               class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
             >
               Sign Up
@@ -69,7 +69,7 @@
 </template>
 <script>
 import Modal from "../Layouts/Modal.vue";
-import { mapActions } from "vuex";
+import axios from "axios";
 export default {
   components: {
     Modal,
@@ -80,19 +80,29 @@ export default {
       toggleModal: false,
       email: "",
       password: "",
+      name: "",
     };
   },
   methods: {
     modal() {
       this.toggleModal = true;
     },
-    ...mapActions(["signup"]),
-    async submit() {
-      try {
-        await this.signup({ email: this.email, password: this.password });
-      } catch (error) {
-        console.error(error);
-      }
+    register() {
+      axios
+        .post("http://localhost:3000/api/v1/auth/register", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          this.$router.push("/reader/profile");
+          console.log(response.data);
+          // do something with the response, like storing the access token in local storage
+        })
+        .catch((error) => {
+          console.log(error);
+          // handle the error, like displaying an error message
+        });
     },
   },
 };
