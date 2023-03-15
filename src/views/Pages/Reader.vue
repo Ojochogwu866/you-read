@@ -1,7 +1,7 @@
 <template>
   <div>
+    {{ getUserInformation.name }}
     <Nav />
-
     <div class="w-full flex flex-row bg-profile justify-start items-start">
       <div
         class="mt-6 w-3/5 flex flex-col justify-center items-center m-auto pb-5"
@@ -208,9 +208,9 @@
 </template>
 <script>
 import Card from "./Card.vue";
-import { mapActions, mapGetters, mapState } from "vuex";
 import History from "./History.vue";
 import Nav from "./Nav.vue";
+import { mapGetters } from "vuex";
 export default {
   components: {
     History,
@@ -224,7 +224,9 @@ export default {
       modal1: false,
     };
   },
-  computed: {},
+  computed: {
+    ...mapGetters(["getUserProfile", "getUserInformation"]),
+  },
   methods: {
     search() {
       this.searchBooks(this.query);
@@ -245,22 +247,6 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    },
-    currentReading() {
-      axios
-        .post("http://localhost:3000/api/user/:_id/books/current-reading", {
-          email: this.email,
-          password: this.password,
-        })
-        .then((response) => {
-          this.$router.push("/reader/profile");
-          console.log(response.data);
-          // do something with the response, like storing the access token in local storage
-        })
-        .catch((error) => {
-          console.log(error);
-          // handle the error, like displaying an error message
-        });
     },
   },
 };

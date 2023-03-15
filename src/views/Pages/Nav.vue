@@ -1,8 +1,8 @@
 <template>
   <div class="w-full">
     <div class="flex items-center py-6 w-[90%] justify-between mx-auto">
-      <div v-for="user in getUserProfile" :key="user.id" class="text-sm">
-        Hi {{ user.name }}
+      <div v-if="getUserProfile" class="text-sm">
+        Hi {{ getUserProfile?.name }}
       </div>
       <div class="flex justify-center items-center gap-3">
         <div class="cursor-pointer" @click="isDrawerOpen = true">
@@ -41,7 +41,9 @@
             />
           </svg>
         </div>
-        <p class="text-sm font-semibold cursor-pointer">Logout</p>
+        <p class="text-sm font-semibold cursor-pointer" @click="logout">
+          Logout
+        </p>
       </div>
     </div>
     <div
@@ -82,6 +84,7 @@
                   <label for="" class="text-xs">Name</label>
                   <input
                     placeholder="Full Name"
+                    v-model="name"
                     class="w-full bg-transparent text-sm border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
                 </div>
@@ -140,7 +143,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -148,24 +151,40 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getUserProfile"]),
+    ...mapGetters(["getUserProfile", "getUserInformation"]),
+    // name: {
+    //   get() {
+    //     return this.getUserInformation.name;
+    //   },
+    //   set(value) {
+    //     this.$store.commit("set", {
+    //       type: "userProfile",
+    //       data: { ...this.getUserInformation, name: value },
+    //     });
+    //   },
+    // },
   },
   methods: {
     async fetchUserProfile() {
+      let id = this.getUserProfile._id;
       let res = await this.$store.dispatch("get", {
-        endpoint: "/auth/profile",
+        endpoint: `/auth/profile`,
         auth: true,
       });
       if (!!res) {
+        let userInfo = { ...res.data };
         this.$store.commit("set", {
           type: "userProfile",
-          data: res,
+          data: userInfo,
         });
       }
     },
+    logout() {
+      this.$store.commit("logOut");
+    },
   },
-  mounted() {
-    this.fetchUserProfile();
+  async mounted() {
+    await this.fetchUserProfile();
   },
 };
 </script>

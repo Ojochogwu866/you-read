@@ -5,9 +5,9 @@ const getDefaultState = () => {
   return {
     isLoggedIn: false,
     userProfile: "",
+    userInformation: "",
   };
 };
-
 const state = getDefaultState();
 const actions = {
   get: async ({ commit, dispatch }, { endpoint, auth }) => {
@@ -86,6 +86,16 @@ const actions = {
       return res;
     }
   },
+  //   async getUserProfile({ commit }) {
+  //     const response = await Api.getProfile();
+  //     const userProfile = response.data;
+  //     commit("setUserProfile", userProfile);
+  //   },
+  //   async getUserInformation({ commit }) {
+  //     const response = await Api.getInformation();
+  //     const userInformation = response.data;
+  //     commit("setUserInformation", userInformation);
+  //   },
   remove: async ({ commit, dispatch }, { endpoint }) => {
     commit("set", {
       type: "loading",
@@ -109,10 +119,10 @@ const mutations = {
     return state;
   },
   logOut: (state) => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("token");
     Object.assign(state, getDefaultState());
-    router.push("/userlogin");
+    router.push("/");
   },
 };
 export default {
@@ -120,6 +130,7 @@ export default {
   getters: {
     authStatus: (state) => state.isLoggedIn,
     getUserProfile: (state) => state.userProfile,
+    getUserInformation: (state) => state.userInformation,
   },
   actions,
   mutations,

@@ -7,12 +7,18 @@ export default {
     searchBookResults: [],
     query: "",
   },
-
   getters: {
     currentModalState: (state) => state.modalState,
     searchBookResults: (state) => state.searchBookResults,
   },
   mutations: {
+    change: (state, { type, data }) => {
+      const keys = Object.keys(state);
+      for (let i = 0; i < keys.length; i++) {
+        state[keys[i]] = keys[i] === type ? data : state[keys[i]];
+      }
+      return state;
+    },
     setSearchBookResults(state, results) {
       state.searchBookResults = results;
     },

@@ -15,14 +15,17 @@ class Api {
       return response.data;
     } catch (error) {
       let errorData = error.response.data;
+      let msg = messageFormater(errorData);
+      Vue.$toast.error(msg);
       return error.response;
     }
   }
+
   static async post(url, payload, requireAuth = false) {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
       let response = requireAuth
@@ -35,14 +38,18 @@ class Api {
         store.commit("logOut");
       }
       let errorData = error.response.data;
+      let msg = messageFormater(errorData);
+
+      Vue.$toast.error(msg);
       return error.response;
     }
   }
+
   static async put(url, payload = {}, requireAuth = false) {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
       let response = requireAuth
@@ -59,11 +66,12 @@ class Api {
       return error.response;
     }
   }
+
   static async delete(url, requireAuth = true) {
     try {
       let config = {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       };
       let response = requireAuth

@@ -59,6 +59,7 @@
 </template>
 <script>
 import Modal from "../Layouts/Modal.vue";
+import { mapGetters } from "vuex";
 export default {
   components: {
     Modal,
@@ -69,7 +70,13 @@ export default {
       args: { email: "", password: "" },
     };
   },
+  computed: {
+    ...mapGetters(["getUserInformation"]),
+  },
   methods: {
+    reset() {
+      Object.assign(this.$data, this.$options.data.apply(this));
+    },
     modal() {
       this.toggleModal = true;
     },
@@ -79,11 +86,11 @@ export default {
         auth: false,
         payload: this.args,
       });
-      if (response == 200 || 201) {
-        localStorage.setItem("token", response.data.token);
-        console.log(response.data);
+      if (res == 200 || 201) {
+        localStorage.setItem("token", res.data.token);
+        let userInfo = { ...res.data };
         this.$store.commit("set", {
-          type: "userProfile",
+          type: "userInformation",
           data: userInfo,
         });
         this.$store.commit("set", {

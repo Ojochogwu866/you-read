@@ -17,7 +17,9 @@
     "vue-click-outside": "^1.1.0",
     "vue-loader": "^16.8.0",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vue-toast-notification": "^3.1.1",
+    "vuex": "^4.0.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-router": "~5.0.0",
