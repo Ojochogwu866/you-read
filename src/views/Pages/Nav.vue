@@ -1,9 +1,7 @@
 <template>
   <div class="w-full">
     <div class="flex items-center py-6 w-[90%] justify-between mx-auto">
-      <div v-if="getUserProfile" class="text-sm">
-        Hi {{ getUserProfile?.name }}
-      </div>
+      <div v-if="profileData" class="text-sm">Hi, {{ profileData.name }}</div>
       <div class="flex justify-center items-center gap-3">
         <div class="cursor-pointer" @click="isDrawerOpen = true">
           <svg
@@ -91,14 +89,16 @@
                 <div class="mt-2 w-full">
                   <label class="text-xs mt-2" for="">Email Address</label>
                   <input
+                    disabled
+                    v-model="email"
                     placeholder="Email address"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
                 </div>
                 <div class="mt-2">
-                  <label class="text-xs mt-2" for="">Password</label>
+                  <label class="text-xs mt-2" for="">phone</label>
                   <input
-                    placeholder="password"
+                    placeholder="phonenumber"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
                 </div>
@@ -152,39 +152,38 @@ export default {
   },
   computed: {
     ...mapGetters(["getUserProfile", "getUserInformation"]),
-    // name: {
-    //   get() {
-    //     return this.getUserInformation.name;
-    //   },
-    //   set(value) {
-    //     this.$store.commit("set", {
-    //       type: "userProfile",
-    //       data: { ...this.getUserInformation, name: value },
-    //     });
-    //   },
-    // },
-  },
-  methods: {
-    async fetchUserProfile() {
-      let id = this.getUserProfile._id;
-      let res = await this.$store.dispatch("get", {
-        endpoint: `/auth/profile`,
-        auth: true,
-      });
-      if (!!res) {
-        let userInfo = { ...res.data };
+    profileData() {
+      return this.getUserProfile.user;
+    },
+    name: {
+      get() {
+        return this.getUserProfile.name;
+      },
+      set(value) {
         this.$store.commit("set", {
           type: "userProfile",
-          data: userInfo,
+          data: { ...this.getUserProfile, name: value },
         });
-      }
+      },
     },
+  },
+  methods: {
     logout() {
       this.$store.commit("logOut");
     },
   },
-  async mounted() {
-    await this.fetchUserProfile();
+  async created() {
+    let id = this.getUserProfile._id;
+    let res = await this.$store.dispatch("get", {
+      endpoint: `/auth/profile/${id}`,
+      auth: true,
+    });
+    if (!!res) {
+      this.$store.commit("set", {
+        type: "userProfile",
+        data: res,
+      });
+    }
   },
 };
 </script>

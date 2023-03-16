@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ getUserInformation.name }}
     <Nav />
     <div class="w-full flex flex-row bg-profile justify-start items-start">
       <div
@@ -223,9 +222,6 @@ export default {
       displayModal: false,
       modal1: false,
     };
-  },
-  computed: {
-    ...mapGetters(["getUserProfile", "getUserInformation"]),
   },
   methods: {
     search() {

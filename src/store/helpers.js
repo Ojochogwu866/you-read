@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = "";
+const apiKey = process.env.API_KEY;
 export default {
   state: {
     modalState: false,

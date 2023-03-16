@@ -6,6 +6,7 @@ const getDefaultState = () => {
     isLoggedIn: false,
     userProfile: "",
     userInformation: "",
+    userBooks: "",
   };
 };
 const state = getDefaultState();
@@ -131,6 +132,7 @@ export default {
     authStatus: (state) => state.isLoggedIn,
     getUserProfile: (state) => state.userProfile,
     getUserInformation: (state) => state.userInformation,
+    getUserBooks: (state) => state.userBooks,
   },
   actions,
   mutations,
