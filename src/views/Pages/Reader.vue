@@ -3,7 +3,7 @@
     <Nav />
     <div class="w-full flex flex-row bg-profile justify-start items-start">
       <div
-        class="mt-6 w-3/5 flex flex-col justify-center items-center m-auto pb-5"
+        class="mt-6 w-9/11 flex flex-col justify-center items-center m-auto pb-5"
       >
         <div class="flex flex-col w-11/12">
           <div class="text-sm font-medium">
@@ -52,15 +52,16 @@
           <div
             class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
           >
-            Add Book To Read
+            Currently Reading
             <div
               @click="modal1 = true"
               class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
             >
-              Set Plan
+              Add new book
             </div>
             <Card v-bind:modal-1="modal1" @update:modal-1="modal1 = $event">
               <form
+                @submit.prevent="createBook"
                 class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
               >
                 <div class="">
@@ -70,25 +71,24 @@
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   type="text"
                   placeholder="Book title e.g purple hibiscus"
+                  v-model="args.bookTitle"
                 />
                 <input
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   type="text"
                   placeholder="Author e.g chimamanda adichie"
+                  v-model="args.bookAuthor"
                 />
                 <input
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   type="text"
                   placeholder="Book Genre"
+                  v-model="args.bookGenre"
                 />
                 <input
                   type="text"
                   placeholder="total pages"
-                  class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                />
-                <input
-                  type=""
-                  placeholder="pages per day"
+                  v-model="args.bookPages"
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                 />
                 <button
@@ -101,7 +101,9 @@
             </Card>
           </div>
           <div class="flex flex-col gap-y-2 items-start justify-center">
-            <div class="text-sm mt-2">Book Title:</div>
+            <div v-if="latestBook" class="text-sm mt-2">
+              Book Title: {{ latestBook.bookTitle }}
+            </div>
             <div class="text-sm">Book Author:</div>
             <div class="text-sm">Book Genre:</div>
             <div class="text-sm">Book Pages:</div>
@@ -221,7 +223,23 @@ export default {
       query: "",
       displayModal: false,
       modal1: false,
+      latestBook: null,
+      args: {
+        bookAuthor: "",
+        bookGenre: "",
+        bookTitle: "",
+        bookPages: "",
+      },
     };
+  },
+  computed: {
+    ...mapGetters(["getUserBooks"]),
+    booksData() {
+      return this.getUserBooks.books;
+    },
+  },
+  mounted() {
+    this.call();
   },
   methods: {
     search() {
@@ -243,6 +261,23 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+    async createBook() {
+      this.isSubmitting = true;
+      let res = await this.$store.dispatch("post", {
+        endpoint: `/books/`,
+        auth: true,
+        payload: this.args,
+      });
+      if (res.status == 201) {
+        await this.call();
+      }
+    },
+    async call() {
+      let res = await this.$store.dispatch("get", {
+        endpoint: `/books?sort=-createdAt&limit=1`,
+        auth: true,
+      });
     },
   },
 };
