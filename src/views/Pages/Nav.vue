@@ -173,9 +173,8 @@ export default {
     },
   },
   async created() {
-    let id = this.getUserProfile._id;
     let res = await this.$store.dispatch("get", {
-      endpoint: `/auth/profile/${id}`,
+      endpoint: `/auth/profile/`,
       auth: true,
     });
     if (!!res) {

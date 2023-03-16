@@ -143,6 +143,7 @@
               @update:display-modal="displayModal = $event"
             >
               <form
+                @submit.prevent="createGoals"
                 class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
               >
                 <div class="">
@@ -152,19 +153,23 @@
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   type="text"
                   placeholder="Total Books for the year"
+                  v-model="goalsArgs.totalRead"
                 />
                 <input
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   type="text"
                   placeholder="Completed"
+                  v-model="goalsArgs.monthlyRead"
                 />
                 <input
                   type="text"
                   placeholder="Pages per week"
+                  v-model="goalsArgs.pagesPerDay"
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                 />
                 <input
-                  type=""
+                  type="text"
+                  v-model="goalsArgs.pagesPerWeek"
                   placeholder="Chapters per month"
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                 />
@@ -177,11 +182,22 @@
               </form>
             </Card>
           </div>
-          <div class="flex flex-col gap-y-2 items-start justify-center">
-            <div class="text-sm mt-5">Year total read</div>
-            <div class="text-sm">Completed</div>
-            <div class="text-sm">Pages per Week</div>
-            <div class="text-sm">Set Goal</div>
+          <div
+            v-if="bookGoals"
+            class="flex flex-col gap-y-2 items-start justify-center"
+          >
+            <div class="text-sm mt-5">
+              Year total read: {{ bookGoals.totalRead }}
+            </div>
+            <div class="text-sm">
+              Monthly total Read:{{ bookGoals.monthlyRead }}
+            </div>
+            <div class="text-sm">
+              Pages Per Week:{{ bookGoals.pagesPerDay }}
+            </div>
+            <div class="text-sm">
+              Pages Per Day:{{ bookGoals.pagesPerWeek }}
+            </div>
           </div>
 
           <div>
@@ -230,16 +246,22 @@ export default {
         bookTitle: "",
         bookPages: "",
       },
+      goalsArgs: {
+        totalRead: "",
+        pagesPerDay: "",
+        pagesPerWeek: "",
+        monthlyRead: "",
+      },
     };
   },
   computed: {
-    ...mapGetters(["getUserBooks"]),
-    booksData() {
-      return this.getUserBooks.books;
+    ...mapGetters(["getUserBooks", "getUserGoals"]),
+    bookGoals() {
+      return this.getUserGoals.books;
     },
   },
   mounted() {
-    this.call();
+    this.bookGoal();
   },
   methods: {
     search() {
@@ -263,21 +285,34 @@ export default {
       }
     },
     async createBook() {
-      this.isSubmitting = true;
       let res = await this.$store.dispatch("post", {
         endpoint: `/books/`,
         auth: true,
         payload: this.args,
       });
       if (res.status == 201) {
-        await this.call();
       }
     },
-    async call() {
+    async createGoals() {
+      let res = await this.$store.dispatch("post", {
+        endpoint: `/book-goals/`,
+        auth: true,
+        payload: this.goalsArgs,
+      });
+      if (res.status == 201) {
+      }
+    },
+    async bookGoal() {
       let res = await this.$store.dispatch("get", {
-        endpoint: `/books?sort=-createdAt&limit=1`,
+        endpoint: `/book-goals/`,
         auth: true,
       });
+      if (!!res) {
+        this.$store.commit("set", {
+          type: "userGoals",
+          data: res,
+        });
+      }
     },
   },
 };

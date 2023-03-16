@@ -104,7 +104,7 @@ export default {
     },
   },
   async mounted() {
-    await this.refresh();
+    await this.getBook();
   },
   methods: {
     async removeCurrentBook(x) {
@@ -112,12 +112,11 @@ export default {
         endpoint: `/books/${x}/`,
       });
       if (res.status == 201) {
-        this.refresh();
       }
     },
-    async refresh() {
+    async getBook() {
       let res = await this.$store.dispatch("get", {
-        endpoint: `/books/`,
+        endpoint: `/books/${this.getUserBooks.books._id}`,
         auth: true,
       });
       if (!!res) {
