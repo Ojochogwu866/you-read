@@ -3,7 +3,7 @@
     <Nav />
     <div class="w-full flex flex-row bg-profile justify-start items-start">
       <div
-        class="mt-6 w-9/11 flex flex-col justify-center items-center m-auto pb-5"
+        class="mt-6 w-10/12 flex flex-col justify-center items-center m-auto pb-5"
       >
         <div class="flex flex-col w-11/12">
           <div class="text-sm font-medium">

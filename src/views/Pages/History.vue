@@ -20,7 +20,7 @@
       <div class="px-1 py-1 bg-[#ffcdef56] rounded-md h-fit w-fit">Props</div>
       <div class="px-1 py-1 bg-[#ffcdef56] rounded-md h-fit w-fit">Status</div>
     </div>
-    <div v-if="booksData">
+    <div v-if="booksData" class="w-full">
       <div
         v-for="books in booksData"
         :key="books.id"
@@ -103,15 +103,28 @@ export default {
       return this.getUserBooks.books;
     },
   },
-  async mounted() {},
+  async mounted() {
+    await this.refresh();
+  },
   methods: {
     async removeCurrentBook(x) {
       let res = await this.$store.dispatch("remove", {
         endpoint: `/books/${x}/`,
       });
       if (res.status == 201) {
-        this.$toast.success("Workspace Deleted");
         this.refresh();
+      }
+    },
+    async refresh() {
+      let res = await this.$store.dispatch("get", {
+        endpoint: `/books/`,
+        auth: true,
+      });
+      if (!!res) {
+        this.$store.commit("set", {
+          type: "userBooks",
+          data: res,
+        });
       }
     },
   },
