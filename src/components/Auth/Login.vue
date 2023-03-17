@@ -97,7 +97,7 @@ export default {
           type: "isLoggedIn",
           data: true,
         });
-        this.$router.push("/reader/profile");
+        this.$router.push(`/reader/profile/${this.getUserInformation.user.id}`);
         this.reset();
       }
     },

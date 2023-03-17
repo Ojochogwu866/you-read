@@ -4,5 +4,5 @@ import router from "./router";
 import store from "./store";
 import "@/assets/tailwind.css";
 import "./auth/firebaseConfig";
-
-createApp(App).use(store).use(router).mount("#app");
+import moment from "moment";
+createApp(App).use(store).use(moment).use(router).mount("#app");

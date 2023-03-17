@@ -8,7 +8,7 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/reader/profile/",
+    path: "/reader/profile/:id",
     name: "reader-profile",
     component: ReaderProfile,
   },

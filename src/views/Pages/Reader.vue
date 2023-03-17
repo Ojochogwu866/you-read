@@ -131,7 +131,8 @@
           <div
             class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
           >
-            Set Book Goals
+            Current Goal
+
             <div
               @click="displayModal = true"
               class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
@@ -182,13 +183,11 @@
                     placeholder="Enter working Days"
                     class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   >
-                    <option value="select book goal interval" disabled>
-                      Select goal interval
-                    </option>
+                    <option :value="null">Select goal interval</option>
                     <option value="1">1 Month</option>
-                    <option value="3">3 Months</option>
-                    <option value="6">6 Months</option>
-                    <option value="12">12 Months</option>
+                    <option value="3">3 Month</option>
+                    <option value="6">6 Month</option>
+                    <option value="12">12 Month</option>
                   </select>
                 </div>
                 <button
@@ -201,17 +200,18 @@
             </Card>
           </div>
           <div class="flex items-start justify-center">
-            <div class="w-full text-sm grid grid-rows-4 gap-2 mt-2">
+            <div class="w-full text-sm grid grid-rows-5 gap-2 mt-2">
               <div class="text-sm">Year total read:</div>
               <div class="text-sm">Monthly total Read:</div>
               <div class="text-sm">Pages Per Week:</div>
               <div class="text-sm">Pages Per Day:</div>
+              <div class="text-sm">Set Interval (months):</div>
             </div>
             <div>
               <div
                 v-for="books in getUserGoals.books"
                 :key="books.id"
-                class="w-full text-sm grid grid-rows-4 gap-2 mt-2"
+                class="w-full text-sm grid grid-rows-5 gap-2 mt-2"
               >
                 <div class="text-">
                   {{ books.totalRead }}
@@ -221,10 +221,14 @@
                 </div>
                 <div class="text-sm">{{ books.pagesPerDay }}</div>
                 <div class="text-sm">{{ books.pagesPerWeek }}</div>
+                <div class="text-sm">{{ books.timeInterval }}</div>
               </div>
             </div>
           </div>
-
+          <p class="text-xs mt-8">
+            <span class="text-red-800">**</span>Note: You can only change your
+            book reading goals after completion of reading interval
+          </p>
           <div>
             <div class=""></div>
           </div>
@@ -276,6 +280,50 @@ export default {
   },
   computed: {
     ...mapGetters(["getUserGoals"]),
+    totalRead: {
+      get() {
+        return this.getUserGoals.books.totalRead;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userGoals",
+          data: { ...this.getUserUserGoals, totalRead: value },
+        });
+      },
+    },
+    moonthlyRead: {
+      get() {
+        return this.getUserGoals.books.monthlyRead;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userGoals",
+          data: { ...this.getUserUserGoals, monthlyRead: value },
+        });
+      },
+    },
+    pagesPerDay: {
+      get() {
+        return this.getUserGoals.books.monthlyRead;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userGoals",
+          data: { ...this.getUserUserGoals, pagesPerDay: value },
+        });
+      },
+    },
+    pagesPerWeek: {
+      get() {
+        return this.getUserGoals.books.pagesPerWeek;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userGoals",
+          data: { ...this.getUserUserGoals, pagesPerWeek: value },
+        });
+      },
+    },
   },
   mounted() {
     this.bookGoal();
