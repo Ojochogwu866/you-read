@@ -116,7 +116,7 @@ export default {
     },
     async getBook() {
       let res = await this.$store.dispatch("get", {
-        endpoint: `/books/${this.getUserBooks.books._id}`,
+        endpoint: `/books/`,
         auth: true,
       });
       if (!!res) {

@@ -152,27 +152,45 @@
                 <input
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   type="text"
-                  placeholder="Total Books for the year"
+                  placeholder="Total Year Read"
                   v-model="goalsArgs.totalRead"
                 />
                 <input
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   type="text"
-                  placeholder="Completed"
+                  placeholder="No of Monthly Read"
                   v-model="goalsArgs.monthlyRead"
                 />
                 <input
                   type="text"
-                  placeholder="Pages per week"
+                  placeholder="Pages to read per day"
                   v-model="goalsArgs.pagesPerDay"
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                 />
                 <input
                   type="text"
                   v-model="goalsArgs.pagesPerWeek"
-                  placeholder="Chapters per month"
+                  placeholder="Pages to read per week"
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                 />
+                <div class="">
+                  <label for="" class="text-xs"
+                    >Select book goal interval</label
+                  >
+                  <select
+                    v-model="goalsArgs.interval"
+                    placeholder="Enter working Days"
+                    class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                  >
+                    <option value="select book goal interval" disabled>
+                      Select goal interval
+                    </option>
+                    <option value="1">1 Month</option>
+                    <option value="3">3 Months</option>
+                    <option value="6">6 Months</option>
+                    <option value="12">12 Months</option>
+                  </select>
+                </div>
                 <button
                   class="rounded-sm px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
                   type="submit"
@@ -182,21 +200,28 @@
               </form>
             </Card>
           </div>
-          <div
-            v-if="bookGoals"
-            class="flex flex-col gap-y-2 items-start justify-center"
-          >
-            <div class="text-sm mt-5">
-              Year total read: {{ bookGoals.totalRead }}
+          <div class="flex items-start justify-center">
+            <div class="w-full text-sm grid grid-rows-4 gap-2 mt-2">
+              <div class="text-sm">Year total read:</div>
+              <div class="text-sm">Monthly total Read:</div>
+              <div class="text-sm">Pages Per Week:</div>
+              <div class="text-sm">Pages Per Day:</div>
             </div>
-            <div class="text-sm">
-              Monthly total Read:{{ bookGoals.monthlyRead }}
-            </div>
-            <div class="text-sm">
-              Pages Per Week:{{ bookGoals.pagesPerDay }}
-            </div>
-            <div class="text-sm">
-              Pages Per Day:{{ bookGoals.pagesPerWeek }}
+            <div v-if="bookGoals">
+              <div
+                v-for="books in bookGoals"
+                :key="books.id"
+                class="w-full text-sm grid grid-rows-4 gap-2 mt-2"
+              >
+                <div class="text-">
+                  {{ books.totalRead }}
+                </div>
+                <div class="text-sm">
+                  {{ books.monthlyRead }}
+                </div>
+                <div class="text-sm">{{ books.pagesPerDay }}</div>
+                <div class="text-sm">{{ books.pagesPerWeek }}</div>
+              </div>
             </div>
           </div>
 

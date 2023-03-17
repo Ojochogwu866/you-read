@@ -174,7 +174,7 @@ export default {
   },
   async created() {
     let res = await this.$store.dispatch("get", {
-      endpoint: `/auth/profile/`,
+      endpoint: `/auth/profile/${id}`,
       auth: true,
     });
     if (!!res) {
