@@ -1,8 +1,13 @@
 <template>
   <div class="w-full">
     <div class="flex items-center py-6 w-[90%] justify-between mx-auto">
-      <div v-if="profileData" class="text-sm">Hi, {{ profileData.name }}</div>
+      <div class="text-sm">Hi, {{ getUserInformation.user.name }}</div>
       <div class="flex justify-center items-center gap-3">
+        <div
+          class="bg-boxbg border-none text-sm px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
+        >
+          Join a book club
+        </div>
         <div class="cursor-pointer" @click="isDrawerOpen = true">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +103,7 @@
                 <div class="mt-2">
                   <label class="text-xs mt-2" for="">phone</label>
                   <input
-                    placeholder="phonenumber"
+                    placeholder="Phone Number"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
                 </div>
@@ -152,17 +157,25 @@ export default {
   },
   computed: {
     ...mapGetters(["getUserProfile", "getUserInformation"]),
-    profileData() {
-      return this.getUserProfile.user;
-    },
     name: {
       get() {
-        return this.getUserProfile.name;
+        return this.getUserInformation.user.name;
       },
       set(value) {
         this.$store.commit("set", {
-          type: "userProfile",
-          data: { ...this.getUserProfile, name: value },
+          type: "userInformation",
+          data: { ...this.getUserInformation, name: value },
+        });
+      },
+    },
+    email: {
+      get() {
+        return this.getUserInformation.user.email;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userInformation",
+          data: { ...this.getUserInformation, email: value },
         });
       },
     },
@@ -173,6 +186,7 @@ export default {
     },
   },
   async created() {
+    let id = this.getUserInformation.user.id;
     let res = await this.$store.dispatch("get", {
       endpoint: `/auth/profile/${id}`,
       auth: true,

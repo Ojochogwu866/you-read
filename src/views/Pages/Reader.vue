@@ -207,9 +207,9 @@
               <div class="text-sm">Pages Per Week:</div>
               <div class="text-sm">Pages Per Day:</div>
             </div>
-            <div v-if="bookGoals">
+            <div>
               <div
-                v-for="books in bookGoals"
+                v-for="books in getUserGoals.books"
                 :key="books.id"
                 class="w-full text-sm grid grid-rows-4 gap-2 mt-2"
               >
@@ -235,12 +235,7 @@
           <div
             class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
           >
-            Join/Create Club
-            <div
-              class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
-            >
-              Create
-            </div>
+            See Book Stats
           </div>
           <div class="gap-y-3"></div>
         </div>
@@ -280,10 +275,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getUserBooks", "getUserGoals"]),
-    bookGoals() {
-      return this.getUserGoals.books;
-    },
+    ...mapGetters(["getUserGoals"]),
   },
   mounted() {
     this.bookGoal();

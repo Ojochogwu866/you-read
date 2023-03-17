@@ -30,7 +30,7 @@
         <div class="px-2">{{ books.bookAuthor }}</div>
         <div class="px-2">{{ books.bookGenre }}</div>
         <div class="px-2">{{ books.bookPages }}</div>
-        <div class="">
+        <div class="px-1">
           <span class="cursor-pointer" @click="displayModal = true">Edit</span>
           /
           <span class="cursor-pointer" @click="removeCurrentBook(books._id)"
