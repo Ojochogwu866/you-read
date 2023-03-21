@@ -52,7 +52,7 @@
           <div
             class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
           >
-            Currently Reading
+            Current Reading
             <div
               @click="modal1 = true"
               class="bg-boxbg border-none px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
@@ -100,15 +100,24 @@
               </form>
             </Card>
           </div>
-          <div class="flex flex-col gap-y-2 items-start justify-center">
-            <div v-if="latestBook" class="text-sm mt-2">
-              Book Title: {{ latestBook.bookTitle }}
+          <div class="">
+            <div class="flex items-start justify-center">
+              <div class="w-full text-sm grid grid-rows-5 gap-2 mt-2">
+                <div class="text-sm">Book Title:</div>
+                <div class="text-sm">Book Author:</div>
+                <div class="text-sm">Book Genre:</div>
+                <div class="text-sm">Book Pages:</div>
+              </div>
+              <div
+                v-if="latestBook"
+                class="w-full text-sm grid grid-rows-5 gap-2 mt-2"
+              >
+                <div class="text-sm">{{ latestBook.bookTitle }}</div>
+                <div class="text-sm">{{ latestBook.bookAuthor }}</div>
+                <div class="text-sm">{{ latestBook.bookGenre }}</div>
+                <div class="text-sm">{{ latestBook.bookPages }}</div>
+              </div>
             </div>
-            <div class="text-sm">Book Author:</div>
-            <div class="text-sm">Book Genre:</div>
-            <div class="text-sm">Book Pages:</div>
-            <div class="text-sm">Pages Left:</div>
-            <div class="text-sm">Days Left:</div>
 
             <div class="flex w-full gap-3 justify-center mt-3">
               <button
@@ -201,33 +210,26 @@
           </div>
           <div class="flex items-start justify-center">
             <div class="w-full text-sm grid grid-rows-5 gap-2 mt-2">
-              <div class="text-sm">Year total read:</div>
-              <div class="text-sm">Monthly total Read:</div>
+              <div class="text-sm">Year Total Read:</div>
+              <div class="text-sm">Monthly Read:</div>
+              <div class="text-sm">pages Per Day:</div>
               <div class="text-sm">Pages Per Week:</div>
-              <div class="text-sm">Pages Per Day:</div>
-              <div class="text-sm">Set Interval (months):</div>
+              <div class="text-sm">Reading Interval:</div>
             </div>
-            <div>
-              <div
-                v-for="books in getUserGoals.books"
-                :key="books.id"
-                class="w-full text-sm grid grid-rows-5 gap-2 mt-2"
-              >
-                <div class="text-">
-                  {{ books.totalRead }}
-                </div>
-                <div class="text-sm">
-                  {{ books.monthlyRead }}
-                </div>
-                <div class="text-sm">{{ books.pagesPerDay }}</div>
-                <div class="text-sm">{{ books.pagesPerWeek }}</div>
-                <div class="text-sm">{{ books.timeInterval }}</div>
-              </div>
+            <div
+              v-if="currentGoal"
+              class="w-full text-sm grid grid-rows-5 gap-2 mt-2"
+            >
+              <div class="text-sm">{{ currentGoal.totalRead }}</div>
+              <div class="text-sm">{{ currentGoal.monthlyRead }}</div>
+              <div class="text-sm">{{ currentGoal.pagesPerDay }}</div>
+              <div class="text-sm">{{ currentGoal.pagesPerWeek }}</div>
+              <div class="text-sm">{{ currentGoal.timeInterval }}</div>
             </div>
           </div>
           <p class="text-xs mt-8">
             <span class="text-red-800">**</span>Note: You can only change your
-            book reading goals after completion of reading interval
+            book reading goals after completion of current reading interval.
           </p>
           <div>
             <div class=""></div>
@@ -263,7 +265,6 @@ export default {
       query: "",
       displayModal: false,
       modal1: false,
-      latestBook: null,
       args: {
         bookAuthor: "",
         bookGenre: "",
@@ -279,64 +280,42 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getUserGoals"]),
-    totalRead: {
-      get() {
-        return this.getUserGoals.books.totalRead;
-      },
-      set(value) {
-        this.$store.commit("set", {
-          type: "userGoals",
-          data: { ...this.getUserUserGoals, totalRead: value },
-        });
-      },
+    ...mapGetters(["getUserGoals", "getUserBooks"]),
+    latestBook() {
+      const books = this.getUserBooks.books;
+      if (!books || !books.length) {
+        return null;
+      }
+      const sortedBooks = books.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      return sortedBooks[0];
     },
-    moonthlyRead: {
-      get() {
-        return this.getUserGoals.books.monthlyRead;
-      },
-      set(value) {
-        this.$store.commit("set", {
-          type: "userGoals",
-          data: { ...this.getUserUserGoals, monthlyRead: value },
-        });
-      },
-    },
-    pagesPerDay: {
-      get() {
-        return this.getUserGoals.books.monthlyRead;
-      },
-      set(value) {
-        this.$store.commit("set", {
-          type: "userGoals",
-          data: { ...this.getUserUserGoals, pagesPerDay: value },
-        });
-      },
-    },
-    pagesPerWeek: {
-      get() {
-        return this.getUserGoals.books.pagesPerWeek;
-      },
-      set(value) {
-        this.$store.commit("set", {
-          type: "userGoals",
-          data: { ...this.getUserUserGoals, pagesPerWeek: value },
-        });
-      },
+    currentGoal() {
+      const goals = this.getUserGoals.books;
+      if (!goals || !goals.length) {
+        return null;
+      }
+      const sortedBooks = goals.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      return sortedBooks[0];
     },
   },
-  mounted() {
-    this.bookGoal();
+  async mounted() {
+    await this.bookGoal();
   },
   methods: {
     search() {
       this.searchBooks(this.query);
     },
+
     clearOutput() {
       if (!this.query) {
         this.clearSearchOutput();
       }
     },
+
     async getSuggestions() {
       if (!this.query) {
         this.fetchSearchSuggestions([]);
@@ -349,6 +328,7 @@ export default {
         console.error(error);
       }
     },
+
     async createBook() {
       let res = await this.$store.dispatch("post", {
         endpoint: `/books/`,
@@ -356,8 +336,13 @@ export default {
         payload: this.args,
       });
       if (res.status == 201) {
+        this.$store.commit("set", {
+          type: "userBooks",
+          data: res,
+        });
       }
     },
+
     async createGoals() {
       let res = await this.$store.dispatch("post", {
         endpoint: `/book-goals/`,
@@ -367,6 +352,7 @@ export default {
       if (res.status == 201) {
       }
     },
+
     async bookGoal() {
       let res = await this.$store.dispatch("get", {
         endpoint: `/book-goals/`,

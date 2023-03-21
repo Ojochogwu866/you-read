@@ -88,16 +88,6 @@ const actions = {
       return res;
     }
   },
-  //   async getUserProfile({ commit }) {
-  //     const response = await Api.getProfile();
-  //     const userProfile = response.data;
-  //     commit("setUserProfile", userProfile);
-  //   },
-  //   async getUserInformation({ commit }) {
-  //     const response = await Api.getInformation();
-  //     const userInformation = response.data;
-  //     commit("setUserInformation", userInformation);
-  //   },
   remove: async ({ commit, dispatch }, { endpoint }) => {
     commit("set", {
       type: "loading",
@@ -121,7 +111,6 @@ const mutations = {
     return state;
   },
   logOut: (state) => {
-    localStorage.removeItem("token");
     localStorage.removeItem("token");
     Object.assign(state, getDefaultState());
     router.push("/");
