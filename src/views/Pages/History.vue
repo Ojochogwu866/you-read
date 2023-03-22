@@ -23,7 +23,6 @@
           Status
         </div>
       </div>
-
       <div v-if="booksData" class="w-full">
         <div
           v-for="books in booksData"
@@ -36,7 +35,7 @@
           <div class="px-2">{{ books.bookPages }}</div>
           <div class="px-1">
             <span class="cursor-pointer" @click="displayModal = true"
-              >Edit</span
+              ><button @click="editBooks(books._id)">Edit</button></span
             >
             /
             <span class="cursor-pointer" @click="removeCurrentBook(books._id)"
@@ -91,18 +90,20 @@
         @update:display-modal="displayModal = $event"
       >
         <form
-          @submit.prevent="createBook"
+          @submit.prevent=""
           class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
         >
           <div class="">
             Enter Book Details Below to keep track of your Adventure
           </div>
           <input
+            v-model="bookTitle"
             class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
             type="text"
             placeholder="Book title e.g purple hibiscus"
           />
           <input
+            v-model="bookAuthor"
             class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
             type="text"
             placeholder="Author e.g chimamanda adichie"
@@ -111,10 +112,12 @@
             class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
             type="text"
             placeholder="Book Genre"
+            v-model="bookGenre"
           />
           <input
             type="text"
-            placeholder="total pages"
+            v-model="bookPages"
+            placeholder="Total pages"
             class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
           />
           <button
@@ -166,7 +169,7 @@
 
           <div class="px-1">
             <span class="cursor-pointer" @click="modal1 = true"
-              ><button @click="editBooks(books._id)">Edit</button></span
+              ><button @click="editGoals(books._id)">Edit</button></span
             >
             /
             <span class="cursor-pointer" @click="removeCurrentGoal(books._id)"
@@ -228,11 +231,10 @@ export default {
       modal1: false,
       displayModal: false,
       moment,
-      editBooks: {},
     };
   },
   computed: {
-    ...mapGetters(["getUserBooks", "getUserGoals"]),
+    ...mapGetters(["getUserBooks", "getUserGoals", "getBookData"]),
     booksData() {
       return this.getUserBooks.books;
     },
@@ -253,15 +255,14 @@ export default {
       if (res.status == 201) {
       }
     },
-    async editBooks() {
-      let id = this.getUserBooks.books._id;
+    async editBooks(booksId) {
       let res = await this.$store.dispatch("get", {
-        endpoint: `/book-goals/${id}`,
+        endpoint: `/books/${booksId}`,
         auth: true,
       });
       if (!!res) {
         this.$store.commit("set", {
-          type: "userBooks",
+          type: "bookData",
           data: res,
         });
       }

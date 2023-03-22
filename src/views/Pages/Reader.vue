@@ -87,7 +87,7 @@
                 />
                 <input
                   type="text"
-                  placeholder="total pages"
+                  placeholder="Total pages"
                   v-model="args.bookPages"
                   class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                 />
@@ -126,20 +126,18 @@
               <button
                 v-if="!latestBook.completed"
                 @click="markAsCompleted(latestBook._id)"
-                class="rounded px-4 py-2 bg-boxColor text-sm font-bold text-white"
+                class="rounded px-4 py-2 bg-boxColor text-sm text-white"
               >
                 Mark as Completed
               </button>
               <button
                 v-else
                 disabled
-                class="rounded cursor-not-allowed px-4 py-2 bg-boxbg text-sm font-bold text-black"
+                class="rounded cursor-not-allowed px-4 py-2 bg-boxbg text-sm text-black"
               >
                 Completed
               </button>
-              <button
-                class="rounded px-4 py-2 bg-boxColor text-sm font-bold text-white"
-              >
+              <button class="rounded px-4 py-2 bg-boxColor text-sm text-white">
                 Get Playlist
               </button>
             </div>
@@ -255,7 +253,18 @@
           >
             See Book Stats
           </div>
-          <div class="gap-y-3"></div>
+          <div class="flex items-start justify-center">
+            <div class="w-full text-sm grid grid-rows-3 gap-2 mt-2">
+              <div class="text-sm">Books Completed:</div>
+              <div class="text-sm">Total Pages Read:</div>
+              <div class="text-sm">Total Time Spent:</div>
+            </div>
+            <div class="w-full text-sm grid grid-rows-5 gap-2 mt-2">
+              <div class="text-sm">30</div>
+              <div class="text-sm">30</div>
+              <div class="text-sm">30</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

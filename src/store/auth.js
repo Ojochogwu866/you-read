@@ -8,6 +8,7 @@ const getDefaultState = () => {
     userInformation: "",
     userBooks: "",
     userGoals: "",
+    bookData: "",
   };
 };
 const state = getDefaultState();
@@ -124,6 +125,7 @@ export default {
     getUserInformation: (state) => state.userInformation,
     getUserBooks: (state) => state.userBooks,
     getUserGoals: (state) => state.userGoals,
+    getBookData: (state) => state.bookData,
   },
   actions,
   mutations,
