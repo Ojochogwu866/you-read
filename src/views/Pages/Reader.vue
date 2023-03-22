@@ -119,9 +119,21 @@
               </div>
             </div>
 
-            <div class="flex w-full gap-3 justify-center mt-3">
+            <div
+              v-if="latestBook"
+              class="flex w-full gap-3 justify-center mt-3"
+            >
               <button
+                v-if="!latestBook.completed"
+                @click="markAsCompleted(latestBook._id)"
                 class="rounded px-4 py-2 bg-boxColor text-sm font-bold text-white"
+              >
+                Mark as Completed
+              </button>
+              <button
+                v-else
+                disabled
+                class="rounded cursor-not-allowed px-4 py-2 bg-boxbg text-sm font-bold text-black"
               >
                 Completed
               </button>
@@ -334,6 +346,21 @@ export default {
         endpoint: `/books/`,
         auth: true,
         payload: this.args,
+      });
+      if (res.status == 201) {
+        this.$store.commit("set", {
+          type: "userBooks",
+          data: res,
+        });
+      }
+    },
+    async markAsCompleted(bookId) {
+      let res = await this.$store.dispatch("put", {
+        endpoint: `/books/${bookId}`,
+        auth: true,
+        payload: {
+          completed: true,
+        },
       });
       if (res.status == 201) {
         this.$store.commit("set", {

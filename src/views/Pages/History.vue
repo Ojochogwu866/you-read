@@ -43,7 +43,44 @@
               >Delete</span
             >
           </div>
-          <div class="px-1">Status</div>
+          <div class="px-1">
+            <span v-if="books.completed">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewBox="0 0 443.57 607.17"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <circle cx="296.07" cy="186.91" r="68.31" fill="#00f24c" />
+                  <path
+                    d="m277.9,388.33c3.53,6.91,7.06,13.83,10.59,20.74,1.01,1.99,3.98,1.36,4.57-.6,4.63-15.44,13.23-29.51,24.82-40.7,2.32-2.24-1.22-5.77-3.54-3.54-12.2,11.78-21.23,26.67-26.11,42.91l4.57-.6c-3.53-6.91-7.06-13.83-10.59-20.74-1.46-2.87-5.78-.34-4.32,2.52h0Z"
+                    fill="#fff"
+                  />
+                </g>
+                <g></g>
+              </svg>
+            </span>
+            <span v-else>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewBox="0 0 443.57 607.17"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <circle cx="296.07" cy="186.91" r="68.31" fill="#870000" />
+                  <path
+                    d="m277.9,388.33c3.53,6.91,7.06,13.83,10.59,20.74,1.01,1.99,3.98,1.36,4.57-.6,4.63-15.44,13.23-29.51,24.82-40.7,2.32-2.24-1.22-5.77-3.54-3.54-12.2,11.78-21.23,26.67-26.11,42.91l4.57-.6c-3.53-6.91-7.06-13.83-10.59-20.74-1.46-2.87-5.78-.34-4.32,2.52h0Z"
+                    fill="#fff"
+                  />
+                </g>
+                <g></g>
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
       <div v-else class="flex justify-center items-center text-sm">
@@ -132,7 +169,7 @@
               ><button @click="editBooks(books._id)">Edit</button></span
             >
             /
-            <span class="cursor-pointer" @click="removeCurrentBook(books._id)"
+            <span class="cursor-pointer" @click="removeCurrentGoal(books._id)"
               >Delete</span
             >
           </div>
@@ -209,9 +246,17 @@ export default {
       if (res.status == 201) {
       }
     },
+    async removeCurrentGoal(x) {
+      let res = await this.$store.dispatch("remove", {
+        endpoint: `/book-goals/${x}/`,
+      });
+      if (res.status == 201) {
+      }
+    },
     async editBooks() {
+      let id = this.getUserBooks.books._id;
       let res = await this.$store.dispatch("get", {
-        endpoint: `/book-goals/${this.getUserBooks.bookId}`,
+        endpoint: `/book-goals/${id}`,
         auth: true,
       });
       if (!!res) {
