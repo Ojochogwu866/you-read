@@ -81,7 +81,7 @@
         </div>
         <div class="px-4 py-6">
           <div class="">
-            <form>
+            <form @submit.prevent="updateUser">
               <div class="gap-y-4 w-[80%] mx-auto text-left">
                 <div class="w-full">
                   <label for="" class="text-xs">Name</label>
@@ -97,12 +97,13 @@
                     disabled
                     v-model="email"
                     placeholder="Email address"
-                    class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
+                    class="w-full cursor-not-allowed text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
                 </div>
                 <div class="mt-2">
-                  <label class="text-xs mt-2" for="">phone</label>
+                  <label class="text-xs mt-2" for="">Phone</label>
                   <input
+                    v-model="phone_number"
                     placeholder="Phone Number"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
@@ -110,6 +111,7 @@
                 <div class="mt-2">
                   <label class="text-xs mt-2" for="">Date of Birth</label>
                   <input
+                    v-model="date_of_birth"
                     placeholder="Date-of-Birth"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
@@ -117,6 +119,7 @@
                 <div class="mt-2">
                   <label class="text-xs mt-4" for="">Country</label>
                   <input
+                    v-model="country"
                     placeholder="country"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
@@ -124,11 +127,13 @@
                 <div class="mt-2 w-full">
                   <label class="text-xs mt-4" for="">Socials</label>
                   <input
+                    v-model="twitter_handle"
                     placeholder="@twitter"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
 
                   <input
+                    v-model="facebook_handle"
                     placeholder="@facebook"
                     class="w-full text-sm mt-3 bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   />
@@ -164,7 +169,10 @@ export default {
       set(value) {
         this.$store.commit("set", {
           type: "userInformation",
-          data: { ...this.getUserInformation, name: value },
+          data: {
+            ...this.getUserInformation,
+            user: { ...this.getUserInformation.user, name: value },
+          },
         });
       },
     },
@@ -175,7 +183,66 @@ export default {
       set(value) {
         this.$store.commit("set", {
           type: "userInformation",
-          data: { ...this.getUserInformation, email: value },
+          data: {
+            ...this.getUserInformation,
+            user: { ...this.getUserInformation.user, email: value },
+          },
+        });
+      },
+    },
+    phone_number: {
+      get() {
+        return this.getUserInformation.user.phone_number;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userInformation",
+          data: {
+            ...this.getUserInformation,
+            user: { ...this.getUserInformation.user, phone_number: value },
+          },
+        });
+      },
+    },
+    date_of_birth: {
+      get() {
+        return this.getUserInformation.user.date_of_birth;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userInformation",
+          data: {
+            ...this.getUserInformation,
+            user: { ...this.getUserInformation.user, date_of_birth: value },
+          },
+        });
+      },
+    },
+    twitter_handle: {
+      get() {
+        return this.getUserInformation.user.twitter_handle;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userInformation",
+          data: {
+            ...this.getUserInformation,
+            user: { ...this.getUserInformation.user, twitter_handle: value },
+          },
+        });
+      },
+    },
+    facebook_handle: {
+      get() {
+        return this.getUserInformation.user.facebook_handle;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userInformation",
+          data: {
+            ...this.getUserInformation,
+            user: { ...this.getUserInformation.user, facebook_handle: value },
+          },
         });
       },
     },
@@ -183,6 +250,20 @@ export default {
   methods: {
     logout() {
       this.$store.commit("logOut");
+    },
+    async updateUser() {
+      let id = this.getUserInformation.user.id;
+      let res = await this.$store.dispatch("put", {
+        endpoint: `/auth/profile/${id}/`,
+        auth: true,
+        payload: this.getUserInformation.user,
+      });
+      if (res.status == 200) {
+        this.$store.commit("set", {
+          type: "userInformation",
+          data: res,
+        });
+      }
     },
   },
   async created() {

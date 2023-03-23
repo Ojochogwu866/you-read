@@ -231,10 +231,6 @@ export default {
       modal1: false,
       displayModal: false,
       moment,
-      bookTitle: "",
-      bookAuthor: "",
-      bookGenre: "",
-      bookPages: "",
     };
   },
   computed: {
@@ -249,7 +245,10 @@ export default {
       set(value) {
         this.$store.commit("set", {
           type: "bookData",
-          data: { ...this.getBookData.book, bookTitle: value },
+          data: {
+            ...this.getBookData,
+            book: { ...this.getBookData.book, bookTitle: value },
+          },
         });
       },
     },
@@ -260,7 +259,10 @@ export default {
       set(value) {
         this.$store.commit("set", {
           type: "bookData",
-          data: { ...this.getBookData.book, bookAuthor: value },
+          data: {
+            ...this.getBookData,
+            book: { ...this.getBookData.book, bookAuthor: value },
+          },
         });
       },
     },
@@ -271,7 +273,10 @@ export default {
       set(value) {
         this.$store.commit("set", {
           type: "bookData",
-          data: { ...this.getBookData.book, bookGenre: value },
+          data: {
+            ...this.getBookData,
+            book: { ...this.getBookData.book, bookGenre: value },
+          },
         });
       },
     },
@@ -282,7 +287,10 @@ export default {
       set(value) {
         this.$store.commit("set", {
           type: "bookData",
-          data: { ...this.getBookData.book, bookPages: value },
+          data: {
+            ...this.getBookData,
+            book: { ...this.getBookData.book, bookPages: value },
+          },
         });
       },
     },
@@ -315,8 +323,9 @@ export default {
       }
     },
     async updateBook() {
+      let bookId = this.getBookData.book._id;
       let res = await this.$store.dispatch("put", {
-        endpoint: `/books/${this.id}/`,
+        endpoint: `/books/${bookId}/`,
         auth: true,
         payload: this.getBookData.book,
       });
