@@ -90,7 +90,7 @@
         @update:display-modal="displayModal = $event"
       >
         <form
-          @submit.prevent=""
+          @submit.prevent="updateBook"
           class="flex flex-col w-auto gap-y-3 bg-white shadow-typeBox px-4 py-6 rounded-md"
         >
           <div class="">
@@ -231,6 +231,10 @@ export default {
       modal1: false,
       displayModal: false,
       moment,
+      bookTitle: "",
+      bookAuthor: "",
+      bookGenre: "",
+      bookPages: "",
     };
   },
   computed: {
@@ -238,8 +242,51 @@ export default {
     booksData() {
       return this.getUserBooks.books;
     },
+    bookTitle: {
+      get() {
+        return this.getBookData.book.bookTitle;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "bookData",
+          data: { ...this.getBookData.book, bookTitle: value },
+        });
+      },
+    },
+    bookAuthor: {
+      get() {
+        return this.getBookData.book.bookAuthor;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "bookData",
+          data: { ...this.getBookData.book, bookAuthor: value },
+        });
+      },
+    },
+    bookGenre: {
+      get() {
+        return this.getBookData.book.bookGenre;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "bookData",
+          data: { ...this.getBookData.book, bookGenre: value },
+        });
+      },
+    },
+    bookPages: {
+      get() {
+        return this.getBookData.book.bookPages;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "bookData",
+          data: { ...this.getBookData.book, bookPages: value },
+        });
+      },
+    },
   },
-  async mounted() {},
   methods: {
     async removeCurrentBook(x) {
       let res = await this.$store.dispatch("remove", {
@@ -263,6 +310,19 @@ export default {
       if (!!res) {
         this.$store.commit("set", {
           type: "bookData",
+          data: res,
+        });
+      }
+    },
+    async updateBook() {
+      let res = await this.$store.dispatch("put", {
+        endpoint: `/books/${this.id}/`,
+        auth: true,
+        payload: this.getBookData.book,
+      });
+      if (res.status == 200) {
+        this.$store.commit("set", {
+          type: "userBook",
           data: res,
         });
       }

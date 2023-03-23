@@ -363,6 +363,7 @@ export default {
         });
       }
     },
+    
     async markAsCompleted(bookId) {
       let res = await this.$store.dispatch("put", {
         endpoint: `/books/${bookId}`,
@@ -378,6 +379,7 @@ export default {
         });
       }
     },
+
 
     async createGoals() {
       let res = await this.$store.dispatch("post", {
