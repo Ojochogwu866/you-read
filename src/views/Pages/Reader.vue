@@ -198,7 +198,7 @@
                     >Select book goal interval</label
                   >
                   <select
-                    v-model="goalsArgs.interval"
+                    v-model="goalsArgs.timeInterval"
                     placeholder="Enter working Days"
                     class="w-full bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
                   >
