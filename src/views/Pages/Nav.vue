@@ -246,6 +246,20 @@ export default {
         });
       },
     },
+    country: {
+      get() {
+        return this.getUserInformation.user.country;
+      },
+      set(value) {
+        this.$store.commit("set", {
+          type: "userInformation",
+          data: {
+            ...this.getUserInformation,
+            user: { ...this.getUserInformation.user, country: value },
+          },
+        });
+      },
+    },
   },
   methods: {
     logout() {
