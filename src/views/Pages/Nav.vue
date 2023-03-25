@@ -109,14 +109,6 @@
                   />
                 </div>
                 <div class="mt-2">
-                  <label class="text-xs mt-2" for="">Date of Birth</label>
-                  <input
-                    v-model="date_of_birth"
-                    placeholder="Date-of-Birth"
-                    class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  />
-                </div>
-                <div class="mt-2">
                   <label class="text-xs mt-4" for="">Country</label>
                   <input
                     v-model="country"
@@ -153,6 +145,7 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 import { mapGetters } from "vuex";
 export default {
   data() {
@@ -160,6 +153,7 @@ export default {
       isDrawerOpen: false,
     };
   },
+  components: { moment },
   computed: {
     ...mapGetters(["getUserProfile", "getUserInformation"]),
     name: {
@@ -200,20 +194,6 @@ export default {
           data: {
             ...this.getUserInformation,
             user: { ...this.getUserInformation.user, phone_number: value },
-          },
-        });
-      },
-    },
-    date_of_birth: {
-      get() {
-        return this.getUserInformation.user.date_of_birth;
-      },
-      set(value) {
-        this.$store.commit("set", {
-          type: "userInformation",
-          data: {
-            ...this.getUserInformation,
-            user: { ...this.getUserInformation.user, date_of_birth: value },
           },
         });
       },

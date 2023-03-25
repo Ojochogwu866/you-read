@@ -98,20 +98,16 @@ export default {
   computed: {
     ...mapGetters(["getUserGoals", "getUserBooks"]),
   },
-  async mounted() {
-    await this.bookGoal();
-  },
+  async mounted() {},
   methods: {
     search() {
       this.searchBooks(this.query);
     },
-
     clearOutput() {
       if (!this.query) {
         this.clearSearchOutput();
       }
     },
-
     async getSuggestions() {
       if (!this.query) {
         this.fetchSearchSuggestions([]);

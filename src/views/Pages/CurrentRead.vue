@@ -87,8 +87,11 @@
         >
           Completed
         </button>
-        <button class="rounded px-4 py-2 bg-boxColor text-sm text-white">
-          Get Playlist
+        <button
+          @click="fetchPlaylist"
+          class="rounded px-4 py-2 bg-boxColor text-sm text-white"
+        >
+          Get Music Playlist
         </button>
       </div>
     </div>
@@ -129,9 +132,7 @@ export default {
       return sortedBooks[0];
     },
   },
-  async mounted() {
-    await this.bookGoal();
-  },
+  async mounted() {},
   methods: {
     async createBook() {
       let res = await this.$store.dispatch("post", {
