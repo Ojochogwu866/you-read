@@ -95,7 +95,12 @@
         </button>
       </div>
     </div>
-    <div></div>
+    <div>
+      <div v-if="estimatedDays || estimatedWeeks">
+        <p>Estimated Time to Finish the Book:</p>
+        <p>{{ estimatedDays }} days or {{ estimatedWeeks }} weeks</p>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -111,6 +116,8 @@ export default {
       query: "",
       displayModal: false,
       modal1: false,
+      estimatedDays: null,
+      estimatedWeeks: null,
       args: {
         bookAuthor: "",
         bookGenre: "",
@@ -131,9 +138,34 @@ export default {
       );
       return sortedBooks[0];
     },
+    currentGoal() {
+      const goals = this.getUserGoals.books;
+      if (!goals || !goals.length) {
+        return null;
+      }
+      const sortedBooks = goals.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      return sortedBooks[0];
+    },
   },
-  async mounted() {},
+  async mounted() {
+    this.calculateEstimatedTime();
+  },
   methods: {
+    calculateEstimatedTime() {
+      const totalPagesToRead = this.latestBook.bookPages;
+      const totalPagesPerWeek = this.currentGoal.pagesPerWeek * 7;
+      const totalPagesPerInterval = this.currentGoal.pagesPerDay * 7;
+      if (totalPagesToRead <= totalPagesPerWeek) {
+        this.estimatedDays = Math.ceil(totalPagesToRead / this.pagesPerDay);
+      } else {
+        const remainingPages = totalPagesToRead - totalPagesPerWeek;
+        this.estimatedDays =
+          7 + Math.ceil(remainingPages / totalPagesPerInterval) * 7;
+      }
+      this.estimatedWeeks = Math.floor(this.estimatedDays / 7);
+    },
     async createBook() {
       let res = await this.$store.dispatch("post", {
         endpoint: `/books/`,

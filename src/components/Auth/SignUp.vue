@@ -53,7 +53,7 @@
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
             <button
               class="w-full gap-4 flex border border-gray-400 py-3 rounded-md justify-center items-center"
-              @click="handleSocialLogin('google')"
+              @click="signUpWithGoogle"
             >
               <img class="w-5" src="@/assets/Images/google.png" alt="" /> Signup
               With Google
@@ -102,6 +102,31 @@ export default {
         this.reset();
       }
     },
+    async signUpWithGoogle() {
+      let res = await this.$store.dispatch("get", {
+        endpoint: "/auth/google",
+        auth: false,
+      });
+      if (res.status == 200) {
+        window.location.href = res.data.authUrl;
+      }
+    },
+  },
+  async mounted() {
+    const params = new URLSearchParams(this.$route.query);
+    const code = params.get("code");
+    if (code) {
+      const tokens = await getTokenFromCode(code);
+      this.$store.commit("set", {
+        type: "accessToken",
+        data: tokens.access_token,
+      });
+      this.$store.commit("set", {
+        type: "refreshToken",
+        data: tokens.refresh_token,
+      });
+      this.$router.push("/reader/profile");
+    }
   },
 };
 </script>

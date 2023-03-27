@@ -46,7 +46,7 @@
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
             <button
               class="w-full gap-4 flex border border-gray-400 py-3 rounded-md justify-center items-center"
-              @click="handleSocialLogin('google')"
+              @click="signInWithGoogle"
             >
               <img class="w-5" src="@/assets/Images/google.png" alt="" /> Login
               With Google
@@ -101,6 +101,7 @@ export default {
         this.reset();
       }
     },
+    
   },
 };
 </script>
