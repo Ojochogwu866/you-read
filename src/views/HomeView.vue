@@ -4,12 +4,14 @@
     <div class="">
       <Landing />
     </div>
+    <Reads />
     <Prelim />
     <Footer />
   </div>
 </template>
 
 <script>
+import Reads from "./Pages/Popular.vue";
 import Nav from "@/components/Layouts/Nav.vue";
 import Landing from "./Pages/Landing.vue";
 import Footer from "@/components/Layouts/footer.vue";
@@ -19,7 +21,9 @@ export default {
   components: {
     Nav,
     Landing,
+    Reads,
     Prelim,
+
     Footer,
   },
 };

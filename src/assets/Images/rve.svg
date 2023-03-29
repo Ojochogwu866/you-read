@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 713.742 454.878" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path d="M76.5389 475.662L1069.98 475.662L1069.98 1111.65L76.5389 1111.65L76.5389 475.662Z" id="Fill"/>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="688.482" id="Filter" width="1045.93" x="50.2939" y="449.417">
+<feDropShadow dx="0" dy="0" flood-color="#ffffff" flood-opacity="0.141964" in="SourceGraphic" result="Shadow" stdDeviation="10"/>
+</filter>
+<clipPath id="TextBounds">
+<rect height="1" transform="matrix(1 0 0 1 409.909 777.448)" width="0" x="0" y="0"/>
+</clipPath>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="404.982" id="Filter_2" width="631.438" x="278.004" y="650.143">
+<feDropShadow dx="-1.58976" dy="-2.54414" flood-color="#ffffff" flood-opacity="0.141964" in="SourceGraphic" result="Shadow" stdDeviation="1"/>
+</filter>
+</defs>
+<clipPath id="ArtboardFrame">
+<rect height="454.878" width="713.742" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Layer-1" vectornator:layerName="Layer 1">
+<g filter="url(#Filter)" vectornator:shadowAngle="1.01229" vectornator:shadowColor="#ffffff" vectornator:shadowOffset="0" vectornator:shadowOpacity="0.141964" vectornator:shadowRadius="20">
+<use fill="#f2f2f2" fill-rule="nonzero" stroke="none" xlink:href="#Fill"/>
+<mask height="638.482" id="StrokeMask" maskUnits="userSpaceOnUse" width="995.929" x="75.2939" y="474.417">
+<rect fill="#ffffff" height="638.482" stroke="none" width="995.929" x="75.2939" y="474.417"/>
+<use fill="#000000" fill-rule="evenodd" stroke="none" xlink:href="#Fill"/>
+</mask>
+<use fill="none" mask="url(#StrokeMask)" stroke="#6e0909" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2.49" xlink:href="#Fill"/>
+</g>
+<g fill="#f2f2f2" opacity="1" stroke="none"/>
+<path d="M282.094 655.188L348.562 856.625L346.875 856.594L472.312 905.25L908.531 1055.12L844.188 862.625L403.562 857.281L846.5 857.281L720.375 807.625L282.094 655.188Z" fill="#ffffff" fill-rule="nonzero" filter="url(#Filter_2)" stroke="none" vectornator:shadowAngle="1.01229" vectornator:shadowColor="#ffffff" vectornator:shadowOffset="-3" vectornator:shadowOpacity="0.141964" vectornator:shadowRadius="2"/>
+</g>
+</svg>
