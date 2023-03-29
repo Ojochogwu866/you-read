@@ -56,12 +56,12 @@ export default {
   },
   methods: {
     close() {
-      this.$emit("close");
+      this.$emit("close", !this.currentModalState);
     },
     toggleModalState() {
       this.$store.commit("change", {
         type: "modalState",
-        data: !this.currentState,
+        data: !this.currentModalState,
       });
     },
   },
@@ -77,7 +77,7 @@ export default {
   mounted() {
     document.body.style.setProperty("overflow", "hidden");
   },
-  destroyed() {
+  unmounted() {
     document.body.style.removeProperty("overflow");
   },
 };

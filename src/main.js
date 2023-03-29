@@ -5,4 +5,5 @@ import store from "./store";
 import "@/assets/tailwind.css";
 import "./auth/firebaseConfig";
 import moment from "moment";
-createApp(App).use(store).use(moment).use(router).mount("#app");
+import gsap from "gsap";
+createApp(App).use(store).use(moment).use(gsap).use(router).mount("#app");

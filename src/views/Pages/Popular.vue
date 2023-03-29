@@ -1,7 +1,8 @@
 <template>
-  <div class="h-[120vh] py-8">
+  <div class="h-[120vh] py-8 overflow-x-hidden">
     <h2
-      class="text-6xl text-left ml-[10%] font-extrabold border-b-2 pb-4 border-[#7ec8e3]"
+      id="smooth-wrapper"
+      class="text-7xl text-left ml-[10%] font-extrabold border-b-2 pb-4 border-[#7ec8e3]"
     >
       RECOMMENDED READS
     </h2>
@@ -12,3 +13,23 @@
     </p>
   </div>
 </template>
+<script>
+import { onMounted } from "vue";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+  name: "HomeView",
+  setup() {
+    onMounted(() => {
+      gsap.to("#smooth-wrapper", {
+        scrollTrigger: "#smooth-wrapper",
+        x: 100,
+        pin: true,
+        duration: 1,
+      });
+    });
+  },
+};
+</script>
