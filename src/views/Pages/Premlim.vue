@@ -2,7 +2,7 @@
   <div class="w-full h-[50vh] flex justify-center items-center">
     <div class="w-11/12 m-auto flex justify-center items-center">
       <div class="w-1/2">
-        <p class="text-left w-10/12 text-[17px] leading-7 py-4">
+        <p class="text-left text-sm w-10/12 leading-7 py-4">
           Built to keep Readers company by keeping track of your reading
           adventure via – Book Documentation, Book Goals, Reading Target.<br />
           Makes reading more exciting!

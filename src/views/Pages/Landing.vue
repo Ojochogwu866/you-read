@@ -60,6 +60,7 @@ export default {
     gsap.to(".rec", { duration: 5, x: -100, ease: "slow(0.5, 0.8, true)" });
   },
   methods: {
+    
     setReader(x) {
       this.$store.commit("set", {
         type: "profiles",
