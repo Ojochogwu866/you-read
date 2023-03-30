@@ -11,10 +11,13 @@
       are at the moment not in patnership with any brand to promote their
       products for more audience.
     </p>
-    <div v-if="bestSellers" class="">
+    <div v-if="bestSellers" class="w-full flex justify-center items-center">
       <div class="mt-4" v-for="book in bestSellers" :key="book">
-        <img :src="book.book_image" :alt="book.title" />
-        {{ book.title }}
+        <img
+          :src="book.book_image"
+          :alt="book.title"
+          class="w-[300px] h-[400px]"
+        />
       </div>
     </div>
   </div>
@@ -24,7 +27,7 @@ import { onMounted } from "vue";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "HomeView",
   setup() {
@@ -38,9 +41,7 @@ export default {
     });
   },
   data() {
-    return {
-      bestSellers: [],
-    };
+    return {};
   },
   computed: {
     ...mapGetters(["getBestSellers"]),
@@ -53,11 +54,8 @@ export default {
       }
     },
   },
-  methods: {
-    ...mapActions(["fetchBestSellers"]),
-  },
   mounted() {
-    this.fetchBestSellers();
+    this.$store.dispatch("fetchBestSellers");
   },
 };
 </script>

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const apiKey = process.env.API_KEY;
-const nytApi = process.env.NYT_API_KEY;
+const nytAPI = process.env.VUE_APP_NYT_API_KEY;
 export default {
   state: {
     modalState: false,
@@ -47,13 +46,45 @@ export default {
         console.log(error);
       }
     },
+    // async fetchBestSellers({ commit }) {
+    //   try {
+    //     const [fictionResponse, romanceResponse] = await Promise.all([
+    //       axios.get(
+    //         "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json",
+    //         {
+    //           params: {
+    //             "api-key": "NmiyS3By5IgYNhHhgp67GewNMdHbsVps",
+    //             list: "hardcover-fiction",
+    //           },
+    //         }
+    //       ),
+
+    //       axios.get(
+    //         "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json",
+    //         {
+    //           params: {
+    //             "api-key": "NmiyS3By5IgYNhHhgp67GewNMdHbsVps",
+    //             list: "hardcover-romance",
+    //           },
+    //         }
+    //       ),
+    //     ]);
+    //     const fictionBooks = fictionResponse.data.results;
+    //     const romanceBooks = romanceResponse.data.results;
+    //     commit("setBestSellers", {
+    //       fiction: fictionBooks,
+    //       romance: romanceBooks,
+    //     });
+    //   } catch (error) {}
+    // },
+
     async fetchBestSellers({ commit }) {
       try {
         const response = await axios.get(
           "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json",
           {
             params: {
-              "api-key": "NmiyS3By5IgYNhHhgp67GewNMdHbsVps",
+              "api-key": nytAPI,
             },
           }
         );
@@ -69,7 +100,7 @@ export default {
     async fetchSearchSuggestions({ commit }, query) {
       try {
         const searchBookResults = await fetch(
-          `https://api.nytimes.com/svc/books/v3/lists.json?q=${query}:keyes&key=${nytApi}`
+          `https://api.nytimes.com/svc/books/v3/lists.json?q=${query}:keyes&key=${nytAPI}`
         );
         commit("setSearchSuggestions", searchBookResults);
       } catch (error) {
