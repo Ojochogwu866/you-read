@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import ReaderProfile from "@/views/Pages/Reader.vue";
+import ReaderProfile from "@/views/Pages/User-profile/Reader.vue";
+import Recommendation from "@/views/Pages/Section/Recommendations.vue";
 const routes = [
   {
     path: "/",
@@ -11,6 +12,11 @@ const routes = [
     path: "/reader/profile/:id",
     name: "reader-profile",
     component: ReaderProfile,
+  },
+  {
+    path: "/recommendations",
+    name: "book-recommendations",
+    component: Recommendation,
   },
 ];
 const router = createRouter({

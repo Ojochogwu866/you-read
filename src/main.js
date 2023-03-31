@@ -4,5 +4,12 @@ import router from "./router";
 import store from "./store";
 import "@/assets/tailwind.css";
 import moment from "moment";
+import element from "element-plus";
 import gsap from "gsap";
-createApp(App).use(store).use(moment).use(gsap).use(router).mount("#app");
+createApp(App)
+  .use(store)
+  .use(moment)
+  .use(element)
+  .use(gsap)
+  .use(router)
+  .mount("#app");
