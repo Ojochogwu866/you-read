@@ -81,6 +81,7 @@ import CurrentReading from "./CurrentRead.vue";
 import GoalHistory from "./currentGoal.vue";
 import { mapGetters } from "vuex";
 export default {
+  name: "Reader",
   components: {
     History,
     CurrentReading,

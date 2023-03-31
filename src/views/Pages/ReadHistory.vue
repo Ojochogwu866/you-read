@@ -132,6 +132,7 @@ import { mapGetters } from "vuex";
 import Card from "./Card.vue";
 import moment from "moment";
 export default {
+    name: "Read History",
   components: {
     Card,
   },

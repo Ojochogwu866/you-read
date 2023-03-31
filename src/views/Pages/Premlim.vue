@@ -24,4 +24,10 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: "Prelim",
+  setup() {},
+};
+</script>
 <style scoped></style>
