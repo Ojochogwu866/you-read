@@ -25,11 +25,12 @@
       </div>
     </div>
     <div>
-      <button
+      <router-link
+        to="/book-recommendations"
         class="mt-5 rounded inline-flex items-center px-14 py-4 bg-[#CBD5E0]"
       >
         Click to view more
-      </button>
+      </router-link>
     </div>
   </div>
 </template>

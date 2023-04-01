@@ -1,6 +1,6 @@
 <template>
   <div class="w-11/12 mx-auto mt-10">
-    <div class="h-[70vh] w-full py-8 overflow-x-hidden">
+    <div class="h-[80vh] w-full py-8 overflow-x-hidden">
       <h2
         id="smooth-wrapper"
         class="text-7xl text-left ml-[10%] font-extrabold border-b-2 pb-4 border-[#7ec8e3]"
@@ -36,10 +36,14 @@
               Your book recommendation will be based on the user's you follow.
             </div>
             <div class="flex flex-col">
-              <div class="text-xs cursor-pointer flex justify-between">
+              <div
+                class="text-xs cursor-pointer flex justify-between items-center"
+              >
                 <div>
-                  <img src="" alt="" />
-                  <span>Bolu Babalola</span>
+                  <p>
+                    Bolu Babalola
+                    <span class="text-gray-500 text-[12px]"> @bolu_b</span>
+                  </p>
                 </div>
                 <div>
                   <button

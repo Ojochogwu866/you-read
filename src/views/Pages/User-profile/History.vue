@@ -6,7 +6,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import Card from "./Card.vue";
+import Card from "../Card.vue";
 import ReadHistory from "./ReadHistory.vue";
 import GoalHistory from "./GoalHistory.vue";
 import moment from "moment";

@@ -129,10 +129,10 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import Card from "./Card.vue";
+import Card from "../Card.vue";
 import moment from "moment";
 export default {
-    name: "Read History",
+  name: "Read History",
   components: {
     Card,
   },

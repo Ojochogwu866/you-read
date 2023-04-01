@@ -74,7 +74,7 @@
   </div>
 </template>
 <script>
-import Card from "./Card.vue";
+import Card from "../Card.vue";
 import History from "./History.vue";
 import Nav from "./Nav.vue";
 import CurrentReading from "./CurrentRead.vue";

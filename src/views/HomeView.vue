@@ -6,6 +6,7 @@
     </div>
     <Reads />
     <Review />
+    <Overview />
     <Prelim />
     <Footer />
   </div>
@@ -17,6 +18,7 @@ import Nav from "@/components/Layouts/Nav.vue";
 import Landing from "./Pages/Landing.vue";
 import Footer from "@/components/Layouts/footer.vue";
 import Prelim from "./Pages/Premlim.vue";
+import Overview from "./Pages/Overview.vue";
 import Review from "./Pages/Reviews.vue";
 export default {
   name: "HomeView",
@@ -26,6 +28,7 @@ export default {
     Reads,
     Prelim,
     Review,
+    Overview,
     Footer,
   },
 };

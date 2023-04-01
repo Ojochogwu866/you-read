@@ -104,7 +104,7 @@
   </div>
 </template>
 <script>
-import Card from "./Card.vue";
+import Card from "../Card.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
