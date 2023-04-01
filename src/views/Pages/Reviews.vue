@@ -1,6 +1,6 @@
 <template>
   <div class="w-11/12 mx-auto mt-10">
-    <div class="h-[80vh] w-full py-8 overflow-x-hidden">
+    <div class="h-[100vh] w-full py-8 overflow-x-hidden">
       <h2
         id="smooth-wrapper"
         class="text-7xl text-left ml-[10%] font-extrabold border-b-2 pb-4 border-[#7ec8e3]"

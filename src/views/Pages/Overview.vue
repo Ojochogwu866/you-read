@@ -4,7 +4,7 @@
   >
     <div class="w-1/2 mx-auto">
       <p
-        class="text-sm text-left leading-7 pr-10 border-r-[4px] border-b-[none] border-l-[none] border-solid border-black border-box"
+        class="text-sm text-left leading-7 pr-10 border-r-[4px] border-b-[none] border-l-[none] border-solid border-[#CBD5E0] border-box"
       >
         Reading is exciting, nevertheless majority of people who desire to read
         for fun are not finding the right way to do it.<br />

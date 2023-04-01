@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div
-      @click="modal"
-      class="rounded-md cursor-pointer border border-parentText px-7 py-2 hover:bg-gray-50"
-    >
-      Login
+    <div @click="modal" class="text-[14px] cursor-pointer hover:bg-gray-50">
+      Log in
     </div>
     <Modal v-if="toggleModal" @close="toggleModal = false">
       <template v-slot:header>
@@ -101,7 +98,6 @@ export default {
         this.reset();
       }
     },
-    
   },
 };
 </script>

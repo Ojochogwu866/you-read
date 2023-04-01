@@ -2,7 +2,7 @@
   <div>
     <div
       @click="modal"
-      class="rounded-md cursor-pointer border border-parentText px-7 py-2 hover:bg-gray-50"
+      class="text-[14px] cursor-pointer  hover:bg-gray-50"
     >
       Sign Up
     </div>
