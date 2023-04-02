@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ReaderProfile from "@/views/Pages/User-profile/Reader.vue";
 import Recommendation from "@/views/Pages/Section/Recommendations.vue";
+import genre from "./genres";
 const routes = [
   {
     path: "/",
@@ -17,6 +18,8 @@ const routes = [
     path: "/book-recommendations",
     name: "book-recommendations",
     component: Recommendation,
+    redirect: { name: "fiction" },
+    children: genre,
   },
 ];
 const router = createRouter({

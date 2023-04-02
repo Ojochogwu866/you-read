@@ -3,7 +3,7 @@
     class="flex justify-between py-4 items-center border-b-2 border-white bg-white pr-20"
   >
     <div></div>
-    <div class="w-2/4" v-if="$route.name == 'book-recommendations'">
+    <div class="w-2/4" v-if="$route.path == 'book-recommendations'">
       <form @submit.prevent="search" class="flex justify-center items-center">
         <input
           v-model="query"

@@ -1,11 +1,14 @@
 <template>
   <div class="bg-profile text-parentText h-screen">
     <Nav />
-    <SubNav
-      class="w-11/12 m-auto px-4 flex justify-center items-center"
-      :routes="routes"
-    />
-    <Footer />
+    <div>
+      <SubNav
+        class="w-11/12 m-auto px-4 flex justify-center items-center"
+        :routes="routes"
+      />
+      <router-view class="pb-10 w-full m-auto sx:mt-10" />
+    </div>
+    <Footer class="absolute bottom-0" />
   </div>
 </template>
 
@@ -23,15 +26,16 @@ export default {
   data() {
     return {
       routes: [
-        "Fiction",
-        "Romance",
-        "Narrative",
-        "Science-Fiction",
-        "Non-Fiction",
-        "Thriller",
-        "Fantasy",
-        "Mystery",
-        "Poetry",
+        "fiction",
+        "love",
+        "narrative",
+        "science-fiction",
+        "non-fiction",
+        "thriller",
+        "fantasy",
+        "mystery",
+        "poetry",
+        "others",
       ],
     };
   },
