@@ -42,6 +42,7 @@
           </ul>
         </div>
         <History />
+   
       </div>
       <div
         class="flex overflow-y-scroll flex-col gap-6 mt-5 justify-center items-center w-2/5"
@@ -77,6 +78,7 @@
 import Card from "../Card.vue";
 import History from "./History.vue";
 import Nav from "./Nav.vue";
+
 import CurrentReading from "./CurrentRead.vue";
 import GoalHistory from "./currentGoal.vue";
 import { mapGetters } from "vuex";
@@ -85,6 +87,7 @@ export default {
   components: {
     History,
     CurrentReading,
+
     Card,
     Nav,
     GoalHistory,

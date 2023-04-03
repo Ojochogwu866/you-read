@@ -2,6 +2,7 @@
   <div class="w-11/12">
     <ReadHistory />
     <GoalHistory />
+    <Recommend />
   </div>
 </template>
 <script>
@@ -9,12 +10,14 @@ import { mapGetters } from "vuex";
 import Card from "../Card.vue";
 import ReadHistory from "./ReadHistory.vue";
 import GoalHistory from "./GoalHistory.vue";
+import Recommend from "./Recommend.vue";
 import moment from "moment";
 export default {
   components: {
     Card,
     ReadHistory,
     GoalHistory,
+    Recommend,
   },
   data() {
     return {

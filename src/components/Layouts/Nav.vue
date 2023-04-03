@@ -15,7 +15,7 @@
       </form>
     </div>
     <div class="flex justify-center gap-6 items-center m-2">
-      <div class="text-[14px] cursor-pointer hover:bg-gray-50">Advertise</div>
+      <div class="text-[14px] cursor-pointer hover:bg-gray-50">For Authors</div>
       <div class="text-[14px] cursor-pointer hover:bg-gray-50">
         Submit a book
       </div>
