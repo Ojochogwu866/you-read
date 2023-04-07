@@ -5,13 +5,13 @@
       <SubNav
         class="w-11/12 m-auto px-4 flex justify-center items-center"
         :routes="routes"
+        @selected-genre="fetchBooksByGenre"
       />
       <router-view class="pb-10 w-full m-auto sx:mt-10" />
     </div>
     <Footer class="absolute bottom-0" />
   </div>
 </template>
-
 <script>
 import Nav from "@/components/Layouts/Nav.vue";
 import Footer from "@/components/Layouts/footer.vue";
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       routes: [
-        "fiction",
+        "hardcover-fiction",
         "love",
         "narrative",
         "science-fiction",
@@ -38,6 +38,11 @@ export default {
         "others",
       ],
     };
+  },
+  methods: {
+    async fetchBooksByGenre(genre) {
+      await this.$store.dispatch("fetchBooks", genre);
+    },
   },
 };
 </script>

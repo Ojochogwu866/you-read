@@ -1,7 +1,7 @@
 const genre = [
   {
-    path: "fiction",
-    name: "fiction",
+    path: "hardcover-fiction",
+    name: "hardcover-fiction",
     component: () => import("@/views/Pages/Section/BookCategory/Fictions.vue"),
   },
   {

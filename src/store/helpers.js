@@ -7,11 +7,24 @@ export default {
     searchBookResults: [],
     query: "",
     bestSellers: [],
+    fiction: [],
+    love: [],
+    narrative: [],
+    scienceFiction: [],
+    nonFiction: [],
+    thriller: [],
+    fantasy: [],
+    mystery: [],
+    poetry: [],
+    others: [],
   },
   getters: {
     currentModalState: (state) => state.modalState,
     searchBookResults: (state) => state.searchBookResults,
     getBestSellers: (state) => state.bestSellers,
+    getBooksByGenre: (state) => (genre) => {
+      return state[genre];
+    },
   },
   mutations: {
     change: (state, { type, data }) => {
@@ -20,6 +33,9 @@ export default {
         state[keys[i]] = keys[i] === type ? data : state[keys[i]];
       }
       return state;
+    },
+    setBooks(state, { genre, books }) {
+      state[genre] = books;
     },
     setBestSellers(state, data) {
       state.bestSellers = data;
@@ -46,38 +62,13 @@ export default {
         console.log(error);
       }
     },
-    // async fetchBestSellers({ commit }) {
-    //   try {
-    //     const [fictionResponse, romanceResponse] = await Promise.all([
-    //       axios.get(
-    //         "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json",
-    //         {
-    //           params: {
-    //             "api-key": "NmiyS3By5IgYNhHhgp67GewNMdHbsVps",
-    //             list: "hardcover-fiction",
-    //           },
-    //         }
-    //       ),
-
-    //       axios.get(
-    //         "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json",
-    //         {
-    //           params: {
-    //             "api-key": "NmiyS3By5IgYNhHhgp67GewNMdHbsVps",
-    //             list: "hardcover-romance",
-    //           },
-    //         }
-    //       ),
-    //     ]);
-    //     const fictionBooks = fictionResponse.data.results;
-    //     const romanceBooks = romanceResponse.data.results;
-    //     commit("setBestSellers", {
-    //       fiction: fictionBooks,
-    //       romance: romanceBooks,
-    //     });
-    //   } catch (error) {}
-    // },
-
+    async fetchBooks({ commit }, routes) {
+      const response = await axios.get(
+        `https://api.nytimes.com/svc/books/v3/lists/current/${routes}.json?api-key=${nytAPI}`
+      );
+      const books = response.data.results.books;
+      commit("setBooks", { routes, books });
+    },
     async fetchBestSellers({ commit }) {
       try {
         const response = await axios.get(

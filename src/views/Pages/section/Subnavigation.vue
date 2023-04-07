@@ -6,6 +6,10 @@
       class="text-sm m-2 flex justify-between items-center capitalize bg-[#CBD5E0] rounded cursor-pointer hover:shadow-typeBox p-2"
       exact-active-class=""
       v-for="(route, index) in routes"
+      @click="
+        selectedGenre = route;
+        $emit('selected-genre', route);
+      "
       :key="index"
       >{{ route }}</router-link
     >
@@ -14,7 +18,17 @@
 <script>
 export default {
   name: "Subnavigation",
-  props: ["routes"],
+  props: {
+    routes: {
+      type: Array,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      selectedGenre: null,
+    };
+  },
 };
 </script>
 <style scoped></style>
