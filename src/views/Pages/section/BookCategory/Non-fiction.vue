@@ -24,9 +24,7 @@ export default {
     },
   },
   created() {
-    this.routes.forEach((genre) => {
-      this.fetchBooksByGenre(genre);
-    });
+    this.$store.dispatch("fetchBooks", this.genre);
   },
 };
 </script>

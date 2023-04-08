@@ -30,7 +30,7 @@ export default {
         "hardcover-fiction",
         "culture",
         "e-book-fiction",
-        "science-fiction",
+        "science",
         "e-book-nonfiction",
         "crime-and-punishment",
         "fantasy",
@@ -58,7 +58,6 @@ export default {
     },
   },
   mounted() {
-    // Fetch books for the first genre in the routes array
     this.fetchBooksByGenre(this.routes[0]);
   },
 };

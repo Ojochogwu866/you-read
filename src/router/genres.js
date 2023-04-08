@@ -41,8 +41,8 @@ const genre = [
     component: () => import("@/views/Pages/Section/BookCategory/Narrative.vue"),
   },
   {
-    path: "science-fiction",
-    name: "science-fiction",
+    path: "science",
+    name: "science",
     component: () =>
       import("@/views/Pages/Section/BookCategory/Science-Fiction.vue"),
   },
