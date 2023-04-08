@@ -11,7 +11,7 @@
         $emit('selected-genre', route);
       "
       :key="index"
-      >{{ route }}</router-link
+      >{{ titles[index] }}</router-link
     >
   </main>
 </template>
@@ -20,6 +20,10 @@ export default {
   name: "Subnavigation",
   props: {
     routes: {
+      type: Array,
+      required: true,
+    },
+    titles: {
       type: Array,
       required: true,
     },

@@ -5,6 +5,7 @@
       <SubNav
         class="w-11/12 m-auto px-4 flex justify-center items-center"
         :routes="routes"
+        :titles="titles"
         @selected-genre="fetchBooksByGenre"
       />
       <router-view class="pb-10 w-full m-auto sx:mt-10" />
@@ -27,15 +28,27 @@ export default {
     return {
       routes: [
         "hardcover-fiction",
-        "love",
-        "narrative",
+        "culture",
+        "e-book-fiction",
         "science-fiction",
-        "non-fiction",
-        "thriller",
+        "e-book-nonfiction",
+        "crime-and-punishment",
         "fantasy",
         "mystery",
         "poetry",
         "others",
+      ],
+      titles: [
+        "Fiction",
+        "Culture",
+        "E-Book fiction",
+        "Science Fiction",
+        "Non-Fiction",
+        "Crime",
+        "Fantasy",
+        "Mystery",
+        "Poetry",
+        "Others",
       ],
     };
   },
@@ -43,6 +56,10 @@ export default {
     async fetchBooksByGenre(genre) {
       await this.$store.dispatch("fetchBooks", genre);
     },
+  },
+  mounted() {
+    // Fetch books for the first genre in the routes array
+    this.fetchBooksByGenre(this.routes[0]);
   },
 };
 </script>

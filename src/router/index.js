@@ -18,7 +18,7 @@ const routes = [
     path: "/book-recommendations",
     name: "book-recommendations",
     component: Recommendation,
-    redirect: { name: "fiction" },
+    redirect: { name: "hardcover-fiction" },
     children: genre,
   },
 ];

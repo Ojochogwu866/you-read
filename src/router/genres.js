@@ -10,8 +10,8 @@ const genre = [
     component: () => import("@/views/Pages/Section/BookCategory/Fantasy.vue"),
   },
   {
-    path: "love",
-    name: "love",
+    path: "culture",
+    name: "culture",
     component: () => import("@/views/Pages/Section/BookCategory/Love.vue"),
   },
   {
@@ -20,13 +20,13 @@ const genre = [
     component: () => import("@/views/Pages/Section/BookCategory/Mystery.vue"),
   },
   {
-    path: "thriller",
-    name: "thriller",
+    path: "crime-and-punishment",
+    name: "crime-and-punishment",
     component: () => import("@/views/Pages/Section/BookCategory/Thriller.vue"),
   },
   {
-    path: "non-fiction",
-    name: "non-fiction",
+    path: "e-book-nonfiction",
+    name: "e-book-nonfiction",
     component: () =>
       import("@/views/Pages/Section/BookCategory/Non-fiction.vue"),
   },
@@ -36,8 +36,8 @@ const genre = [
     component: () => import("@/views/Pages/Section/BookCategory/Poetry.vue"),
   },
   {
-    path: "narrative",
-    name: "narrative",
+    path: "e-book-fiction",
+    name: "e-book-fiction",
     component: () => import("@/views/Pages/Section/BookCategory/Narrative.vue"),
   },
   {

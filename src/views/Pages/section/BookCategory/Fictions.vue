@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h2>{{ genre }}</h2>
-    <ul>
-      <li v-for="book in books" :key="book.rank">
-        {{ book.rank }}. {{ book.title }}
-      </li>
-    </ul>
+    <div class="" v-for="book in books" :key="book.rank">
+      <img
+        :src="book.book_image"
+        :alt="book.title"
+        class="w-[300px] h-[400px]"
+      />
+    </div>
   </div>
 </template>
 
