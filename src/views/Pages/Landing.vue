@@ -33,36 +33,18 @@
       class="overlay w-full absolute h-full top-0 left-0 flex justify-center flex-col"
     >
       <div class="w-11/12 mx-auto">
-        <div class="text-left text-7xl ml-[4.5%] font-extrabold text-[#CBD5E0]">
-          Read Better <span class="text-[#00B4FF]/30">&</span><br />
-          Cover more Books<br />
-          Easily
+        <div
+          class="text-left text-3xl w-1/2 ml-[4.5%] font-normal text-[#CBD5E0]"
+        >
+          Take a fresh leap in your reading adventure
+          <span class="font-bold text-4xl">Explore you-read.</span>
         </div>
-        <div id="buttons" class="flex items-center py-2 mt-6 z-50">
-          <div class="border-b-4 w-100 absolute border-boxColor" />
-          <div class="border-r-8 border-parentText" />
-          <div class="z-20 gap-6 flex justify-center items-center">
-            <div
-              class="bg-[#CBD5E0] rounded cursor-pointer hover:shadow-typeBox p-2 text-sm"
-              @click="setReader()"
-            >
-              Set reading plan
-            </div>
-
-            <div
-              class="bg-[#CBD5E0] rounded cursor-pointer hover:shadow-typeBox p-2 text-sm"
-              @click="setReader()"
-            >
-              Join Book Club
-            </div>
-            <div
-              class="cursor-pointer bg-[#CBD5E0] rounded hover:shadow-typeBox p-2 text-sm"
-              @click="setReader()"
-            >
-              Set Book Goals
-            </div>
-          </div>
-        </div>
+        <p>
+          Your Payoneer account is your key to unlock a universe of
+          opportunities. Whether making international payments, receiving funds,
+          managing your digital business, or accessing capital, Payoneer opens
+          your business up to the world.
+        </p>
       </div>
     </div>
   </div>

@@ -8,9 +8,9 @@
         :titles="titles"
         @selected-genre="fetchBooksByGenre"
       />
-      <router-view class="pb-10 w-full m-auto sx:mt-10" />
     </div>
-    <Footer class="absolute bottom-0" />
+    <router-view class="pb-10 w-full m-auto mt-10" />
+    <Footer />
   </div>
 </template>
 <script>
@@ -33,8 +33,8 @@ export default {
         "science",
         "e-book-nonfiction",
         "crime-and-punishment",
-        "fantasy",
-        "mystery",
+        "religion-spirituality-and-faith",
+        "series-books",
         "poetry",
         "others",
       ],
@@ -45,7 +45,7 @@ export default {
         "Science Fiction",
         "Non-Fiction",
         "Crime",
-        "Fantasy",
+        "Faith",
         "Mystery",
         "Poetry",
         "Others",

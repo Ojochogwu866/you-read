@@ -10,7 +10,7 @@
       <div class="flex flex-col justify-center items-center mt-5">
         <div class="flex flex-col w-3/4">
           <div class="text-sm font-medium">
-            Search book reviews by book author, title & genre
+            Search book reviews by book title & reader
           </div>
           <form
             @submit.prevent="search"
