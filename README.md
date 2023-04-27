@@ -1,5 +1,7 @@
 # you-read
 
+A book reading app, more like an e-library. Search, read, document and review interesting books.
+
 ## Project setup
 
 ```
