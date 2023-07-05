@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ReaderProfile from "@/views/Pages/User-profile/Reader.vue";
-import Recommendation from "@/views/Pages/Section/Recommendations.vue";
+import Recommendation from "@/views/Pages/section/Recommendations.vue";
 import genre from "./genres";
 const routes = [
   {
