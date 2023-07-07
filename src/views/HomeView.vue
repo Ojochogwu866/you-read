@@ -1,14 +1,13 @@
 <template>
-  <div class="bg-profile text-parentText h-screen">
+  <div class=" w-10/12 flex flex-col justify-center mx-auto items-center text-parentText">
     <Nav />
-    <div class="">
+    <div>
       <Landing />
     </div>
     <Reads />
     <Review />
     <Overview />
     <Prelim />
-
     <Footer />
   </div>
 </template>

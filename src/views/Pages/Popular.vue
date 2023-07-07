@@ -1,28 +1,31 @@
 <template>
-  <div class="w-11/12 mx-auto">
-    <div class="h-[120vh] z-[1000] w-full py-8 overflow-x-hidden">
+  <div class="">
+    <div class="h-[120vh] overflow-x-hidden scrollbar">
       <h2
         id="smooth-wrapper"
-        class="text-7xl text-left ml-[10%] font-extrabold border-b-2 pb-4 border-[#7ec8e3]"
+        class="text-base text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white"
       >
         RECOMMENDED READS
       </h2>
-      <p class="text-sm leading-7 w-[40%] ml-[20%] text-left mt-5">
+      <div class="flex">
+      <p class="text-base leading-7 w-[40%] text-left mt-5 text-white">
         Our book recommendation order is based on most reads from several book
         genre's. We are at the moment not in patnership with any brand to
-        promote their products for more audience.
+        promote their products for more audience. Use the suggest button to 
+        recommend books you think people should read.
       </p>
       <div class="w-full flex justify-center items-center">
-        <div v-if="bestSellers" class="grid grid-cols-3 grid-flow-dense">
+        <div v-if="bestSellers" class="grid gap-2 grid-cols-3 grid-flow-dense">
           <div class="mt-4" v-for="book in bestSellers" :key="book">
             <img
               :src="book.book_image"
               :alt="book.title"
-              class="w-[300px] h-[400px]"
+              class="w-[250px] h-[270px]"
             />
           </div>
         </div>
       </div>
+    </div>
     </div>
     <div>
       <router-link
@@ -62,7 +65,7 @@ export default {
       if (!books || !books.length) {
         return null;
       } else {
-        return books.slice(0, Math.min(books.length, 6));
+        return books.slice(0, Math.min(books.length, 12));
       }
     },
   },
@@ -71,3 +74,4 @@ export default {
   },
 };
 </script>
+<style scoped></

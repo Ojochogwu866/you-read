@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky border-t shadow-sm w-11/12 py-8 m-auto flex justify-center items-center"
+    class="sticky border-t shadow-sm w-full py-8 m-auto flex justify-center items-center"
   >
     <div class="w-1/2 mx-auto">
       <p

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-11/12 mx-auto mt-10">
+  <div class="w-full mx-auto mt-10">
     <div class="h-[100vh] w-full py-8 overflow-x-hidden">
       <h2
         id="smooth-wrapper"

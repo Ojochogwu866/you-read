@@ -25,6 +25,7 @@ module.exports = {
       colors: {
         home: "#EFFAFD",
         profile: "#f8fafb",
+        bgc: "rgb(0, 2, 18)",
         parentText: "#060640",
         boxColor: "#A0006D",
         boxbg: "#E5E5E5",

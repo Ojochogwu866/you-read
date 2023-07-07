@@ -9,6 +9,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #060640;
+  color: #fff;
+  background-color:rgb(0, 2, 18);
+  background: radial-gradient(circle, rgb(0, 5, 44) 6%, rgb(0, 2, 18) 100%, rgba(0,212,255,1) 100%);
 }
 </style>

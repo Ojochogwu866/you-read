@@ -1,24 +1,20 @@
 <template>
   <div
-    class="flex justify-between py-4 items-center border-b-2 border-white bg-white pr-20"
+    class="flex  backdrop-filter backdrop-blur-sm bg-opacity-30 z-50 fixed 
+    top-0 justify-between items-center w-10/12 mx-auto text-white
+    py-3 border-b-[1px] border-gray-800 "
   >
-    <div></div>
-    <div class="w-2/4" v-if="$route.path != '/'">
-      <form @submit.prevent="search" class="flex justify-center items-center">
-        <input
-          v-model="query"
-          @input="clearOutput"
-          @keyup="getSuggestions"
-          class="w-full outline-none text-sm bg-white rounded-lg border border-gray-400 p-2"
-          placeholder="search for most recommended books by genres e.g fiction"
-        />
-      </form>
+    <div class="flex gap-5 justify-center items-center">
+    <div class="text-[14px] cursor-pointer hover:bg-gray-50">You Read</div>
+    <div class="text-[14px] cursor-pointer hover:bg-gray-50">For Authors</div>
+    <div class="text-[14px] cursor-pointer hover:bg-gray-50">For Readers </div> 
+    <div class="text-[14px] cursor-pointer hover:bg-gray-50">Company</div>
+    <form>
+      <input placeholder="Search Books" class=" w-[400px] px-2 py-2 text-sm rounded-[6px] bg-gray-400 backdrop-filter
+       backdrop-blur-sm bg-opacity-30  outline-none"/>
+    </form>
     </div>
     <div class="flex justify-center gap-6 items-center m-2">
-      <div class="text-[14px] cursor-pointer hover:bg-gray-50">For Authors</div>
-      <div class="text-[14px] cursor-pointer hover:bg-gray-50">
-        Submit a book
-      </div>
       <Login />
       <Signup />
     </div>
