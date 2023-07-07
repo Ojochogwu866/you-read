@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="h-[120vh] overflow-x-hidden scrollbar">
+  <div class="pp p-5">
+    <div class="h-[100vh] overflow-y-hidden  overflow-x-hidden">
       <h2
         id="smooth-wrapper"
         class="text-base text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white"
@@ -11,7 +11,7 @@
       <p class="text-base leading-7 w-[40%] text-left mt-5 text-white">
         Our book recommendation order is based on most reads from several book
         genre's. We are at the moment not in patnership with any brand to
-        promote their products for more audience. Use the suggest button to 
+        promote their products for more audience. Use the suggest button to
         recommend books you think people should read.
       </p>
       <div class="w-full flex justify-center items-center">
@@ -74,4 +74,8 @@ export default {
   },
 };
 </script>
-<style scoped></
+<style scoped>
+.pp{
+  background-image: url('@/assets/Images/Rectangle.svg');
+}
+</style>
