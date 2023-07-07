@@ -30,7 +30,7 @@
     <div>
       <router-link
         to="/book-recommendations"
-        class="mt-5 rounded inline-flex items-center px-14 py-4 bg-[#CBD5E0]"
+        class="mt-5 rounded inline-flex items-center px-14 py-3 bg-[#CBD5E0]"
       >
         Click to view more
       </router-link>

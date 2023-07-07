@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full mx-auto mt-10">
-    <div class="h-[100vh] w-full py-8 overflow-x-hidden">
+  <div class=" text-gray-400 mt-8">
+    <div class="h-[100vh] w-full py-6">
       <h2
         id="smooth-wrapper"
-        class="text-7xl text-left ml-[10%] font-extrabold border-b-2 pb-4 border-[#7ec8e3]"
+        class="text-base text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white"
       >
         BOOK REVIEWS
       </h2>
@@ -20,14 +20,15 @@
               v-model="query"
               @input="clearOutput"
               @keyup="getSuggestions"
-              class="w-full outline-none text-sm bg-white rounded-md border border-gray-400 p-2"
+              class="w-full outline-none text-sm bg-gray-200 rounded-md border border-gray-400 p-2"
               placeholder="e.g: Honey & Spice, Bolu Babalola, love"
             />
           </form>
         </div>
-        <div class="grid grid-cols-3 gap-3 mt-3">
+        <div class="grid grid-cols-3 gap-3 mt-6">
           <div
-            class="flex flex-col max-w-sm shadow-lg rounded text-left leading-6 p-5"
+            class="flex flex-col max-w-sm shadow-lg bg-gray-400 backdrop-filter border-gray-200 
+rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
             <div
               v-if="isMessageVisible"
@@ -69,7 +70,8 @@
             </div>
           </div>
           <div
-            class="flex flex-col max-w-sm shadow-lg rounded text-left leading-6 p-4"
+            class="flex flex-col max-w-sm shadow-lg bg-gray-400 backdrop-filter border-gray-200 
+rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
             <div class=""></div>
             <div class="flex flex-col">
@@ -85,7 +87,8 @@
             </div>
           </div>
           <div
-            class="flex flex-col max-w-sm shadow-lg rounded text-left leading-6 p-4"
+            class="flex flex-col max-w-sm bg-gray-400 backdrop-filter border-gray-200 
+rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
             <div class=""></div>
             <div class="flex flex-col">
