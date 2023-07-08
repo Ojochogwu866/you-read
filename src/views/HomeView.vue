@@ -5,6 +5,7 @@
       <Landing />
     </div>
     <Reads />
+    <GetInformed/>
     <Review />
     <Overview />
     <Prelim />
@@ -17,6 +18,7 @@ import Reads from "./Pages/Popular.vue";
 import Nav from "@/components/Layouts/Nav.vue";
 import Landing from "./Pages/Landing.vue";
 import Footer from "@/components/Layouts/footer.vue";
+import GetInformed from "./Pages/GetInformed.vue";
 import Prelim from "./Pages/Premlim.vue";
 import Overview from "./Pages/Overview.vue";
 import Review from "./Pages/Reviews.vue";
@@ -27,6 +29,7 @@ export default {
     Landing,
     Reads,
     Prelim,
+    GetInformed,
     Review,
     Overview,
     Footer,

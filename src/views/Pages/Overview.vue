@@ -1,10 +1,11 @@
 <template>
   <div
-    class="sticky border-t shadow-sm w-full py-8 m-auto flex justify-center items-center"
+    class="border-t-[1px] border-gray-800 text-gray-400 w-full py-6 flex justify-center items-center"
   >
     <div class="w-1/2 mx-auto">
       <p
-        class="text-sm text-left leading-7 pr-10 border-r-[4px] border-b-[none] border-l-[none] border-solid border-[#CBD5E0] border-box"
+        class="text-sm text-left leading-7 pr-10 
+        border-r-[1px] border-gray-800"
       >
         Reading is exciting, nevertheless majority of people who desire to read
         for fun are not finding the right way to do it.<br />
@@ -22,15 +23,19 @@
         <div>Have a message for us?</div>
         <form class="space-y-2 mt-1">
           <input
-            placeholder="@youtag"
-            class="w-full outline-none text-sm bg-white rounded border border-gray-400 p-2"
+            placeholder="@youtag or email"
+            class="w-full outline-none text-sm bg-gray-400 backdrop-filter
+       backdrop-blur-sm bg-opacity-30 rounded border border-gray-400 p-2"
           />
           <textarea
             placeholder="Info!"
-            class="w-full min-h-[100px] outline-none text-sm bg-white rounded border border-gray-400 p-2"
+            class="w-full min-h-[100px] outline-none text-sm 
+            bg-gray-400 backdrop-filter
+       backdrop-blur-sm bg-opacity-30 rounded border border-gray-400 p-2"
           />
           <button
-            class="mt-5 rounded inline-flex w-full text-sm justify-center items-center py-2 bg-[#CBD5E0]"
+            class="mt-5 rounded inline-flex w-full text-black 
+            text-sm justify-center items-center py-2 bg-[#CBD5E0]"
           >
             Reach Out
           </button>

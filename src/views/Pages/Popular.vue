@@ -3,7 +3,7 @@
     <div class="h-[100vh] overflow-y-hidden  overflow-x-hidden">
       <h2
         id="smooth-wrapper"
-        class="text-base text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white"
+        class="text-sm text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white"
       >
         RECOMMENDED READS
       </h2>
