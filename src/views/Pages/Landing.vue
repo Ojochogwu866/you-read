@@ -1,5 +1,5 @@
 <template>
-<div class="h-[120vh] justify-center flex flex-col items-center">
+<div class="h-[100vh] justify-center flex flex-col items-center">
     <div class="">
         <img src="@/assets/Images/star.svg.svg" class=" w-80 h-80 -mb-20" alt=""/>
     </div>

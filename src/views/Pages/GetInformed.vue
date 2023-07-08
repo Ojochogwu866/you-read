@@ -15,7 +15,7 @@
                 <h1>Read</h1>
                 <div class="flex gap-3">
                     <img src="@/assets/Images/Vector.svg" class=" w-[30px]" alt=""/>
-                    <p class="text-[14px]">Select books to Read: Search our book catalogue, and find interesting books, or add your own book.</p>
+                    <p class="text-[14px] pr-3">Select books to Read: Search our book catalogue, and find interesting books, or add your own book.</p>
                 </div>
             </div>
             <div class=" h-[200px] w-[50%] exp flex justify-center items-center right-0 rounded-full backdrop-filter
@@ -28,7 +28,7 @@
                 <h1>Review</h1>
                 <div class="flex gap-3">
                     <img src="@/assets/Images/Vector.svg" alt=""/>
-                    <p class="text-[14px]">Review your targets: Set book reading target, document  your progress and monitor your reading time and goals.</p>
+                    <p class="text-[14px] pr-3">Review your targets: Set book reading target, document  your progress and monitor your reading time and goals.</p>
                 </div>
             </div>
             <div class=" h-[200px] w-[50%] exp flex justify-center items-center right-0 rounded-full backdrop-filter
@@ -41,7 +41,7 @@
                 <h1>Document</h1>
                 <div class="flex gap-3">
                     <img src="@/assets/Images/Vector.svg" alt=""/>
-                    <p class="text-[14px]">Give reviews on completed books: Let others know what you think abouy books you have read.</p>
+                    <p class="text-[14px] pr-3">Give reviews on completed books: Let others know what you think abouy books you have read.</p>
                 </div>
             </div>
             <div class=" h-[200px] w-[50%] exp flex justify-center items-center right-0 rounded-full backdrop-filter

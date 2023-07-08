@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-t-[1px] border-gray-800 text-gray-400 w-full py-6 flex justify-center items-center"
+    class="border-t-[1px] border-gray-800 mt-10 text-gray-400 w-full py-6 flex justify-center items-center"
   >
     <div class="w-1/2 mx-auto">
       <p

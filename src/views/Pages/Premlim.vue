@@ -1,5 +1,5 @@
 <template>
-  <div class=" h-[50vh] text-gray-400">
+  <div class=" h-auto mt-10 text-gray-400">
     <div class="flex w-full justify-between items-center">
       <div class="w-1/2 relative inline">
         <p class="text-left text-sm w-10/12 border-t-[1px] border-x-[white] border-y-gray-800 border-b leading-7 py-4">
