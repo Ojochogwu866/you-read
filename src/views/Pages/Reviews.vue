@@ -12,22 +12,22 @@
             Search book reviews by book title & reader
           </div>
           <form
-            @submit.prevent="search"
             class="flex justify-center items-center mt-4"
+            @submit.prevent="search"           
           >
             <input
               v-model="query"
               @input="clearOutput"
-              @keyup="getSuggestions"
               class="w-full outline-none text-sm bg-gray-200 rounded-md border border-gray-400 p-2"
               placeholder="e.g: Honey & Spice, Bolu Babalola, love"
-            />
+              @keyup="getSuggestions"
+            >
           </form>
         </div>
         <div class="grid grid-cols-3 gap-3 mt-6">
           <div
             class="flex flex-col max-w-sm shadow-lg bg-gray-400 backdrop-filter border-gray-200 
-rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
+            rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
             <div
               v-if="isMessageVisible"
@@ -57,13 +57,12 @@ rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
                   <span> 64</span>
                 </div>
               </div>
-              <span class="italic text-xs mt-2"
-                >"Two weeks before his twenty-first birthday, Las Vegas native
+              <span class="italic text-xs mt-2">
+                "Two weeks before his twenty-first birthday, Las Vegas native
                 Bobby Ingersoll finds out he’s inherited a crushing gambling
-                debt from his scumbag father."</span
-              >
-              <span class="text-xs mt-4"
-                >Review On: Legendary magic duo Penn & Teller: a rollicking
+                debt from his scumbag father."</span>
+              <span class="text-xs mt-4">
+                Review On: Legendary magic duo Penn & Teller: a rollicking
                 crime caper that will bend your mind like a spoon</span
               >
             </div>

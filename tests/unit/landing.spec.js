@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils"
-import Landing from "@/Pages/Landing.vue";
+import Landing from "@/views/Pages/Landing.vue";
 
 describe("Landing.vue", () => {
     it("renders props.msg when passed", () => {

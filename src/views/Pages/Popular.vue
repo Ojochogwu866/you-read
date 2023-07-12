@@ -1,5 +1,5 @@
 <template>
-  <div class="pp p-5">
+  <div class="w-full mt-10 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-10 p-5">
     <div class="h-[100vh] overflow-y-hidden  overflow-x-hidden">
       <h2
         id="smooth-wrapper"
@@ -8,24 +8,31 @@
         RECOMMENDED READS
       </h2>
       <div class="flex">
-      <p class="text-base leading-7 w-[40%] text-left mt-5 text-white">
-        Our book recommendation order is based on most reads from several book
-        genre's. We are at the moment not in patnership with any brand to
-        promote their products for more audience. Use the suggest button to
-        recommend books you think people should read.
-      </p>
-      <div class="w-full flex justify-center items-center">
-        <div v-if="bestSellers" class="grid gap-2 grid-cols-3 grid-flow-dense">
-          <div class="mt-4" v-for="book in bestSellers" :key="book">
-            <img
-              :src="book.book_image"
-              :alt="book.title"
-              class="w-[250px] h-[270px]"
-            />
+        <p class="text-base leading-7 w-[40%] text-left mt-5 text-white">
+          Our book recommendation order is based on most reads from several book
+          genre's. We are at the moment not in patnership with any brand to
+          promote their products for more audience. Use the suggest button to
+          recommend books you think people should read.
+        </p>
+        <div class="w-full flex justify-center items-center">
+          <div 
+            v-if="bestSellers" 
+            class="grid gap-2 grid-cols-3 grid-flow-dense"
+          >
+            <div 
+              v-for="book in bestSellers" 
+              :key="book" 
+              class="mt-4"
+            >
+              <img
+                :src="book.book_image"
+                :alt="book.title"
+                class="w-[250px] h-[270px]"
+              >
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
     <div>
       <router-link
@@ -40,11 +47,9 @@
 <script>
 import { onMounted } from "vue";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 import { mapGetters } from "vuex";
 export default {
-  name: "Popular",
+  name: "PopularBooks",
   setup() {
     onMounted(() => {
       gsap.to("#smooth-wrapper", {
@@ -74,8 +79,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.pp{
-  background-image: url('@/assets/Images/Rectangle.svg');
-}
-</style>

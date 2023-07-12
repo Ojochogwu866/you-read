@@ -11,11 +11,11 @@
         <main class="flex items-start justify-start">
           <div class="mt-14 absolute ml-20">
             <svg
-              @click="close"
               class="w-3 h-3 cursor-pointer"
               viewBox="0 0 14 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              @click="close"
             >
               <path
                 fill-rule="evenodd"
@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import ClickOutside from "vue-click-outside";
 import { mapGetters } from "vuex";
 export default {
   props: {
@@ -53,20 +52,6 @@ export default {
       default: true,
     },
     css: String,
-  },
-  methods: {
-    close() {
-      this.$emit("close", !this.currentModalState);
-    },
-    toggleModalState() {
-      this.$store.commit("change", {
-        type: "modalState",
-        data: !this.currentModalState,
-      });
-    },
-  },
-  directives: {
-    ClickOutside,
   },
   computed: {
     ...mapGetters(["currentModalState"]),
@@ -79,6 +64,17 @@ export default {
   },
   unmounted() {
     document.body.style.removeProperty("overflow");
+  },
+  methods: {
+    close() {
+      this.$emit("close", !this.currentModalState);
+    },
+    toggleModalState() {
+      this.$store.commit("change", {
+        type: "modalState",
+        data: !this.currentModalState,
+      });
+    },
   },
 };
 </script>

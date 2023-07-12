@@ -21,6 +21,7 @@ module.exports = {
       boxShadow: {
         nav: "4px 0 10px -3px #010101",
         rc: " rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;",
+        
       },
       colors: {
         home: "#EFFAFD",
@@ -29,7 +30,12 @@ module.exports = {
         parentText: "#060640",
         boxColor: "#A0006D",
         boxbg: "#E5E5E5",
+        girgb: "linear gradient(328deg, rgba(160, 0, 109, 0.521) 0%, rgba(255, 255, 255, 0.493) 50%, rgba(252, 176, 69, 0.493) 100%)",
+        
       },
+      backgroundImage: (theme) => ({
+       "patternBg":"url('@/assets/Images/Rectangle.svg')",
+      }),
     },
   },
 };
