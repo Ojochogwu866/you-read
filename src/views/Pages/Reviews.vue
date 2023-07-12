@@ -2,7 +2,7 @@
   <div class=" text-gray-400 mt-8">
     <div class="h-auto py-6">
       <h2
-        class="text-sm text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white"
+        class="text-sm text-left font-normal pb-2 p-5 border-b-[1px] border-gray-800 text-white"
       >
         BOOK REVIEWS
       </h2>

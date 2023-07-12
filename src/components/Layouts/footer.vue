@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full text-gray-400 mt-16 px-2">
+  <div class="w-full text-gray-400 mt-32 px-2">
     <div class="flex pb-28 gap-10">
       <div class=" w-[350px] text-left text-lg">
         <p>
