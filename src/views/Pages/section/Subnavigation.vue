@@ -1,23 +1,24 @@
 <template>
-  <main class="w-9/12 p-5 mx-auto flex justify-between">
+  <main class="w-full p-5 mt-20 mx-auto flex justify-between">
     <router-link
+      v-for="(route, index) in routes"
+      :key="index"
       :to="{ name: route }"
       style="margin-bottom: -1.97px"
       class="text-sm m-2 flex justify-between items-center capitalize bg-[#CBD5E0] rounded cursor-pointer hover:shadow-typeBox p-2"
-      exact-active-class=""
-      v-for="(route, index) in routes"
+      exact-active-class=" bg-[#A0006D] text-white"
       @click="
-        selectedGenre = route;
-        $emit('selected-genre', route);
+        selectedGenre = routes;
+        $emit('selected-genre', routes);
       "
-      :key="index"
-      >{{ titles[index] }}</router-link
-    >
+    > 
+      {{ titles[index] }}
+    </router-link>
   </main>
 </template>
 <script>
 export default {
-  name: "Subnavigation",
+  name: "SubNavigation",
   props: {
     routes: {
       type: Array,

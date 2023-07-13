@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-profile text-parentText h-screen">
+  <div class=" w-10/12 flex flex-col justify-center mx-auto items-center text-parentText">
     <Nav />
-    <div>
+    <div class="">
       <SubNav
-        class="w-11/12 m-auto px-4 flex justify-center items-center"
+        class="w-full mx-auto flex justify-center items-center"
         :routes="routes"
         :titles="titles"
         @selected-genre="fetchBooksByGenre"
@@ -17,6 +17,7 @@
 import Nav from "@/components/Layouts/Nav.vue";
 import Footer from "@/components/Layouts/footer.vue";
 import SubNav from "./Subnavigation.vue";
+
 export default {
   name: "Recommendations",
   components: {
@@ -52,13 +53,13 @@ export default {
       ],
     };
   },
-  methods: {
-    async fetchBooksByGenre(genre) {
-      await this.$store.dispatch("fetchBooks", genre);
-    },
-  },
-  mounted() {
+  created() {
     this.fetchBooksByGenre(this.routes[0]);
   },
+  methods: {
+  fetchBooksByGenre(genre) {
+    this.$store.dispatch("fetchBooks", genre);
+  },
+ },
 };
 </script>

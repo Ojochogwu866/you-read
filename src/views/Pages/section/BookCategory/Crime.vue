@@ -1,13 +1,13 @@
 <template>
   <div class="w-10/12 mx-auto">
     <div class="w-full flex justify-center items-center">
-      <div v-if="books" class="grid grid-cols-4 space-y-2 grid-flow-dense">
+      <div v-if="books" class="grid grid-cols-4 gap-3 space-y-2 grid-flow-dense">
         <div v-for="book in books.slice(0, 10)" :key="book.rank">
           <img
             :src="book.book_image"
             :alt="book.title"
             class="w-[250px] h-[350px]"
-          />
+          >
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
 <script>
 export default {
   props: {
-    genre: {
+    routes: {
       type: String,
       required: true,
     },
@@ -27,7 +27,7 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch("fetchBooks", this.genre);
+    this.$store.dispatch("fetchBooks", this.routes);
   },
 };
 </script>
