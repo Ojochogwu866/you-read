@@ -34,23 +34,23 @@
         </clipPath>
       </defs>
     </svg>
-    <p class=" text-gray-400 font-normal text-[28px]">
+    <p class=" text-gray-400 font-normal text-[22px] sm:text-[28px]">
       You Read App
     </p>
-    <h1 class=" text-7xl font-extrabold text-gray-300">
+    <h1 class=" sm:text-7xl text-4xl font-extrabold text-gray-300">
       Read <span class=" text-gray-400">Better</span>
     </h1>
-    <p class=" w-3/4 mx-auto text-gray-400 text-base leading-[28px]">
+    <p class=" w-full sm:w-3/4 mx-auto text-gray-400 text-[14px] sm:text-base leading-[28px]">
       People who read as an adventure find a way to document their beautiful escapade. With You-Read, we are creating a virtual experience
       for authors and readers to have a beautiful interface with their reading experience. Read, Review and Document. Its built for Authors and Book Readers
     </p>
     <p 
-      class="mt-4 text-sm text-white py-3 px-4 flex justify-center items-center gap-3 bg-gray-400 backdrop-filter border-gray-200 
+      class="mt-4 sm:text-sm text-[12px] text-white py-3 px-4 flex justify-center items-center gap-3 bg-gray-400 backdrop-filter border-gray-200 
       rounded-3xl  backdrop-blur-sm bg-opacity-10"
     >
       <svg 
-        width="14" 
-        height="14" 
+        width="12" 
+        height="12" 
         viewBox="0 0 42 42" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"

@@ -55,7 +55,7 @@
         {
         title: "Document",
         action:"Give reviews on completed books: Let others know what you think abouy books you have read.",
-        image: require("@/assets/Images/book3.jpg"),
+        image: require("@/assets/Images/book1.jpg"),
         category: ["actions"]
         },
       ]

@@ -8,8 +8,8 @@
       class="text-sm m-2 flex justify-between items-center capitalize bg-[#CBD5E0] rounded cursor-pointer hover:shadow-typeBox p-2"
       exact-active-class=" bg-[#A0006D] text-white"
       @click="
-        selectedGenre = routes;
-        $emit('selected-genre', routes);
+        selectedGenre = route;
+        $emit('selected-genre', route);
       "
     > 
       {{ titles[index] }}

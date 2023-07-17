@@ -15,20 +15,20 @@
           <span class=" w-3 h-3 rounded-full bg-orange-900" />
         </div>
       </div>
-      <div class="flex">
-        <p class="text-base leading-7 w-[40%] text-left mt-5 text-white">
+      <div class="flex sx:flex-col">
+        <p class="text-[14px] sm:text-base leading-7 w-[40%] sx:w-full text-left mt-5 text-white">
           Our book recommendation order is based on most reads from several book
           genre's. We are at the moment not in patnership with any brand to
           promote their products for more audience. Use the suggest button to
           recommend books you think people should read.
         </p>
-        <scroll container=" h-[100vh] px-10">
+        <scroll container=" h-[100vh] px-6 sm:px-10">
           <div 
             class="w-full flex justify-center items-center"
           >
             <div 
               v-if="bestSellers" 
-              class="grid gap-2 grid-cols-3 grid-flow-dense"
+              class="grid gap-2 sm:grid-cols-3 grid-cols-2 grid-flow-dense"
             >
               <div 
                 v-for="book in bestSellers" 
@@ -38,18 +38,18 @@
                 <img
                   :src="book.book_image"
                   :alt="book.title"
-                  class="w-[250px] h-[270px]"
+                  class="w-[200px] h-[200px] sm:w-[250px] sm:h-[270px]"
                 >
               </div>
             </div>
           </div>
-          </scroll>
+        </scroll>
       </div>
     </div>
     <div>
       <router-link
         to="/book-recommendations"
-        class="mt-5 rounded inline-flex items-center px-14 py-3 bg-[#CBD5E0]"
+        class="mt-5 rounded inline-flex text-sm items-center px-6 py-2 sm:px-14 sm:py-3 bg-[#CBD5E0]"
       >
         Click to view more
       </router-link>
