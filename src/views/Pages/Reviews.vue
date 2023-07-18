@@ -24,7 +24,7 @@
             >
           </form>
         </div>
-        <div class="grid md:grid-cols-3 grid-rows-3 gap-3 mt-6">
+        <div class="grid md:grid-cols-3 sx:grid-rows-3 gap-3 mt-6">
           <div
             class="flex flex-col max-w-sm shadow-lg bg-gray-400 backdrop-filter border-gray-200 
             rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"

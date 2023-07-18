@@ -45,7 +45,7 @@
       for authors and readers to have a beautiful interface with their reading experience. Read, Review and Document. Its built for Authors and Book Readers
     </p>
     <p 
-      class="mt-4 sm:text-sm text-[12px] text-white py-3 px-4 flex justify-center items-center gap-3 bg-gray-400 backdrop-filter border-gray-200 
+      class="mt-4 sm:text-sm text-[12px] text-white py-3 px-4 flex justify-center items-center gap-1 bg-gray-400 backdrop-filter border-gray-200 
       rounded-3xl  backdrop-blur-sm bg-opacity-10"
     >
       <svg 
