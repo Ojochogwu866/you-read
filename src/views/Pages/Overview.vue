@@ -1,11 +1,11 @@
 <template>
   <div
-    class="border-t-[1px] border-gray-800 mt-10 text-gray-400 w-full py-6 flex justify-center items-center"
+    class="border-t-[1px] border-gray-800 mt-10 text-gray-400 w-full py-6 flex sx:flex-col justify-center items-center"
   >
-    <div class="w-1/2 mx-auto">
+    <div class="md:w-1/2 md:mx-auto w-full">
       <p
-        class="text-sm text-left leading-7 pr-10 
-        border-r-[1px] border-gray-800"
+        class="text-sm text-left leading-7 md:pr-10 
+        md:border-r-[1px] border-gray-800"
       >
         Reading is exciting, nevertheless majority of people who desire to read
         for fun are not finding the right way to do it.<br />
@@ -18,20 +18,22 @@
         books to read based on reviews from verified readers.
       </p>
     </div>
-    <div class="w-1/2 mx-auto flex flex-col justify-center items-center">
-      <div class="w-3/5 flex-col">
-        <div>Have a message for us?</div>
+    <div class="md:w-1/2 md:mx-auto flex flex-col sx:mt-6 justify-center items-center">
+      <div class="md:w-3/5 flex-col">
+        <div class="sx:flex justify-start items-start">
+          Have a message for us?
+        </div>
         <form class="space-y-2 mt-1">
           <input
             placeholder="@youtag or email"
             class="w-full outline-none text-sm bg-gray-400 backdrop-filter
-       backdrop-blur-sm bg-opacity-30 rounded border border-gray-400 p-2"
-          />
+            backdrop-blur-sm bg-opacity-30 rounded border border-gray-400 p-2"
+          >
           <textarea
             placeholder="Info!"
             class="w-full min-h-[100px] outline-none text-sm 
             bg-gray-400 backdrop-filter
-       backdrop-blur-sm bg-opacity-30 rounded border border-gray-400 p-2"
+             backdrop-blur-sm bg-opacity-30 rounded border border-gray-400 p-2"
           />
           <button
             class="mt-5 rounded inline-flex w-full text-black 

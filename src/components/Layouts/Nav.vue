@@ -2,7 +2,7 @@
   <div
     class="flex backdrop-filter backdrop-blur-sm bg-opacity-30 z-50 fixed 
     top-0 justify-between items-center w-10/12 mx-auto text-white
-    py-3 sx:py-2 sx:w-full sx:p-10 border-b-[1px] border-gray-800 "
+    py-3 sx:py-2 sx:w-11/12  border-b-[1px] border-gray-800 "
   >
     <div class=" antialiased w-full">
       <nav class="flex  items-center justify-between  flex-wrap bg-teal">

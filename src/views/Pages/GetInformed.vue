@@ -1,8 +1,8 @@
 <template>
   <div class="w-full mt-10 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-10">
     <div class="bg-patternBg pb-10">
-      <div class="h-auto">
-        <div class="w-full p-5 ">
+      <div class="h-auto p-5">
+        <div class="w-full ">
           <h2 class="text-sm  text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white">
             How it Works
           </h2> 

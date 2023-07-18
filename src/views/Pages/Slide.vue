@@ -1,11 +1,11 @@
 <template>
   <div 
     v-if="type === 'actions'" 
-    class=" flex text-white justify-center w-full items-center mt-6 p-5" 
+    class=" flex text-white justify-center w-full items-center mt-6" 
   >
-    <div class=" h-[125px] w-[30%] text-left flex flex-col justify-center items-start left-0">
+    <div class=" md:h-[125px] w-[50%] md:w-[30%] text-left flex flex-col justify-center items-start left-0">
       <h1 
-        class=" text-base"
+        class=" sx:hidden text-base sx:text-[14px]"
       > 
         {{ title }} 
       </h1>
@@ -14,7 +14,7 @@
       >
         <img 
           src="@/assets/Images/Vector.svg" 
-          class=" w-[30px]" 
+          class=" w-[30px] sx:w-[14px]" 
           alt="more" 
         >
         <p class="text-[14px] pr-3"> 
@@ -22,11 +22,15 @@
         </p>
       </div>
     </div>
-    <div class=" h-[200px] w-[50%] exp flex justify-center items-center right-0 rounded-full backdrop-filter backdrop-blur-sm bg-opacity-10 ">
+    <div 
+      class=" md:h-[200px] h-[170px] w-[170px]  md:w-[50%] exp flex 
+      justify-center items-center right-0 rounded-full 
+      backdrop-filter backdrop-blur-sm bg-opacity-10 "
+    >
       <img 
         :src="src" 
         :alt="alt" 
-        class="w-1/2 -skew-x-[20deg] h-full object-cover" 
+        class="md:w-1/2 w-[150px] h-[150px] md:-skew-x-[20deg] md:h-full sx:rounded-full object-cover" 
       >
     </div>
   </div> 

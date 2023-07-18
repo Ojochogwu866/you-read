@@ -1,5 +1,5 @@
 <template>
-  <div class=" w-11/12 sm:w-10/12 flex flex-col justify-center mx-auto items-center text-parentText">
+  <div class=" w-11/12 md:w-10/12 flex flex-col justify-center mx-auto items-center text-parentText">
     <Nav />
     <div>
       <Landing />

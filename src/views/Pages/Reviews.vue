@@ -1,13 +1,13 @@
 <template>
-  <div class=" text-gray-400 mt-8">
-    <div class="h-auto py-6">
-      <h2
-        class="text-sm text-left font-normal pb-2 p-5 border-b-[1px] border-gray-800 text-white"
-      >
-        BOOK REVIEWS
-      </h2>
+  <div class=" text-gray-400 mt-8 sx:w-full">
+    <div class="h-auto md:py-6">
+      <div class="w-full p-5">
+        <h2 class="text-sm  text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white">
+          BOOK REVIEWS
+        </h2>
+      </div>
       <div class="flex flex-col justify-center items-center mt-5">
-        <div class="flex flex-col w-3/4">
+        <div class="flex flex-col sx:w-4/5 sx:mx-auto  md:w-3/4">
           <div class="text-sm font-medium">
             Search book reviews by book title & reader
           </div>
@@ -17,14 +17,14 @@
           >
             <input
               v-model="query"
-              @input="clearOutput"
-              class="w-full outline-none text-sm bg-gray-200 rounded-md border border-gray-400 p-2"
               placeholder="e.g: Honey & Spice, Bolu Babalola, love"
+              class="w-full outline-none text-sm bg-gray-200 rounded-md border border-gray-400 p-2"
+              @input="clearOutput"
               @keyup="getSuggestions"
             >
           </form>
         </div>
-        <div class="grid grid-cols-3 gap-3 mt-6">
+        <div class="grid md:grid-cols-3 grid-rows-3 gap-3 mt-6">
           <div
             class="flex flex-col max-w-sm shadow-lg bg-gray-400 backdrop-filter border-gray-200 
             rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
@@ -63,42 +63,31 @@
                 debt from his scumbag father."</span>
               <span class="text-xs mt-4">
                 Review On: Legendary magic duo Penn & Teller: a rollicking
-                crime caper that will bend your mind like a spoon</span
-              >
+                crime caper that will bend your mind like a spoon</span>
             </div>
           </div>
           <div
             class="flex flex-col max-w-sm shadow-lg bg-gray-400 backdrop-filter border-gray-200 
-rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
+            rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
-            <div class=""></div>
             <div class="flex flex-col">
-              <span class="italic text-xs"
-                >"Two weeks before his twenty-first birthday, Las Vegas native
+              <span class="italic text-xs">"Two weeks before his twenty-first birthday, Las Vegas native
                 Bobby Ingersoll finds out he’s inherited a crushing gambling
-                debt from his scumbag father."</span
-              >
-              <span class="text-xs mt-4"
-                >Review On: Legendary magic duo Penn & Teller: a rollicking
-                crime caper that will bend your mind like a spoon</span
-              >
+                debt from his scumbag father."</span>
+              <span class="text-xs mt-4">Review On: Legendary magic duo Penn & Teller: a rollicking
+                crime caper that will bend your mind like a spoon</span>
             </div>
           </div>
           <div
             class="flex flex-col max-w-sm bg-gray-400 backdrop-filter border-gray-200 
-rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
+            rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
-            <div class=""></div>
             <div class="flex flex-col">
-              <span class="italic text-xs"
-                >"Two weeks before his twenty-first birthday, Las Vegas native
+              <span class="italic text-xs">"Two weeks before his twenty-first birthday, Las Vegas native
                 Bobby Ingersoll finds out he’s inherited a crushing gambling
-                debt from his scumbag father."</span
-              >
-              <span class="text-xs mt-4"
-                >Review On: Legendary magic duo Penn & Teller: a rollicking
-                crime caper that will bend your mind like a spoon</span
-              >
+                debt from his scumbag father."</span>
+              <span class="text-xs mt-4">Review On: Legendary magic duo Penn & Teller: a rollicking
+                crime caper that will bend your mind like a spoon</span>
             </div>
           </div>
         </div>

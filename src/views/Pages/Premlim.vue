@@ -5,7 +5,8 @@
         <p class="text-left text-sm w-10/12 border-t-[1px] border-x-[white] border-y-gray-800 border-b leading-7 py-4">
           Built to keep Readers company by keeping track of your reading
           adventure via – Book Documentation, Book Goals, Reading Target.<br />
-          Makes reading more exciting!
+          Explore the possibilities of a new reading ecosystem.
+          Get the feel!
         </p>
       </div>
 
