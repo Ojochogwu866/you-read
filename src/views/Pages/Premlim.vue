@@ -15,7 +15,7 @@
           Hey, we are here to support book writters by creating a reach means to
           a wider audience. If you are a book writter trying to get your book ou
           there, give us a shot, send book description to
-          books.writters@youread.org
+          writters@youread.org
         </p>
       </div>
     </div>

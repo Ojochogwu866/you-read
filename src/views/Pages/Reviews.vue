@@ -8,7 +8,7 @@
       </div>
       <div class="flex flex-col justify-center items-center mt-5">
         <div class="flex flex-col sx:w-4/5 sx:mx-auto  md:w-3/4">
-          <div class="text-sm font-medium">
+          <div class="text-sm font-medium text-gray-400">
             Search book reviews by book title & reader
           </div>
           <form
@@ -70,6 +70,7 @@
             class="flex flex-col max-w-sm shadow-lg bg-gray-400 backdrop-filter border-gray-200 
             rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
+          <div class=""></div>
             <div class="flex flex-col">
               <span class="italic text-xs">"Two weeks before his twenty-first birthday, Las Vegas native
                 Bobby Ingersoll finds out he’s inherited a crushing gambling
@@ -82,6 +83,7 @@
             class="flex flex-col max-w-sm bg-gray-400 backdrop-filter border-gray-200 
             rounded-3xl  backdrop-blur-sm bg-opacity-10 text-left leading-6 p-5"
           >
+          <div class=""></div>
             <div class="flex flex-col">
               <span class="italic text-xs">"Two weeks before his twenty-first birthday, Las Vegas native
                 Bobby Ingersoll finds out he’s inherited a crushing gambling

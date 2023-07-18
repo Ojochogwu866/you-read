@@ -17,7 +17,7 @@
         class="h-screen rounded shadow-2xl flex flex-col justify-center items-end w-full px-20"
       >
         <div
-          class="h-3/4 shadow-form flex flex-col justify-center w-96 bg-white px-8 py-4"
+          class="h-3/4 shadow-form flex flex-col justify-center  w-96 bg-white px-8 py-4"
         >
           <form @submit.prevent="login">
             <div class="text-sm text-slate-900 font-normal mt-8">

@@ -12,19 +12,19 @@
         <g opacity="0.4">
           <path 
             d="M374.328 66.3313H0.328125" 
-            stroke="#A0006D"
+            stroke="#E5E5E5"
           />
           <path 
             d="M66.4785 0.03125V132.331" 
-            stroke="#A0006D"
+            stroke="#E5E5E5"
           />
           <path 
             d="M113.242 112.945L19.6963 19.3994" 
-            stroke="#A0006D"
+            stroke="#E5E5E5"
           />
           <path 
             d="M113.242 19.3994L19.6963 112.945" 
-            stroke="#A0006D"
+            stroke="#E5E5E5"
           />
         </g>
       </g>
