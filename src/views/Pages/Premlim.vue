@@ -4,8 +4,8 @@
       <div class="w-1/2 relative inline">
         <p class="text-left text-sm w-10/12 border-t-[1px] border-x-[white] border-y-gray-800 border-b leading-7 py-4">
           Built to keep Readers company by keeping track of your reading
-          adventure via – Book Documentation, Book Goals, Reading Target.<br />
-          Explore the possibilities of a new reading ecosystem.
+          adventure via – Book Documentation, Book Goals, Reading Target.
+          Explore the possibilities of a new reading ecosystem, create it!
           Get the feel!
         </p>
       </div>
@@ -13,7 +13,7 @@
       <div class="w-1/2 flex justify-end">
         <p class="text-left text-sm w-10/12 leading-7 py-4 border-t-[1px] border-x-[30%] border-gray-800 border-b">
           Hey, we are here to support book writters by creating a reach means to
-          a wider audience. If you are a book writter trying to get your book ou
+          a wider audience. If you are a book writter trying to get your book out
           there, give us a shot, send book description to
           writters@youread.org
         </p>
