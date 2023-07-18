@@ -5,7 +5,8 @@
       :key="index"
       :to="{ name: route }"
       style="margin-bottom: -1.97px"
-      class="text-sm m-2 flex justify-between items-center capitalize bg-[#CBD5E0] rounded cursor-pointer hover:shadow-typeBox p-2"
+      class="text-sm m-2 flex justify-between items-center 
+      capitalize bg-[#CBD5E0] rounded cursor-pointer hover:shadow-typeBox p-2 sx:grid-cols-2"
       exact-active-class=" bg-[#A0006D] text-white"
       @click="
         selectedGenre = route;
