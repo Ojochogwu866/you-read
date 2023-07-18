@@ -17,13 +17,13 @@
           class=" w-[30px] sx:w-[14px]" 
           alt="more" 
         >
-        <p class="text-[14px] pr-3"> 
+        <p class="text-[14px] pr-1 md:pr-3"> 
           {{ action }} 
         </p>
       </div>
     </div>
     <div 
-      class=" md:h-[200px] h-[170px] w-[170px]  md:w-[50%] exp flex 
+      class=" md:h-[200px] h-[160px] w-[160px]  md:w-[50%] exp flex 
       justify-center items-center right-0 rounded-full 
       backdrop-filter backdrop-blur-sm bg-opacity-10 "
     >
