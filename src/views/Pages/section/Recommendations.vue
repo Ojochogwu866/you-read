@@ -1,13 +1,14 @@
 <template>
-  <div class=" w-10/12 flex flex-col justify-center mx-auto items-center text-parentText">
+  <div class=" w-10/12 sx:min-h-screen overflow-x-hidden flex flex-col justify-center mx-auto items-center text-parentText">
     <Nav />
-    <div class="">
+    <el-scrollbar>
       <SubNav
         class="w-full mx-auto flex justify-center items-center"
         :routes="routes"
         :titles="titles"
         @selected-genre="fetchBooksByGenre"
       />
+    </el-scrollbar>
     </div>
     <router-view class="pb-10 w-full m-auto mt-10" />
     <Footer />
@@ -17,13 +18,14 @@
 import Nav from "@/components/Layouts/Nav.vue";
 import Footer from "@/components/Layouts/footer.vue";
 import SubNav from "./Subnavigation.vue";
-
+import { ElScrollbar } from 'element-plus'
 export default {
-  name: "Recommendations",
+  name: "RecommendationsTab",
   components: {
     Nav,
     SubNav,
     Footer,
+    ElScrollbar
   },
   data() {
     return {
