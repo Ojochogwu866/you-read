@@ -1,14 +1,13 @@
 <template>
-  <main class="w-full p-5 mt-20 sx:mt-10 mx-auto flex justify-between">
+  <main class=" flex">
     <router-link
       v-for="(route, index) in routes"
       :key="index"
       :to="{ name: route }"
       style="margin-bottom: -1.97px"
-      class="text-sm m-2 
-      capitalize bg-[#CBD5E0] flex sx:bg-[transparent] rounded 
-      cursor-pointer hover:shadow-typeBox p-2"
-      exact-active-class=" bg-[#A0006D] "
+      class=" shrink-0 flex justify-center items-center min-w-[130px] m-2 capitalize  
+      rounded cursor-pointer  p-2 text-gray-400 font-semibold text-sm text-center"
+      exact-active-class=" "
       @click="
         selectedGenre = route;
         $emit('selected-genre', route);

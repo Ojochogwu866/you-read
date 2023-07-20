@@ -1,14 +1,17 @@
 <template>
   <div class=" w-10/12 sx:min-h-screen overflow-x-hidden flex flex-col justify-center mx-auto items-center text-parentText">
     <Nav />
-    <el-scrollbar>
-      <SubNav
-        class="w-full mx-auto flex justify-center items-center"
-        :routes="routes"
-        :titles="titles"
-        @selected-genre="fetchBooksByGenre"
-      />
-    </el-scrollbar>
+    <div class="w-full flex justify-start items-start mt-20">
+      <el-scrollbar class="flex">
+        <div class="flex">
+          <SubNav
+            class=" pb-3"
+            :routes="routes"
+            :titles="titles"
+            @selected-genre="fetchBooksByGenre"
+          />
+        </div>
+      </el-scrollbar>
     </div>
     <router-view class="pb-10 w-full m-auto mt-10" />
     <Footer />

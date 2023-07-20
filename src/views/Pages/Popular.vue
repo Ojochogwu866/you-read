@@ -22,9 +22,9 @@
           promote their products for more audience. Use the suggest button to
           recommend books you think people should read.
         </p>
-        <scroll container=" h-[100vh] px-6 sm:px-10">
+        <el-scrollbar height="100vh">
           <div 
-            class="w-full flex justify-center items-center"
+            class="w-full flex justify-center px-5 items-center"
           >
             <div 
               v-if="bestSellers" 
@@ -43,7 +43,7 @@
               </div>
             </div>
           </div>
-        </scroll>
+        </el-scrollbar>
       </div>
     </div>
     <div>
@@ -60,11 +60,11 @@
 import { onMounted } from "vue";
 import gsap from "gsap";
 import { mapGetters } from "vuex";
-import Scroll from './Scroll'
+import { ElScrollbar } from 'element-plus'
 export default {
   name: "PopularBooks",
   components:{
-    Scroll
+    ElScrollbar
   },
   setup() {
     onMounted(() => {
