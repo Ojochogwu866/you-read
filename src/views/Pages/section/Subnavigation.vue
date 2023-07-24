@@ -7,7 +7,7 @@
       style="margin-bottom: -1.97px"
       class=" shrink-0 flex justify-center items-center min-w-[130px] m-2 capitalize  
       rounded cursor-pointer  p-2 text-gray-400 font-semibold text-sm text-center"
-      exact-active-class=" "
+      exact-active-class=" border-b-2 border-gray-400"
       @click="
         selectedGenre = route;
         $emit('selected-genre', route);
