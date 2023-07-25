@@ -89,7 +89,7 @@
                     placeholder="Full Name"
                     v-model="name"
                     class="w-full bg-transparent text-sm border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  />
+                  >
                 </div>
                 <div class="mt-2 w-full">
                   <label class="text-xs mt-2" for="">Email Address</label>
@@ -98,7 +98,7 @@
                     v-model="email"
                     placeholder="Email address"
                     class="w-full cursor-not-allowed text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  />
+                  >
                 </div>
                 <div class="mt-2">
                   <label class="text-xs mt-2" for="">Phone</label>
@@ -106,7 +106,7 @@
                     v-model="phone_number"
                     placeholder="Phone Number"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  />
+                  >
                 </div>
                 <div class="mt-2">
                   <label class="text-xs mt-4" for="">Country</label>
@@ -114,7 +114,7 @@
                     v-model="country"
                     placeholder="country"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  />
+                  >
                 </div>
                 <div class="mt-2 w-full">
                   <label class="text-xs mt-4" for="">Socials</label>
@@ -122,13 +122,13 @@
                     v-model="twitter_handle"
                     placeholder="@twitter"
                     class="w-full text-sm bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  />
+                  >
 
                   <input
                     v-model="facebook_handle"
                     placeholder="@facebook"
                     class="w-full text-sm mt-3 bg-transparent border border-gray-400 text-black outline-none p-2 rounded-sm"
-                  />
+                  >
                 </div>
                 <button
                   class="rounded-sm w-full mt-4 px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
@@ -145,15 +145,15 @@
   </div>
 </template>
 <script>
-import moment from "moment";
+
 import { mapGetters } from "vuex";
 export default {
+  name: 'UserNav',
   data() {
     return {
       isDrawerOpen: false,
     };
   },
-  components: { moment },
   computed: {
     ...mapGetters(["getUserProfile", "getUserInformation"]),
     name: {
