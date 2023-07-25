@@ -11,7 +11,8 @@
           class="no-underline  flex justify-center items-center sm:mt-0 
           text-teal-lighter hover:text-white md:mr-4"
         >
-          You Read
+        <img class="w-6" src="@/assets/Images/logo.svg" alt="you-read logo" >
+          <router-link to="/">You-Read</router-link>
         </div>
         <form 
           class=" md:w-[400px] w-8/12  mx-2 px-2 py-2 
