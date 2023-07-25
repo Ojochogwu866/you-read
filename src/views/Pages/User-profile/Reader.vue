@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Nav />
+  <div> 
+  <UserNav /> 
     <div class="w-full flex flex-row bg-profile justify-start items-start">
       <div
         class="mt-6 w-10/12 flex flex-col justify-center items-center m-auto pb-5"
@@ -19,7 +19,7 @@
               @keyup="getSuggestions"
               class="w-full outline-none text-sm bg-white rounded-md border border-gray-400 p-2"
               placeholder="e.g: Honey & Spice, Bolu Babalola"
-            />
+            >
             <button
               class="rounded-sm ml-4 px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
               type="submit"
@@ -42,7 +42,6 @@
           </ul>
         </div>
         <History />
-   
       </div>
       <div
         class="flex overflow-y-scroll flex-col gap-6 mt-5 justify-center items-center w-2/5"
@@ -75,22 +74,19 @@
   </div>
 </template>
 <script>
-import Card from "../Card.vue";
-import History from "./History.vue";
-import Nav from "./Nav.vue";
 
+import History from "./History.vue";
 import CurrentReading from "./CurrentRead.vue";
 import GoalHistory from "./currentGoal.vue";
+import UserNav from './Nav'
 import { mapGetters } from "vuex";
 export default {
-  name: "Reader",
+  name: "ReaderPage",
   components: {
+    UserNav,
     History,
     CurrentReading,
-
-    Card,
-    Nav,
-    GoalHistory,
+    GoalHistory
   },
   data() {
     return {
