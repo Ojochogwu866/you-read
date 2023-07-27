@@ -12,7 +12,7 @@
           text-teal-lighter hover:text-white md:mr-4"
         >
         <img class="w-6" src="@/assets/Images/logo.svg" alt="you-read logo" >
-          <router-link to="/">You-Read</router-link>
+          <router-link class="text-sm sx:hidden" to="/">You-Read</router-link>
         </div>
         <form 
           class=" md:w-[400px] w-8/12  mx-2 px-2 py-2 
