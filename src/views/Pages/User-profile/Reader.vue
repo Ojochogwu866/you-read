@@ -1,9 +1,9 @@
 <template>
   <div class=" bg-white"> 
   <UserNav /> 
-    <div class="w-full flex flex-row  justify-start items-start text-slate-900">
+    <div class="w-full flex sx:flex-col  justify-start items-start text-slate-900">
       <div
-        class="mt-6 w-10/12 flex flex-col justify-center items-center m-auto pb-5"
+        class="mt-6 w-10/12 sx:w-full flex flex-col justify-center items-center m-auto pb-5"
       >
         <div class="flex flex-col w-11/12">
           <div class="text-sm font-medium">
@@ -24,7 +24,7 @@
               class="rounded-sm ml-4 px-4 py-2 font-medium bg-boxColor text-white text-sm outline-none hover:shadow-typeBox"
               type="submit"
             >
-              Submit
+              Search
             </button>
           </form>
         </div>
@@ -44,7 +44,7 @@
         <History />
       </div>
       <div
-        class="flex overflow-y-scroll flex-col gap-6 mt-5 justify-center items-center w-2/5"
+        class="flex flex-col gap-6 mt-5 justify-center items-center w-2/5"
       >
         <CurrentReading />
         <GoalHistory />

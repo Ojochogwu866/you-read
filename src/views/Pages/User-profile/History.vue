@@ -1,5 +1,5 @@
 <template>
-  <div class="w-11/12">
+  <div class="md:w-11/12 min-w-[560px]">
     <ReadHistory />
     <GoalHistory />
     <Recommend />
