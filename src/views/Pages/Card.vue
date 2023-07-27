@@ -9,7 +9,7 @@
     >
       <div class="">
         <button @click="closeModal">
-          <img class="w-8" src="@/assets/Images/Rectangle(4).svg" alt="" />
+          <img class="w-8" src="@/assets/Images/Rectangle(4).svg" alt="close" />
         </button>
       </div>
       <slot></slot>

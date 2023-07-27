@@ -1,7 +1,7 @@
 <template>
-  <div> 
+  <div class=" bg-white"> 
   <UserNav /> 
-    <div class="w-full flex flex-row bg-profile justify-start items-start">
+    <div class="w-full flex flex-row  justify-start items-start text-slate-900">
       <div
         class="mt-6 w-10/12 flex flex-col justify-center items-center m-auto pb-5"
       >

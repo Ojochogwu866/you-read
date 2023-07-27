@@ -52,7 +52,8 @@
           </div>
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
             <button
-              class="w-full gap-4 flex border border-gray-400 py-3 text-slate-900 rounded-md justify-center items-center"
+              class="w-full gap-4 flex border border-gray-400 py-3 
+              text-slate-900 rounded-md justify-center text-sm items-center"
               @click="signInWithGoogle"
             >
               <img 

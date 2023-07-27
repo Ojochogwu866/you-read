@@ -31,7 +31,7 @@ module.exports = {
         boxColor: "#A0006D",
         boxbg: "#E5E5E5",
         girgb: "linear gradient(328deg, rgba(160, 0, 109, 0.521) 0%, rgba(255, 255, 255, 0.493) 50%, rgba(252, 176, 69, 0.493) 100%)",
-        
+        user: "radial gradient(circle, rgba(248,250,251,1) 0%, rgba(160,0,109,1) 900%);"
       },
       backgroundImage: (theme) => ({
        "patternBg":"url('@/assets/Images/Rectangle.svg')",

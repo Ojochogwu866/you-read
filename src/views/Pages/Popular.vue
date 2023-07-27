@@ -28,7 +28,8 @@
           >
             <div 
               v-if="bestSellers" 
-              class="grid gap-2 sm:grid-cols-3 grid-cols-2 grid-flow-dense"
+              class="grid gap-2 sm:grid-cols-3
+              grid-cols-2 grid-flow-dense"
             >
               <div 
                 v-for="book in bestSellers" 

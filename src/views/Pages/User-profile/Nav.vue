@@ -1,10 +1,11 @@
 <template>
-  <div class="w-full">
+  <div class="w-full bg-gradient-to-tl from-pink-100 to-zinc-200">
     <div class="flex items-center py-6 w-[90%] justify-between mx-auto">
-      <div class="text-sm">Hi, {{ getUserInformation.user.name }}</div>
+      <div class="text-[15px] text-slate-900 font-semibold">Hi, {{ getUserInformation.user.name }}</div>
       <div class="flex justify-center items-center gap-3">
         <div
-          class="bg-boxbg border-none text-sm px-2 py-1 hover:bg-boxColor cursor-pointer hover:text-white"
+          class="bg-boxbg border-none rounded-sm text-sm px-2 py-2
+           hover:bg-boxColor cursor-pointer hover:text-white text-slate-900"
         >
           Join a book club
         </div>
@@ -44,7 +45,7 @@
             />
           </svg>
         </div>
-        <p class="text-sm font-semibold cursor-pointer" @click="logout">
+        <p class="text-[15px] text-slate-900 font-semibold cursor-pointer" @click="logout">
           Logout
         </p>
       </div>
