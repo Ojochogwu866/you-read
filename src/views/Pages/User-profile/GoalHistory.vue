@@ -1,6 +1,7 @@
 <template>
   <div
-    class="w-full p-3 rounded-md gap-3 border border-gray-400 mt-8 flex justify-start items-start flex-col text-left"
+    class="w-full p-3 rounded-md gap-3 border 
+    border-gray-400 mt-8 flex justify-start items-start flex-col text-left"
   >
     <div class="text-sm font-semibold">Goals History</div>
 

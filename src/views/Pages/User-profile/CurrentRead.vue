@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-4 rounded-md gap-6 text-left bg-white w-5/6 min-h-card shadow-bx"
+    class="p-4 rounded-md gap-6 border  text-left border-gray-400  w-5/6 min-h-card shadow-bx"
   >
     <div
       class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"

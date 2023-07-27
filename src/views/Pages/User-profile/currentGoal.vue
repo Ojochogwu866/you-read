@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 rounded-md text-left bg-white w-5/6 min-h-fit shadow-bx">
+  <div class="p-4 rounded-md text-left bg-white border border-gray-400 w-5/6 min-h-fit shadow-bx">
     <div
       class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"
     >

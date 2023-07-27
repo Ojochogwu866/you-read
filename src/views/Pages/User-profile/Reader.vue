@@ -44,12 +44,12 @@
         <History />
       </div>
       <div
-        class="flex flex-col gap-6 mt-5 justify-center items-center w-2/5"
+        class="flex flex-col gap-6 mt-5 justify-center items-center md:w-2/5 w-full"
       >
         <CurrentReading />
         <GoalHistory />
         <div
-          class="p-4 rounded-md gap-6 text-left bg-white w-5/6 min-h-fit shadow-bx"
+          class="p-4 rounded-md gap-6 text-left bg-white border border-gray-400 w-5/6 min-h-fit shadow-bx"
         >
           <div
             class="border-b-2 pb-1 border-boxColor flex items-center gap-8 text-sm"

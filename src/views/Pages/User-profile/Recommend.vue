@@ -1,6 +1,7 @@
 <template>
-  <div class="w-full flex justify-start items-start gap-4 mt-8">
-    <div class="w-1/2 p-3 rounded-md border border-gray-400 text-left">
+  <div class="w-full flex sx:flex-col justify-center 
+  items-center md:justify-start md:items-start gap-4 mt-8">
+    <div class="w-full md:w-1/2 p-3 rounded-md border border-gray-400 text-left">
       <div class="text-[14px] font-bold">Your followers</div>
       <p class="text-xs leading-5">
         You have people following your book review comment profile. Check out
@@ -8,26 +9,26 @@
         reviews.
       </p>
       <div class="mt-2 flex">
-        <div
-          class="flex justify-around rounded items-center px-4 py-2 bg-[#CBD5E0]"
+        <button
+          class="flex justify-center items-center rounded  px-4 py-2 gap-2 bg-[#CBD5E0]"
         >
-          <span class="text-sm">View Followers</span>
+          <span class="text-[12px]">View Followers</span>
           <svg
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
             data-v-ea893728=""
-            width="15"
-            height="15"
+            width="12"
+            height="12"
           >
             <path
               fill="currentColor"
               d="M128 192h768v128H128V192zm0 256h512v128H128V448zm0 256h768v128H128V704zm576-352 192 160-192 128V352z"
             ></path>
           </svg>
-        </div>
+        </button>
       </div>
     </div>
-    <div class="w-1/2 p-3 rounded-md border border-gray-400 text-left">
+    <div class="md:w-1/2 sx:w-full p-3 rounded-md border border-gray-400 text-left">
       <div class="text-[14px] font-bold">Reviews & Comments</div>
       <p class="text-xs leading-5">
         Comment on books you've read by adding a review. Your review will be
