@@ -1,5 +1,6 @@
 <template>
-  <div class=" w-10/12 sx:min-h-screen overflow-x-hidden flex flex-col justify-center mx-auto items-center text-parentText">
+  <div class=" md:w-10/12 w-11/12 sx:min-h-screen overflow-x-hidden flex 
+  flex-col justify-center mx-auto items-center text-parentText">
     <Nav />
     <div class="w-full flex justify-start items-start mt-20">
       <el-scrollbar class="flex">
