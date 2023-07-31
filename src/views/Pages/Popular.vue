@@ -23,18 +23,16 @@
           recommend books you think people should read.
         </p>
         <el-scrollbar height="100vh">
-           <el-skeleton v-if="bestSellers" 
-           :count="12"
-           :rows="3"
-           style="width: 240px" 
-           class="grid w-full gap-2 sm:grid-cols-3
-              grid-cols-2 grid-flow-dense"
-           :loading="loading" 
-           animated
-           >
+          <div class=" w-full grid grid-cols-3 gap-[1px] px-5 items-center" v-if="bestSellers">
+          <el-skeleton 
+            :count="6"
+            class=""
+            :loading="loading" 
+            animated
+          >
       <template #template>
         <el-skeleton-item variant="image" style="width: 240px;
-         height: 240px; background: #00394e43" />
+          height: 240px; background: #00394e43" />
         <div style="padding: 8px">
           <div
             style="
@@ -49,6 +47,7 @@
         </div>
       </template>
     </el-skeleton>
+  </div>
           <div 
             v-else
             class="w-full flex justify-center px-5 items-center"
