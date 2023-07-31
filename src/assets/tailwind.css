@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+    --grid-gap: 30px;
+    --grid-min: 175px;
+    --grid-items: auto-fill;
+}

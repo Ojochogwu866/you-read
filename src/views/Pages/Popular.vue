@@ -15,25 +15,42 @@
           <span class=" w-3 h-3 rounded-full bg-orange-900" />
         </div>
       </div>
-      <div class="flex sx:flex-col">
-        <p class="text-[14px] sm:text-base leading-7 w-[40%] sx:w-full text-left mt-5 text-white">
+      <div class="flex flex-col">
+        <p class="text-[14px] leading-7 w-[70%] sx:w-full text-left mt-5 text-white">
           Our book recommendation order is based on most reads from several book
           genre's. We are at the moment not in patnership with any brand to
           promote their products for more audience. Use the suggest button to
           recommend books you think people should read.
         </p>
-        <el-scrollbar height="100vh">
-          <div class=" w-full grid grid-cols-3 gap-[1px] px-5 items-center" v-if="bestSellers">
-          <el-skeleton 
-            :count="6"
-            class=""
-            :loading="loading" 
-            animated
+        <el-scrollbar height="80vh">
+          <TransitionGroup name="list" tag="ul">
+          <div 
+            class=" main"
           >
-      <template #template>
-        <el-skeleton-item variant="image" style="width: 240px;
-          height: 240px; background: #00394e43" />
-        <div style="padding: 8px">
+            <div 
+              v-for="book in bestSellers" 
+              :key="book"
+              class="card"
+            >
+              <div 
+                v-if="book.book_image" 
+                class="relative w-full image"
+              >
+                <img
+                  :src="book.book_image"
+                  :alt="book.title"
+                  class="w-[200px] h-[270px] sm:w-[250px] sm:h-[270px]"
+                >
+              </div>
+              <div 
+                v-else 
+                class="relative w-full image"
+              >
+        <el-skeleton style="width: 250px; height: 270px;" :count="8" :loading="loading" animated>
+          <template #template>
+        <el-skeleton-item variant="image" style="width: 240px; height: 240px" />
+        <div style="padding: 14px">
+          <el-skeleton-item variant="h3" style="width: 50%" />
           <div
             style="
               display: flex;
@@ -46,30 +63,11 @@
           </div>
         </div>
       </template>
-    </el-skeleton>
-  </div>
-          <div 
-            v-else
-            class="w-full flex justify-center px-5 items-center"
-          >
-            <div 
-              v-if="!bestSellers" 
-              class="grid gap-2 sm:grid-cols-3
-              grid-cols-2 grid-flow-dense"
-            >
-              <div 
-                v-for="book in bestSellers" 
-                :key="book" 
-                class="mt-4"
-              >
-                <img
-                  :src="book.book_image"
-                  :alt="book.title"
-                  class="w-[200px] h-[200px] sm:w-[250px] sm:h-[270px]"
-                >
+      </el-skeleton>
               </div>
             </div>
           </div>
+          </TransitionGroup>
         </el-scrollbar>
       </div>
     </div>
@@ -115,7 +113,7 @@ export default {
       if (!books || !books.length) {
         return null;
       } else {
-        return books.slice(0, Math.min(books.length, 12));
+        return books.slice(0, Math.min(books.length, 20));
       }
     },
   },
@@ -125,7 +123,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .next-button {
   transition: all 0.8s;
   position: relative;
@@ -162,4 +160,96 @@ export default {
   opacity: 1;
   transform: scale(1,1);
 }
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.main{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  grid-gap: 10px;
+  counter-reset: rank;
+  margin: 2%;
+  .card{
+        counter-increment: rank;
+        position: relative;
+        background: #2b2a34;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        border-radius: 4px;
+        overflow: hidden;
+        animation: mouseOut 0.3s ease-in;
+        .image{
+          &:after {
+                content: '';
+                display: block;
+                padding-bottom: 10%;
+            }
+            &:before {
+                content: '•••';
+                font-size: 24px;
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                color: rgba(white, 0.1);
+                z-index: 0;
+            }
+            img{
+              &.active {
+                    animation: imageFadeIn 0.5s ease-in forwards;
+                    animation-delay: 0.5s;
+                }
+            }
+          }
+        }
+        .card:hover {
+        animation: mouseOver 0.3s ease-in forwards;
+    }
+}
+@keyframes mouseOver {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -5px;
+    }
+}
+
+@keyframes mouseOut {
+    0% {
+        top: -5px;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes imageFadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.card-enter {
+    opacity: 0;
+}
+.card-enter-to {
+    opacity: 1;
+}
+.card-enter-active {
+    transition: opacity 0.3s ease-in;
+}
+
 </style>

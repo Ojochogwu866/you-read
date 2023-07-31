@@ -1,13 +1,13 @@
 <template>
-  <main class=" flex">
+  <main class=" flex ">
     <router-link
       v-for="(route, index) in routes"
       :key="index"
       :to="{ name: route }"
       style="margin-bottom: -1.97px"
-      class=" shrink-0 flex justify-center items-center min-w-[130px] m-2 capitalize  
+      class=" shrink-0 flex justify-start items-center w-auto m-2 capitalize  
       rounded cursor-pointer  p-2 text-gray-400 font-semibold text-sm text-center"
-      exact-active-class=" border-b-2 border-gray-400"
+      exact-active-class=" line-through"
       @click="
         selectedGenre = route;
         $emit('selected-genre', route);
