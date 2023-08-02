@@ -35,14 +35,14 @@
             >
               <div 
                 v-if="book.book_image" 
-                class="relative w-full before:content-[...] before:text-24px before:absolute before:flex before:w-full 
+                class="relative w-full before:content-['...'] before:text-24px before:absolute before:flex before:w-full 
                 before:h-full before:items-center before:justify-center before:z-0 before:text-[rgba(white, 0.1)] 
-                after:content-[''] after:pb-[5%] md:after:pb-[10%] after:block"
+                after:content-[''] after:pb-[5%] md:after:pb-[7%] after:block"
               >
                 <img
                   :src="book.book_image"
                   :alt="book.title"
-                  class="cursor-pointer top-0 left-0 h-[300px] w-full z-10 opacity-0 animate-imageFadeIn delay-[0.5s]"
+                  class="cursor-pointer top-0 left-0 h-[250px] md:h-[300px] w-full z-10 opacity-0 animate-imageFadeIn delay-[0.5s]"
                   v-on:load="isLoaded()" v-bind:class="{ active: isActive }"
                 >
               </div>

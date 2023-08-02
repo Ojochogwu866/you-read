@@ -1,10 +1,11 @@
 <template>
   <div class="w-10/12 mx-auto">
     <div v-if="books" class="sx:grid-cols-sx-column m-[2%] grid-cols-columns grid gap-[30px]">
-      <div v-for="book in books.slice(0, 20)" :key="book.rank" class="section-card">
+      <div v-for="book in books.slice(0, 20)" :key="book.rank" class="relative rounded-[4px] overflow-hidden h-[300px]">
         <img
           :src="book.book_image"
           :alt="book.title"
+          class="h-full"
         />
       </div>
     </div>
