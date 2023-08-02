@@ -20,7 +20,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         'columns': 'repeat(auto-fill, minmax(175px, 1fr))',
-        'sx-column': 'repeat(auto-fill, minmax(125x, 1fr))'
+        'sx-column': 'repeat(auto-fill, minmax(80x, 1fr))'
       },
       boxShadow: {
         nav: "4px 0 10px -3px #010101",
