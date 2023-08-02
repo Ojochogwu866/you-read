@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mt-10 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-10 p-5">
-    <div class="h-[100vh] overflow-y-hidden  overflow-x-hidden">
+    <div class="h-[100vh] overflow-y-hidden">
       <div 
         class="flex justify-between items-center pb-2 border-b-[1px] border-gray-800 "
       >
@@ -16,30 +16,34 @@
         </div>
       </div>
       <div class="flex flex-col">
-        <p class="text-[14px] leading-7 w-[70%] sx:w-full text-left mt-5 text-white">
+        <p class="text-[14px]  w-[70%] sx:w-full text-left mt-5 text-white">
           Our book recommendation order is based on most reads from several book
           genre's. We are at the moment not in patnership with any brand to
           promote their products for more audience. Use the suggest button to
           recommend books you think people should read.
         </p>
-        <el-scrollbar height="80vh">
+        
+        <el-scrollbar height="90vh" >
           <TransitionGroup name="list" tag="ul">
           <div 
-            class=" main"
+            class="sx:grid-cols-sx-column m-[2%] grid-cols-columns grid gap-[30px]"
           >
             <div 
               v-for="book in bestSellers" 
               :key="book"
-              class="card"
+              class="relative bg-[#2b2a34] rounded-[4px] overflow-hidden animate-mouseOut hover:animate-mouseOver"
             >
               <div 
                 v-if="book.book_image" 
-                class="relative w-full image"
+                class="relative w-full before:content-[...] before:text-24px before:absolute before:flex before:w-full 
+                before:h-full before:items-center before:justify-center before:z-0 before:text-[rgba(white, 0.1)] 
+                after:content-[''] after:pb-[10%] after:block"
               >
                 <img
                   :src="book.book_image"
                   :alt="book.title"
-                  class="w-[200px] h-[270px] sm:w-[250px] sm:h-[270px]"
+                  class="cursor-pointer top-0 left-0 h-[300px] w-full z-10 opacity-0 animate-imageFadeIn delay-[0.5s]"
+                  v-on:load="isLoaded()" v-bind:class="{ active: isActive }"
                 >
               </div>
               <div 
@@ -74,7 +78,8 @@
     <div>
       <router-link
         to="/book-recommendations"
-        class="mt-5 next-button rounded inline-flex text-sm
+        class="mt-5 next-button transition-all relative before:content-[''] 
+        before:absolute before:top-0 before:left-0 rounded inline-flex text-sm bfore:w-full
         items-center px-6 py-2 sm:px-14 sm:py-3 text-white"
       >
         Click to view more
@@ -104,7 +109,9 @@ export default {
 
   },
   data() {
-    return {};
+    return {
+      isActive: false
+    };
   },
   computed: {
     ...mapGetters(["getBestSellers"]),
@@ -121,6 +128,11 @@ export default {
     this.$store.dispatch("fetchBestSellers");
     const loading = ref(true);
   },
+  methods:{
+    isLoaded: function() {
+            this.isActive = true;
+        },
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -139,7 +151,7 @@ export default {
   background-color: rgba(255,255,255,0.1);
   transition: all 0.3s;
 }
-.net-button:hover::before {
+.next-button:hover::before {
   opacity: 0 ;
   transform: scale(0.5,0.5);
 }
@@ -168,88 +180,6 @@ export default {
 .list-leave-to {
   opacity: 0;
   transform: translateX(30px);
-}
-.main{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  grid-gap: 10px;
-  counter-reset: rank;
-  margin: 2%;
-  .card{
-        counter-increment: rank;
-        position: relative;
-        background: #2b2a34;
-        box-shadow: 0 1px 5px rgba(0,0,0,0.2);
-        border-radius: 4px;
-        overflow: hidden;
-        animation: mouseOut 0.3s ease-in;
-        .image{
-          &:after {
-                content: '';
-                display: block;
-                padding-bottom: 10%;
-            }
-            &:before {
-                content: '•••';
-                font-size: 24px;
-                position: absolute;
-                display: flex;
-                width: 100%;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-                color: rgba(white, 0.1);
-                z-index: 0;
-            }
-            img{
-              &.active {
-                    animation: imageFadeIn 0.5s ease-in forwards;
-                    animation-delay: 0.5s;
-                }
-            }
-          }
-        }
-        .card:hover {
-        animation: mouseOver 0.3s ease-in forwards;
-    }
-}
-@keyframes mouseOver {
-    0% {
-        top: 0;
-    }
-    100% {
-        top: -5px;
-    }
-}
-
-@keyframes mouseOut {
-    0% {
-        top: -5px;
-    }
-    100% {
-        top: 0;
-    }
-}
-
-@keyframes imageFadeIn {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.1;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-.card-enter {
-    opacity: 0;
-}
-.card-enter-to {
-    opacity: 1;
-}
-.card-enter-active {
-    transition: opacity 0.3s ease-in;
 }
 
 </style>
