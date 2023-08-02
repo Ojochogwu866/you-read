@@ -34,13 +34,13 @@
         </clipPath>
       </defs>
     </svg>
-    <p class=" text-gray-400 font-normal text-[22px] sm:text-[28px]">
+    <p class=" text-gray-400 font-normal text-[22px] sm:text-[28px]" id="heading-1">
       You Read App
     </p>
-    <h1 class=" sm:text-7xl text-4xl font-extrabold text-gray-300">
+    <h1 class=" sm:text-7xl text-4xl font-extrabold text-gray-300" id="heading-2">
       Read <span class=" text-gray-400">Better</span>
     </h1>
-    <p class=" w-full sm:w-3/4 mx-auto text-gray-400 text-[14px] sm:text-base leading-[28px]">
+    <p class=" w-full sm:w-3/4 mx-auto text-gray-400 text-[14px] sm:text-base leading-[28px]" id="description">
       People who read as an adventure find a way to document their beautiful escapade. With You-Read, we are creating a virtual experience
       for authors and readers to have a beautiful interface with their reading experience. Read, Review and Document. Its built for Authors and Book Readers
     </p>
@@ -64,9 +64,58 @@
   </div>
 </template>
 <script>
+import { onMounted, ref } from "vue";
+import gsap from "gsap";
+
 export default {
-    name: "LandingPage",
-    components:{
+  name: "Landing",
+  components:{
+  },
+  data() {
+    return {
+    };
+  },
+  setup() {
+    onMounted(() => {
+      gsap.fromTo(
+    "#heading-1",
+    {
+      opacity: 0,
+      y: "10%",
+    },
+    {
+      duration: 3,
+      opacity: 1,
+      x: 0,
     }
+  );
+  gsap.fromTo(
+    "#heading-2",
+    {
+      opacity: 0,
+      y: "10%",
+    },
+    {
+      duration: 7,
+      opacity: 1,
+      x: 0,
+    }
+  );
+  gsap.fromTo(
+    "#description",
+    {
+      opacity: 0,
+      y: "10%",
+    },
+    {
+      duration:11,
+      opacity: 1,
+      x: 0,
+    }
+  );
 }
+)},
+  methods:{
+  }
+};
 </script>
