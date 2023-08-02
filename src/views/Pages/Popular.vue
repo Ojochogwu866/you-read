@@ -26,7 +26,7 @@
         <el-scrollbar height="90vh" >
           <TransitionGroup name="list" tag="ul">
           <div 
-            class="sx:grid-cols-sx-column m-[2%] grid-cols-columns grid gap-[30px]"
+            class="grid-cols-sx-column m-[2%] sm:grid-cols-columns grid gap-[10px] md:gap-[30px]"
           >
             <div 
               v-for="book in bestSellers" 
@@ -37,7 +37,7 @@
                 v-if="book.book_image" 
                 class="relative w-full before:content-[...] before:text-24px before:absolute before:flex before:w-full 
                 before:h-full before:items-center before:justify-center before:z-0 before:text-[rgba(white, 0.1)] 
-                after:content-[''] after:pb-[10%] after:block"
+                after:content-[''] after:pb-[5%] md:after:pb-[10%] after:block"
               >
                 <img
                   :src="book.book_image"
