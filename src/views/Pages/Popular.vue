@@ -1,5 +1,6 @@
 <template>
-  <div class="w-full mt-10 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-10 p-5">
+  <transition appear @enter="enter">
+  <div class="w-full mt-10 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-10 p-5" id="group">
     <div class="h-[100vh] overflow-y-hidden">
       <div 
         class="flex justify-between items-center pb-2 border-b-[1px] border-gray-800 "
@@ -78,6 +79,7 @@
     <div>
       <router-link
         to="/book-recommendations"
+        data-barba="container" data-barba-namespec="groups"
         class="mt-5 next-button transition-all relative before:content-[''] 
         before:absolute before:top-0 before:left-0 rounded inline-flex text-sm bfore:w-full
         items-center px-6 py-2 sm:px-14 sm:py-3 text-white"
@@ -86,33 +88,25 @@
       </router-link>
     </div>
   </div>
+  </transition>
 </template>
 <script>
 import { onMounted, ref } from "vue";
 import gsap from "gsap";
 import { mapGetters } from "vuex";
 import { ElScrollbar } from 'element-plus'
+import { duration } from 'moment';
 export default {
   name: "PopularBooks",
   components:{
     ElScrollbar
-  },
-  setup() {
-    onMounted(() => {
-      gsap.to("#smooth-wrapper", {
-        scrollTrigger: "#smooth-wrapper",
-        x: 100,
-        pin: true,
-        duration: 1,
-      });
-    });
-
   },
   data() {
     return {
       isActive: false
     };
   },
+  
   computed: {
     ...mapGetters(["getBestSellers"]),
     bestSellers() {
@@ -131,7 +125,14 @@ export default {
   methods:{
     isLoaded: function() {
             this.isActive = true;
-        },
+      },
+      enter() {
+      gsap.to('#group', {
+        scrollTrigger: "#group",
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+        duration: 1
+      })
+    }
   }
 };
 </script>
