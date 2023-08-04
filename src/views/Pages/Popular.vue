@@ -1,7 +1,7 @@
 <template>
   <transition appear @enter="enter">
   <div class="w-full mt-10 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-10 p-5" id="group">
-    <div class="h-[100vh] overflow-y-hidden">
+    <div class="">
       <div 
         class="flex justify-between items-center pb-2 border-b-[1px] border-gray-800 "
       >
@@ -17,14 +17,14 @@
         </div>
       </div>
       <div class="flex flex-col">
-        <p class="text-[14px]  w-[70%] sx:w-full text-left mt-5 text-white">
+        <p class="text-[14px]  w-[70%] pb-4 sx:w-full text-left mt-5 text-white">
           Our book recommendation order is based on most reads from several book
           genre's. We are at the moment not in patnership with any brand to
           promote their products for more audience. Use the suggest button to
           recommend books you think people should read.
         </p>
         
-        <el-scrollbar height="90vh" >
+        <el-scrollbar height="600px" >
           <TransitionGroup name="list" tag="ul">
           <div 
             class="grid-cols-sx-column m-[2%] sm:grid-cols-columns grid gap-[10px] md:gap-[30px]"
@@ -34,7 +34,7 @@
               :key="book"
               class="relative bg-[#2b2a34] rounded-[4px] overflow-hidden animate-mouseOut hover:animate-mouseOver"
             >
-              <div 
+              <router-link to="" 
                 v-if="book.book_image" 
                 class="relative w-full before:content-['...'] before:text-24px before:absolute before:flex before:w-full 
                 before:h-full before:items-center before:justify-center before:z-0 before:text-[rgba(white, 0.1)] 
@@ -46,7 +46,7 @@
                   class="cursor-pointer top-0 left-0 h-[250px] md:h-[300px] w-full z-10 opacity-0 animate-imageFadeIn delay-[0.5s]"
                   v-on:load="isLoaded()" v-bind:class="{ active: isActive }"
                 >
-              </div>
+              </router-link>
               <div 
                 v-else 
                 class="relative w-full image"

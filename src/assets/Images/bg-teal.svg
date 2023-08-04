@@ -1,14 +1,4 @@
-<template>
-  <div class="w-full mt-10 bg-gray-400 backdrop-filter backdrop-blur-sm bg-opacity-10">
-    <div class="bg-patternBg pb-10">
-      <div class="h-auto p-5">
-        <div class="w-full ">
-          <h2 class="text-sm  text-left font-normal pb-2 border-b-[1px] border-gray-800 text-white">
-            How it Works
-          </h2> 
-        </div>
-        <div class="flex">
-        <svg width="207" height="564" viewBox="0 0 207 564" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="207" height="564" viewBox="0 0 207 564" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_4_3905)">
 <mask id="mask0_4_3905" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="207" height="564">
 <path d="M30.695 2.23804H176.917C192.162 2.23804 204.52 14.5964 204.52 29.8412V534.159C204.52 549.403 192.162 561.762 176.917 561.762H30.695C15.4502 561.762 3.0918 549.403 3.0918 534.159V29.8412C3.0918 14.5964 15.4502 2.23804 30.695 2.23804Z" fill="#0A090F" stroke="url(#paint0_linear_4_3905)" stroke-width="4.47619"/>
@@ -56,68 +46,3 @@
 </clipPath>
 </defs>
 </svg>
-        <slides
-          v-for="(p, i) in gettingStarted"
-          :key="i"
-          class="cursor-pointer"
-          :title="p.title"
-          :src="p.image"
-          :action="p.action"
-        />
-      </div>
-    </div>
-    </div>
-  </div>
-</template>
-  <script>
-  import { onMounted } from "vue";
-  import gsap from "gsap";
-  import Slides from './Slide.vue'
-
-  export default {
-    name: "GetInformed",
-    components: { Slides },
-    setup() {
-      onMounted(() => {
-        gsap.to("#smooth-wrapper", {
-          scrollTrigger: "#smooth-wrapper",
-          x: 100,
-          pin: true,
-          duration: 1,
-        });
-      });
-    },
-    data: () => ({
-      cat: "actions",
-      events:[
-        {
-        title: "Read",
-        action:"Select books to Read: Search our book catalogue, and find interesting books, or add your own book.",
-        image: require("@/assets/Images/bookreader.jpg"),
-        category: ["actions"]
-        },
-        {
-        title: "Review",
-        action:"Review your targets: Set book reading target, document  your progress and monitor your reading time and goals.",
-        image: require("@/assets/Images/book2.jpg"),
-        category: ["actions"]
-        },
-        {
-        title: "Document",
-        action:"Give reviews on completed books: Let others know what you think abouy books you have read.",
-        image: require("@/assets/Images/book1.jpg"),
-        category: ["actions"]
-        },
-      ]
-    }),
-    computed: {
-    gettingStarted() {
-      return this.events.filter((event) =>
-        event.category.includes(this.cat)
-      );
-    },
-  },
-  };
-  </script>
-
-  

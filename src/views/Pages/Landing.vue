@@ -1,51 +1,32 @@
 <template>
-  <div class="h-[100vh] justify-center flex flex-col items-center">
-    <svg 
-      class=" w-80 h-80 -mb-20" 
-      width="410" 
-      height="134" 
-      viewBox="0 0 410 134" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g clip-path="url(#clip0_4_4328)">
-        <g opacity="0.4">
-          <path 
-            d="M374.328 66.3313H0.328125" 
-            stroke="#E5E5E5"
-          />
-          <path 
-            d="M66.4785 0.03125V132.331" 
-            stroke="#E5E5E5"
-          />
-          <path 
-            d="M113.242 112.945L19.6963 19.3994" 
-            stroke="#E5E5E5"
-          />
-          <path 
-            d="M113.242 19.3994L19.6963 112.945" 
-            stroke="#E5E5E5"
-          />
-        </g>
+  <div class="h-auto py-10 justify-center flex flex-col items-center">
+    <svg   class=" w-60 h-60 mt-20"  width="161" height="161" viewBox="0 0 161 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_4_4321)">
+      <g opacity="0.4">
+      <path d="M159.653 129.026V2.04443L32.6713 2.04443L32.6713 129.026H159.653Z" stroke="#E8E8E8"/>
+      <path d="M128.636 160.045V33.0627L1.65374 33.0627L1.65374 160.045H128.636Z" stroke="#E8E8E8"/>
+      <path d="M32.6718 1.89282L32.6717 129.026L1.65332 159.56V32.5781L32.6718 1.89282Z" stroke="#E8E8E8" stroke-linejoin="bevel"/>
+      <path d="M159.654 1.89282V129.026L128.636 160.044V32.5781L159.654 1.89282Z" stroke="#E8E8E8" stroke-linejoin="bevel"/>
+      </g>
       </g>
       <defs>
-        <clipPath id="clip0_4_4328">
-          <rect width="409" height="133" fill="white" transform="translate(0.328125 0.03125)"/>
-        </clipPath>
-      </defs>
-    </svg>
-    <p class=" text-gray-400 font-normal text-[22px] sm:text-[28px]" id="heading-1">
+      <clipPath id="clip0_4_4321">
+      <rect width="160" height="160" fill="white" transform="translate(0.578125 0.96875)"/>
+      </clipPath>
+    </defs>
+  </svg>
+    <p class=" text-gray-400 font-normal text-[22px] mt-5 sm:text-[28px]" id="heading-1">
       You Read App
     </p>
     <h1 class=" sm:text-7xl text-4xl font-extrabold text-gray-300" id="heading-2">
       Read <span class=" text-gray-400">Better</span>
     </h1>
-    <p class=" w-full sm:w-3/4 mx-auto text-gray-400 text-[14px] sm:text-base leading-[28px]" id="description">
+    <p class=" w-full sm:w-3/4 mx-auto text-gray-400 text-[14px] mt-8 sm:text-base leading-[28px]" id="description">
       People who read as an adventure find a way to document their beautiful escapade. With You-Read, we are creating a virtual experience
       for authors and readers to have a beautiful interface with their reading experience. Read, Review and Document. Its built for Authors and Book Readers
     </p>
     <p 
-      class="mt-4 sm:text-sm text-[12px] text-white py-3 px-4 flex justify-center items-center gap-1 bg-gray-400 backdrop-filter border-gray-200 
+      class="mt-5 sm:text-sm text-[12px] text-white py-3 px-4 flex justify-center items-center gap-1 bg-gray-400 backdrop-filter border-gray-200 
       rounded-3xl  backdrop-blur-sm bg-opacity-10"
     >
       <svg 
