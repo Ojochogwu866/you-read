@@ -3,34 +3,27 @@
     v-if="type === 'actions'" 
     class=" flex text-white justify-center w-full items-center mt-6" 
   >
-    <div class=" md:h-[125px] w-[50%] md:w-[30%] text-left flex flex-col justify-center items-start left-0">
+    <div 
+      class=" md:h-[200px] h-[160px] w-[160px]  md:w-[70%] sx:w-full exp flex 
+      justify-center items-center pr-24 sx:pr-[75px] rounded-r-full
+      backdrop-filter backdrop-blur-sm bg-opacity-10 "
+    >
+    <div 
+        class="flex flex-col text-left px-5 sx:px-2"
+      >
       <h1 
-        class=" sx:hidden text-base sx:text-[14px]"
+        class=" md:text-[14px] text-[12px] "
       > 
         {{ title }} 
       </h1>
-      <div 
-        class="flex gap-3"
-      >
-        <img 
-          src="@/assets/Images/Vector.svg" 
-          class=" w-[30px] sx:w-[14px]" 
-          alt="more" 
-        >
-        <p class="text-[14px] pr-1 md:pr-3"> 
+        <p class="md:text-[14px] text-[12px] "> 
           {{ action }} 
         </p>
       </div>
-    </div>
-    <div 
-      class=" md:h-[200px] h-[160px] w-[160px]  md:w-[50%] exp flex 
-      justify-center items-center right-0 rounded-full 
-      backdrop-filter backdrop-blur-sm bg-opacity-10 "
-    >
       <img 
         :src="src" 
         :alt="alt" 
-        class="md:w-1/2 w-[150px] h-[150px] md:-skew-x-[20deg] md:h-full sx:rounded-full object-cover" 
+        class="w-1/2  h-full right-[20%] object-cover" 
       >
     </div>
   </div> 

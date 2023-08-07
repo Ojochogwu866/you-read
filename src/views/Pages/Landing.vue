@@ -1,6 +1,6 @@
 <template>
   <div class="h-auto py-10 justify-center flex flex-col items-center">
-    <svg   class=" w-60 h-60 mt-20"  width="161" height="161" viewBox="0 0 161 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg   class=" w-50 h-50 md:w-60 md:h-60 mt-20"  width="161" height="161" viewBox="0 0 161 161" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_4_4321)">
       <g opacity="0.4">
       <path d="M159.653 129.026V2.04443L32.6713 2.04443L32.6713 129.026H159.653Z" stroke="#E8E8E8"/>
