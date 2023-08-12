@@ -7,9 +7,9 @@
             How it Works
           </h2> 
         </div>
-        <div class="flex justify-center items-center sx:flex-col">
+        <div class="flex justify-center items-center flex-col sm:flex-row">
           <div>
-        <svg width="350" height="564" viewBox="0 0 207 564" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="rotate-90 md:rotate-0" height="564" viewBox="0 0 207 564" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_4_3905)">
           <mask id="mask0_4_3905" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="207" height="564">
           <path d="M30.695 2.23804H176.917C192.162 2.23804 204.52 14.5964 204.52 29.8412V534.159C204.52 549.403 192.162 561.762 176.917 561.762H30.695C15.4502 561.762 3.0918 549.403 3.0918 534.159V29.8412C3.0918 14.5964 15.4502 2.23804 30.695 2.23804Z" fill="#0A090F" stroke="url(#paint0_linear_4_3905)" stroke-width="4.47619"/>

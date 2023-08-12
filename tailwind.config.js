@@ -11,7 +11,6 @@ module.exports = {
       mx: { max: "868px" },
       lx: { max: "1023px" },
       gx: { max: "1535px" },
-      "2xl": { max: "1535px" },
     },
     fontFamily: {
       display: ["Gilroy", "sans-serif"],

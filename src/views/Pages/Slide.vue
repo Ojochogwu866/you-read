@@ -4,12 +4,12 @@
     class=" flex text-white justify-center w-full items-center mt-6" 
   >
     <div 
-      class=" md:h-[200px] h-[160px] w-[160px]  md:w-[70%] sx:w-full exp flex 
+      class=" md:h-[200px] h-[160px] md:w-[70%] sx:w-full exp flex 
       justify-center items-center pr-24 sx:pr-[75px] rounded-r-full
       backdrop-filter backdrop-blur-sm bg-opacity-10 "
     >
     <div 
-        class="flex flex-col text-left px-5 sx:px-2"
+        class="w-1/2 h-auto flex flex-col text-left md:p-5 p-4"
       >
       <h1 
         class=" md:text-[14px] text-[12px] "
