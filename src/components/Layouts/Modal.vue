@@ -3,7 +3,7 @@
     <div class="">
       <div
         v-if="center"
-        class="absolute h-screen bg-black bg-opacity-10 overflow-y-hidden 
+        class="absolute h-screen bg-black bg-opacity-10 overflow-hidden 
         inset-0 flex justify-end items-end sx:items-center sx:justify-center z-50 w-full mx-auto rounded shadow-xs"
       >
         <div class="w-full">

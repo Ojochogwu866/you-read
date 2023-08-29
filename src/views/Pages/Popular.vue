@@ -43,7 +43,6 @@
                 <img
                   :src="book.book_image"
                   :alt="book.title"
-                  id="card"
                   class="cursor-pointer top-0 left-0 h-[250px] md:h-[300px] w-full z-10 opacity-0 animate-imageFadeIn delay-[0.5s]"
                   v-on:load="isLoaded()" v-bind:class="{ active: isActive }"
                 >
