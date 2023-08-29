@@ -8,7 +8,7 @@
           </h2> 
         </div>
         <div class="flex justify-center items-center flex-col sm:flex-row">
-          <div>
+          <div class=" sx:-mt-32">
         <svg class="rotate-90 md:rotate-0" height="564" viewBox="0 0 207 564" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_4_3905)">
           <mask id="mask0_4_3905" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="207" height="564">
@@ -58,7 +58,7 @@
     </defs>
   </svg>
           </div>
-<div class="flex flex-col">
+<div class="flex flex-col sx:-mt-36">
         <slides
           v-for="(p, i) in gettingStarted"
           :key="i"

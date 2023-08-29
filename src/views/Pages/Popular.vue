@@ -35,7 +35,7 @@
               class="relative bg-[#2b2a34] rounded-[4px] overflow-hidden animate-mouseOut hover:animate-mouseOver"
             >
               <router-link to="" 
-                v-if="book.book_image" 
+                v-if="book.book_image"         
                 class="relative w-full before:content-['...'] before:text-24px before:absolute before:flex before:w-full 
                 before:h-full before:items-center before:justify-center before:z-0 before:text-[rgba(white, 0.1)] 
                 after:content-[''] after:pb-[5%] md:after:pb-[7%] after:block"
@@ -43,6 +43,7 @@
                 <img
                   :src="book.book_image"
                   :alt="book.title"
+                  id="card"
                   class="cursor-pointer top-0 left-0 h-[250px] md:h-[300px] w-full z-10 opacity-0 animate-imageFadeIn delay-[0.5s]"
                   v-on:load="isLoaded()" v-bind:class="{ active: isActive }"
                 >
@@ -118,6 +119,12 @@ export default {
       }
     },
   },
+  setup() {
+    let tl = gsap.timeline({ defaults: {ease: "power4.inOut", duration: 2}})
+    onMounted(() => {
+    tl.from('#card', {scaleY: 0, stagger: .2 })
+  }
+)},
   mounted() {
     this.$store.dispatch("fetchBestSellers");
     const loading = ref(true);
@@ -132,7 +139,7 @@ export default {
         clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
         duration: 1
       })
-    }
+    },
   }
 };
 </script>

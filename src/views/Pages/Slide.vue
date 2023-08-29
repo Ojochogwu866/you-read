@@ -4,8 +4,8 @@
     class=" flex text-white justify-center w-full items-center mt-6" 
   >
     <div 
-      class=" md:h-[200px] h-[160px] md:w-[70%] sx:w-full exp flex 
-      justify-center items-center pr-24 sx:pr-[75px] rounded-r-full
+      class=" md:h-[200px] h-[160px] md:w-[90%] sx:w-full exp flex 
+      justify-center items-center pr-24 sx:pr-[10px] rounded-r-full
       backdrop-filter backdrop-blur-sm bg-opacity-10 "
     >
     <div 
@@ -23,7 +23,7 @@
       <img 
         :src="src" 
         :alt="alt" 
-        class="w-1/2  h-full right-[20%] object-cover" 
+        class="w-1/2 sx:w-[40%]  h-full right-[20%] sx:right-[0%] sx:rounded-r-full object-cover" 
       >
     </div>
   </div> 
@@ -38,10 +38,10 @@ export default {
       default:''
     },
     src: {
-       type: String,
-       default: ''
+        type: String,
+        default: ''
     },
-     action :{
+      action :{
       type: String,
       default:''
     },
