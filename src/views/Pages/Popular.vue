@@ -77,9 +77,12 @@
       </div>
     </div>
     <div>
+      <div class=" fixed top-0 left-0 w-full h-screen overflow-hidden z-10 pointer-events-none">
+        <div id="loader" class=" relative pl-0 pr-0 pt-0 bg-black w-0 h-full"></div>
+      </div>
       <router-link
         to="/book-recommendations"
-        data-barba="container" data-barba-namespec="groups"
+        @click="pageTransition"
         class="mt-5 next-button transition-all relative before:content-[''] 
         before:absolute before:top-0 before:left-0 rounded inline-flex text-sm bfore:w-full
         items-center px-6 py-2 sm:px-14 sm:py-3 text-white"
@@ -139,6 +142,18 @@ export default {
         duration: 1
       })
     },
+    pageTransition(){
+      let tl = gsap.timeline();
+      tl.to("#loader",{
+        duration: 1.2, width:"100%", left:"0%", ease: "Expo.easeInOut"
+      })
+      tl.to("#loader",{
+        duration: 1, width:"100%", left:"100%", ease:"Expo.easeInOut", delay:0.3, 
+      })
+      tl.set("#loader", {
+        left:"-100%", 
+      })
+    }
   }
 };
 </script>

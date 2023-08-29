@@ -10,7 +10,7 @@
           <slot name="header" />
         </div>
         <main class="flex items-start justify-start">
-          <div class="mt-14 absolute ml-20">
+          <div class="mt-14 absolute ml-20 sx:mt-28 sx:ml-28">
             <svg
               class="w-3 h-3 cursor-pointer"
               viewBox="0 0 14 14"

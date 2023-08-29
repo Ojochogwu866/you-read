@@ -31,25 +31,25 @@
               placeholder="Fullname"             
               type="text"             
               required
-              class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full"
+              class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full sx:w-[90%]"
             >
             <input
               v-model="args.email"
               placeholder="Email address"
               type="email"
               required
-              class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full"
+              class="rounded-md mt-6 border bg-transparent border-gray-400 text-sm text-gray-500 p-2 w-full sx:w-[90%]"
             >
             <input
               v-model="args.password"
               placeholder="password"
               type="password"
               required
-              class="rounded-md border bg-transparent border-gray-400 mt-2 text-sm text-gray-500 p-2 w-full"
+              class="rounded-md border bg-transparent border-gray-400 mt-2 text-sm text-gray-500 p-2 w-full sx:w-[90%]"
             >
             <button
               type="submit"
-              class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full"
+              class="rounded-md mt-3 border bg-boxColor text-sm text-white p-3 w-full sx:w-[90%]"
             >
               Sign Up
             </button>
@@ -59,7 +59,7 @@
           </div>
           <div class="w-full mt-3 gap-4 flex justify-center items-center">
             <button
-              class="w-full gap-4 flex text-slate-900 border  text-sm
+              class="w-full sx:w-[90%] gap-4 flex text-slate-900 border  text-sm
               border-gray-400 py-3 rounded-md justify-center items-center"
               @click="signUpWithGoogle"
             >
