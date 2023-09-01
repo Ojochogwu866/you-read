@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let API_URL = "http://localhost:3000/api/v1";
+let API_URL = "https://you-read-api.onrender.com/api/v1";
 class ApiError extends Error {
   constructor(message, status) {
     super(message);
