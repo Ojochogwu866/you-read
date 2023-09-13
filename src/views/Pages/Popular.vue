@@ -82,7 +82,7 @@
       </div>
       <router-link
         to="/book-recommendations"
-        @click="pageTransition"
+        @pageTransition="pageTransition"
         class="mt-5 next-button transition-all relative before:content-[''] 
         before:absolute before:top-0 before:left-0 rounded inline-flex text-sm bfore:w-full
         items-center px-6 py-2 sm:px-14 sm:py-3 text-white"

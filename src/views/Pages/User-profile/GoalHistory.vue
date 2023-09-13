@@ -1,11 +1,11 @@
 <template>
   <div
-    class="w-full p-3 rounded-md gap-3 border 
+    class="w-full p-3 overflow-scroll rounded-md gap-3 border 
     border-gray-400 mt-8 flex justify-start items-start flex-col text-left"
   >
     <div class="text-sm font-semibold">Goals History</div>
 
-    <div class="grid grid-cols-6 w-full text-sm">
+    <div class="grid grid-cols-6 w-full overflow-scroll sx:w-[700px] text-sm">
       <div class="px-2 py-1 bg-[#cdffee56] rounded-md h-fit w-fit">
         Date started
       </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="px-1 py-1 bg-[#cdffee56] rounded-md h-fit w-fit">Props</div>
     </div>
-    <div class="w-full">
+    <div class="w-full overflow-scroll sx:w-[700px]">
       <div
         v-for="books in getUserGoals.books"
         :key="books.id"

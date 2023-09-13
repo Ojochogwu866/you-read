@@ -1,4 +1,5 @@
 <template>
+ 
   <div class=" md:w-10/12 w-11/12 sx:min-h-screen overflow-x-hidden flex 
   flex-col justify-center mx-auto items-center text-parentText">
     <Nav />
@@ -6,12 +7,16 @@
     <div class="w-full flex justify-center items-center mt-20">
       <el-scrollbar class="flex">
         <div class="flex">
+          <transition enter-active-class="animate__animated animate__fadeInLeft"
+            leave-active-class="animate__animated animate__fadeOutLeft">
           <SubNav
             class=" pb-3"
             :routes="routes"
             :titles="titles"
             @selected-genre="fetchBooksByGenre"
           />
+
+        </transition>
         </div>
       </el-scrollbar>
     </div>
@@ -70,3 +75,6 @@ export default {
  },
 };
 </script>
+<style scoped>
+
+</style>

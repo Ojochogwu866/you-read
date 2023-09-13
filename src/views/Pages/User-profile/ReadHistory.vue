@@ -1,10 +1,11 @@
 <template>
   <div
-    class="w-full p-3 rounded-md gap-3 border border-gray-400 mt-8 flex justify-start items-start flex-col text-left"
+    class="w-full p-3 rounded-md overflow-scroll gap-3 border border-gray-400 mt-8 flex justify-start items-start flex-col text-left"
   >
+  
     <div class="text-sm font-semibold">Read History</div>
 
-    <div class="grid grid-cols-6 w-full text-sm">
+    <div class="grid grid-cols-6  overflow-scroll sx:w-[700px] w-full text-sm">
       <div class="px-2 py-1 bg-[#ffcdef56] rounded-md h-fit w-fit">
         Book Title
       </div>
@@ -20,7 +21,7 @@
       <div class="px-1 py-1 bg-[#ffcdef56] rounded-md h-fit w-fit">Props</div>
       <div class="px-1 py-1 bg-[#ffcdef56] rounded-md h-fit w-fit">Status</div>
     </div>
-    <div v-if="booksData" class="w-full">
+    <div v-if="booksData" class="w-full sx:w-[700px] overflow-scroll">
       <div
         v-for="books in booksData"
         :key="books.id"
