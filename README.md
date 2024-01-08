@@ -30,4 +30,4 @@ npm run test:unit
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# you-read
+# you-read app
